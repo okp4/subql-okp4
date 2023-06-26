@@ -1,0 +1,46 @@
+name: Test
+
+on:
+  workflow_call:
+
+  push:
+    branches: [main]
+
+  pull_request:
+    branches: [main]
+
+concurrency:
+  group: test-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  test-subql:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Setup node environment (for building)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.19
+
+      - name: Install subql/cli
+        run: |
+          npm install -g @subql/cli@3.2.0
+
+      - name: Install subql-node-cosmos
+        run: |
+          npm install -g @subql/node-cosmos@2.5.3
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Fetch dependencies
+        run: |
+          yarn --frozen-lockfile
+
+      - name: Generate code
+        run: |
+          yarn codegen
+
+      - name: Test project
+        run: |
+          yarn test
