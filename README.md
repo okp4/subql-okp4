@@ -1,22 +1,26 @@
-# SubQuery - Starter Package for Cosmos/CosmosHub
+# SubQL-OKP4
 
-A basic Cosmos (based on CosmosHub) example project with an event and message handler. Read more about SubQuery support for Cosmos at https://academy.subquery.network/quickstart/quickstart_chains/cosmos.html.
+> 🔁 Subquery indexer for the [OKP4 network](https://okp4.network).
 
-The Starter Package is an example that you can use as a starting point for developing your SubQuery project.
+[![lint](https://img.shields.io/github/actions/workflow/status/okp4/subql-okp4/lint.yml?label=lint&style=for-the-badge&logo=github)](https://github.com/okp4/subql-okp4/actions/workflows/lint.yml)
+[![build](https://img.shields.io/github/actions/workflow/status/okp4/subql-okp4/build.yml?branch=main&label=build&style=for-the-badge&logo=github)](https://github.com/okp4/subql-okp4/actions/workflows/build.yml)
+[![test](https://img.shields.io/github/actions/workflow/status/okp4/dataverse-portal/test.yml?branch=main&label=test&style=for-the-badge&logo=github)](https://github.com/okp4/dataverse-portal/actions/workflows/test.yml)
+[![conventional commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-yellow.svg?style=for-the-badge&logo=conventionalcommits)](https://conventionalcommits.org)
+[![contributor covenant](https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg?style=for-the-badge)](https://github.com/okp4/.github/blob/main/CODE_OF_CONDUCT.md)
+[![typescript](https://img.shields.io/badge/typescript-%23007ACC.svg?style=for-the-badge&logo=typescript&logoColor=white)](https://www.typescriptlang.org/)
+[![prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)](https://github.com/prettier/prettier)
+[![license][bsd-3-clause-image]][bsd-3-clause]
+[![cc-by-sa-4.0][cc-by-sa-image]][cc-by-sa]
 
-A SubQuery package defines which data SubQuery will index from the blockchain, and how it will store it.
+## Install
 
-This Starter Package by default allows **indexing transfer events and messages from CosmosHub**.
+### Prerequisites
 
-## Preparation
+Be sure to have the following properly installed:
 
-#### Environment and dependencies
-
-- [Typescript](https://www.typescriptlang.org/) is required to compile project and define types.
-
-- Both SubQuery CLI and generated Project have dependencies and require [Node](https://nodejs.org/en/).
-
-- You will also need [Yarn](https://classic.yarnpkg.com/lang/en/docs/install) or [NPM](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm) and [Docker](https://docs.docker.com/engine/install/).
+- [Node.js](https://nodejs.org/ru/) `v16.19` ([gallium](https://nodejs.org/en/blog/release/v16.19.0/))
+- [yarn](https://yarnpkg.com/) `v1.22.17`
+- [Docker](https://www.docker.com/)
 
 #### Install the SubQuery CLI and Project Dependencies
 
@@ -118,3 +122,8 @@ With this project can try to query with the following code to get a taste of how
 - [Automated Historical State tracking](https://academy.subquery.network/th/run_publish/historical.html)
 - [GraphQL Subscriptions](https://academy.subquery.network/run_publish/subscription.html)
 - [Discord with Technical Support Channel](https://discord.com/invite/subquery)
+
+[bsd-3-clause]: https://opensource.org/licenses/BSD-3-Clause
+[bsd-3-clause-image]: https://img.shields.io/badge/License-BSD_3--Clause-blue.svg?style=for-the-badge
+[cc-by-sa]: https://creativecommons.org/licenses/by-sa/4.0/
+[cc-by-sa-image]: https://i.creativecommons.org/l/by-sa/4.0/88x31.png
