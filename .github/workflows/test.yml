@@ -22,14 +22,6 @@ jobs:
         with:
           node-version: 16.19
 
-      - name: Install subql/cli
-        run: |
-          npm install -g @subql/cli@3.2.0
-
-      - name: Install subql-node-cosmos
-        run: |
-          npm install -g @subql/node-cosmos@2.5.3
-
       - name: Check out repository
         uses: actions/checkout@v3
 
