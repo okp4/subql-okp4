@@ -1,6 +1,6 @@
 specVersion: 1.0.0
 name: subql-okp4
-version: 0.0.1
+version: 0.1.0
 runner:
   node:
     name: "@subql/node-cosmos"
@@ -9,20 +9,14 @@ runner:
     name: "@subql/query"
     version: "*"
 description: >-
-  This project can be use as a starting point for developing your Cosmos (Cosmos
-  Hub) based SubQuery project
-repository: "https://github.com/subquery/juno-subql-starter"
+  This repository contains the SubQuery project that indexes the OKP4 blockchain.
+repository: "https://github.com/okp4/subql-okp4"
 schema:
   file: ./schema.graphql
 network:
-  chainId: cosmoshub-4
-  # This endpoint must be a public non-pruned archive node
-  # We recommend providing more than one endpoint for improved reliability, performance, and uptime
-  # Public nodes may be rate limited, which can affect indexing speed
-  # When developing your project we suggest getting a private API key
+  chainId: okp4-nemeton-1
   endpoint:
-    - https://cosmos-mainnet-archive.allthatnode.com:26657
-  # Optionally provide the HTTP endpoint of a full chain dictionary to speed up processing
+    - https://api.testnet.okp4.network/rpc
   dictionary: "https://api.subquery.network/sq/subquery/cosmos-hub-dictionary"
   chainTypes:
     cosmos.slashing.v1beta1:
@@ -39,15 +33,10 @@ network:
         - WeightedVoteOption
 dataSources:
   - kind: cosmos/Runtime
-    startBlock: 5200791
+    startBlock: 2910000
     mapping:
       file: ./dist/index.js
       handlers:
-        # Using block handlers slows your project down as they can be executed with each and every block. Only use if you need to
-        # - handler: handleBlock
-        #   kind: cosmos/BlockHandler
-        # Using transaction handlers without filters slows your project down as they can be executed with each and every block
-        # - handler: handleTransaction
         - handler: handleEvent
           kind: cosmos/EventHandler
           filter:
