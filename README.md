@@ -25,12 +25,54 @@ Be sure to have the following properly installed:
 
 ### Setup
 
-🚚 Install the dependencies and build the project:
+🚚 Install the dependencies:
 
 ```sh
 yarn
+```
 
-yarn build
+Generate the types:
+
+```sh
+yarn codegen && yarn build
+```
+
+## Usage
+
+### Run locally
+
+🚀 Run the project locally:
+
+```sh
+docker-compose pull & docker-compose up
+```
+
+### Query
+
+Open <http://localhost:3000/> on your browser, and try the following query:
+
+```graphql
+query{
+  _metadata {
+    chain
+    lastProcessedHeight
+    targetHeight
+  }
+}
+```
+
+You should get the following result:
+
+```json
+{
+  "data": {
+    "_metadata": {
+      "chain": "okp4-nemeton-1",
+      "lastProcessedHeight": 2928706,
+      "targetHeight": 2928706
+    }
+  }
+}
 ```
 
 ## You want to get involved? 😍
