@@ -18,7 +18,7 @@
 
 Be sure to have the following properly installed:
 
-- [Node.js](https://nodejs.org/ru/) `v16.19` ([gallium](https://nodejs.org/en/blog/release/v16.19.0/))
+- [Node.js](https://nodejs.org/en/) `v18.16` ([Hydrogen](https://nodejs.org/en/blog/release/v18.16.0/))
 - [yarn](https://yarnpkg.com/) `v1.22`
 - [Docker](https://www.docker.com/)
 - [subql-cli](https://academy.subquery.network/run_publish/cli.html#installation) `v3.2.0`  - Install SubQuery CLI globally on your terminal by using NPM (we don't recommend using Yarn to install global dependencies): `npm install -g @subql/cli@3.2.0`
