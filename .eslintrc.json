@@ -1,0 +1,13 @@
+{
+    "extends": ["eslint:recommended"],
+    "parser": "@typescript-eslint/parser",
+    "plugins": ["@typescript-eslint"],
+    "parserOptions": {
+        "project": "./tsconfig.json"
+    },
+    "ignorePatterns": ["src/types/**/*.ts"],
+    "env": {
+        "es2020": true,
+        "node": true
+    }
+}
