@@ -89,7 +89,7 @@ jobs:
       - name: Setup node environment (for building)
         uses: actions/setup-node@v3
         with:
-          node-version: 16.19
+          node-version: 18.16
 
       - name: Fetch dependencies
         run: |
