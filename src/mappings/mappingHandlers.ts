@@ -1,10 +1,8 @@
-import { TransferEvent, Message } from "../types";
 import {
   CosmosEvent,
-  CosmosBlock,
   CosmosMessage,
-  CosmosTransaction,
-} from "@subql/types-cosmos";
+} from '@subql/types-cosmos';
+import { TransferEvent, Message } from '../types';
 
 /*
 export async function handleBlock(block: CosmosBlock): Promise<void> {
@@ -43,18 +41,17 @@ export async function handleEvent(event: CosmosEvent): Promise<void> {
     txHash: event.tx.hash,
     recipient: '',
     amount: '',
-    sender: ''
-
+    sender: '',
   });
   for (const attr of event.event.attributes) {
     switch (attr.key) {
-      case "recipient":
+      case 'recipient':
         eventRecord.recipient = attr.value;
         break;
-      case "amount":
+      case 'amount':
         eventRecord.amount = attr.value;
         break;
-      case "sender":
+      case 'sender':
         eventRecord.sender = attr.value;
         break;
       default:
