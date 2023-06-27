@@ -2,10 +2,10 @@ name: Lint
 
 on:
   push:
-    branches: [ main ]
+    branches: [main]
 
   pull_request:
-    branches: [ main ]
+    branches: [main]
 
   workflow_dispatch:
 
@@ -79,3 +79,22 @@ jobs:
           message: 🙅 Closing the PR because it does not respect naming conventions. Edit the branch name and submit a new PR.
     env:
       GITHUB_TOKEN: ${{ secrets.OKP4_TOKEN }}
+
+  lint-ts:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Setup node environment (for building)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 16.19
+
+      - name: Fetch dependencies
+        run: |
+          yarn
+
+      - name: Lint typescript code
+        run: |
+          yarn lint
