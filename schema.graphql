@@ -1,32 +1,18 @@
-# To improve query performance, we strongly suggest adding indexes to any field that you plan to filter or sort by
-# Add the `@index` or `@index(unique: true)` annotation after any non-key field
-# https://academy.subquery.network/build/graphql.html#indexing-by-non-primary-key-field
-
-# type Block @entity {
-#   id: ID! # The block hash
-#   height: BigInt!
-# }
-
-# type Transaction @entity {
-#   id: ID!
-#   blockHeight: BigInt!
-#   timestamp: String!
-# }
-
-type TransferEvent @entity {
-  id: ID!
-  blockHeight: BigInt!
-  txHash: String!
-  recipient: String!
-  sender: String!
-  amount: String!
-}
-
-type Message @entity {
-  id: ID!
-  blockHeight: BigInt!
-  txHash: String!
-  from: String!
-  to: String!
-  amount: String!
+"""
+ObjectariumObject is the type of an object stored in the Objectarium smart contract instance.
+"""
+type ObjectariumObject @entity {
+    """
+    id is the type of identifier of an object in the smart contract instance (aka bucket).
+    It is the hash of the object's content using the hash algorithm configured for the bucket.
+    """
+    id: ID!
+    """
+    sender is the address of the user who stored the object.
+    """
+    sender: String! @index
+    """
+    contract is the address of the smart contract instance (aka bucket) where the object is stored.
+    """
+    contract: String! @index
 }
