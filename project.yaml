@@ -29,7 +29,7 @@ network:
         - MsgExecuteContract
 dataSources:
   - kind: cosmos/Runtime
-    startBlock: 3492166
+    startBlock: 3507305
     mapping:
       file: ./dist/index.js
       handlers:
@@ -43,3 +43,13 @@ dataSources:
           filter:
             type: /cosmwasm.wasm.v1.MsgExecuteContract
             contractCall: forget_object
+        - handler: handlePinObject
+          kind: cosmos/MessageHandler
+          filter:
+            type: /cosmwasm.wasm.v1.MsgExecuteContract
+            contractCall: pin_object
+        - handler: handleUnpinObject
+          kind: cosmos/MessageHandler
+          filter:
+            type: /cosmwasm.wasm.v1.MsgExecuteContract
+            contractCall: unpin_object
