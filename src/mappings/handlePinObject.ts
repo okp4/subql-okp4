@@ -7,15 +7,15 @@ export const handlePinObject = async (
     msg: CosmosMessage<MsgExecuteContract>
 ): Promise<void> => {
     const objectId = getObjectariumObjectId(msg.tx.tx.events);
-    const object = objectId && (await ObjectariumObject.get(objectId));
+    const object = objectId ? await ObjectariumObject.get(objectId) : null;
 
     if (object) {
-        if (object.pins && !object.pins.includes(msg.msg.decodedMsg.sender)) {
-            object.pins.push(msg.msg.decodedMsg.sender);
-            await object.save();
-        }
-        if (!object.pins) {
-            object.pins = [msg.msg.decodedMsg.sender];
+        const { sender } = msg.msg.decodedMsg;
+
+        object.pins = object.pins || [];
+
+        if (!object.pins.includes(sender)) {
+            object.pins.push(sender);
             await object.save();
         }
     }

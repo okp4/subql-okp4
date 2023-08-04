@@ -21,18 +21,14 @@ export const handleStoreObject = async (
     const objectId = getObjectariumObjectId(msg.tx.tx.events);
 
     if (objectId) {
-        msg.msg.decodedMsg.msg.store_object.pin
-            ? await ObjectariumObject.create({
-                  id: objectId,
-                  sender: msg.msg.decodedMsg.sender,
-                  contract: msg.msg.decodedMsg.contract,
-                  pins: [msg.msg.decodedMsg.sender],
-              }).save()
-            : await ObjectariumObject.create({
-                  id: objectId,
-                  sender: msg.msg.decodedMsg.sender,
-                  contract: msg.msg.decodedMsg.contract,
-                  pins: [],
-              }).save();
+        const { sender, contract } = msg.msg.decodedMsg;
+        const { pin: isPinned } = msg.msg.decodedMsg.msg.store_object;
+
+        await ObjectariumObject.create({
+            id: objectId,
+            sender,
+            contract,
+            pins: isPinned ? [sender] : [],
+        }).save();
     }
 };

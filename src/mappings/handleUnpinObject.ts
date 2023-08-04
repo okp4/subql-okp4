@@ -7,14 +7,15 @@ export const handleUnpinObject = async (
     msg: CosmosMessage<MsgExecuteContract>
 ): Promise<void> => {
     const objectId = getObjectariumObjectId(msg.tx.tx.events);
-    const object = objectId && (await ObjectariumObject.get(objectId));
+    const object = objectId ? await ObjectariumObject.get(objectId) : null;
 
-    if (object && object.pins) {
+    if (object?.pins) {
+        const { sender } = msg.msg.decodedMsg;
         const filteredPins = object.pins.filter(
-            (address) => address !== msg.msg.decodedMsg.sender
+            (address) => address !== sender
         );
 
-        if (!object.pins.every((address) => filteredPins.includes(address))) {
+        if (filteredPins.length !== object.pins.length) {
             object.pins = filteredPins;
             await object.save();
         }
