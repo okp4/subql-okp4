@@ -1,6 +1,6 @@
 # SubQL-OKP4
 
-> 🔁 Subquery indexer for the [OKP4 network](https://okp4.network).
+> 🔁 Subquery indexer for the [OKP4 protocol](https://okp4.network).
 
 [![lint](https://img.shields.io/github/actions/workflow/status/okp4/subql-okp4/lint.yml?label=lint&style=for-the-badge&logo=github)](https://github.com/okp4/subql-okp4/actions/workflows/lint.yml)
 [![build](https://img.shields.io/github/actions/workflow/status/okp4/subql-okp4/build.yml?branch=main&label=build&style=for-the-badge&logo=github)](https://github.com/okp4/subql-okp4/actions/workflows/build.yml)
@@ -11,6 +11,8 @@
 [![prettier](https://img.shields.io/badge/prettier-1A2C34?style=for-the-badge&logo=prettier&logoColor=F7BA3E)](https://github.com/prettier/prettier)
 [![license][bsd-3-clause-image]][bsd-3-clause]
 [![cc-by-sa-4.0][cc-by-sa-image]][cc-by-sa]
+
+This repository is home to the OKP4 SubQuery Indexer, a tool that provides chain data from the [OKP4 protocol](https://okp4.network) via a GraphQL API. The project is based on [SubQuery](https://subquery.network/), an open-source tool that helps create fast and reliable APIs for blockchain applications.
 
 ## Install
 
