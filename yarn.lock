@@ -2547,12 +2547,19 @@
     vm2 "^3.9.9"
     yargs "^16.2.0"
 
-"@subql/testing@2.0.1", "@subql/testing@latest":
+"@subql/testing@2.0.1":
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/@subql/testing/-/testing-2.0.1.tgz#d0528227496351add14cc623d35b045fbf76c66d"
   integrity sha512-oDv+kZhBw0EiQcKkVWaakV6XkwR0dM/V+oAUS6SBiVx/P3oPIoRE2P+eG8MDlcc58/+eM7eJMyor7s/3mRv5wg==
   dependencies:
     "@subql/types" "^2.1.2"
+
+"@subql/testing@latest":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@subql/testing/-/testing-2.0.2.tgz#4c1774332c84ff98144676236361b5d2efbe2165"
+  integrity sha512-hRnUIYpIaW66bHBI68m4PI56KDnu1JbdwwbRod94/O0rdJfq8pQnPz/0DZQepIpTjz3J1mMYOY9dhY6ACQKwmg==
+  dependencies:
+    "@subql/types" "^2.1.3"
 
 "@subql/types-algorand@2.1.0":
   version "2.1.0"
@@ -2607,10 +2614,15 @@
   resolved "https://registry.yarnpkg.com/@subql/types/-/types-2.0.0.tgz#08887fbc0377ed3da11b8bcebf9633ec99229348"
   integrity sha512-DO3G49zDP9j1ZGoJ5ssBc6zTw9XEJRGrFohqy8hXnd5pwGhFyuKALPkVMiya7KUblWFqGdSdQw6Yyhvt9rEBQg==
 
-"@subql/types@2.1.2", "@subql/types@^2.1.2":
+"@subql/types@2.1.2":
   version "2.1.2"
   resolved "https://registry.yarnpkg.com/@subql/types/-/types-2.1.2.tgz#2bb81a1518ef899dac92d0fb59d3c2a4e89483f1"
   integrity sha512-CgM3FyJ/MCqjZXAna2kavOjoyp9vRgRB+aJZ1iS3CKWBLdGJVa7lLbbuh5AtFEnZmGdlGsUMh95QKXeUeS34Iw==
+
+"@subql/types@^2.1.2", "@subql/types@^2.1.3":
+  version "2.1.3"
+  resolved "https://registry.yarnpkg.com/@subql/types/-/types-2.1.3.tgz#10886d7bb9d2773e87a983e51efd05375eae1e5f"
+  integrity sha512-YNnH3npZwogTe3zM/ET6CXX4ouY1fTxR8uMl2x7fdGLIhWRbxNCbZwRvQ8pHupreYxRREghSZwQ4gQmImTKNlw==
 
 "@subql/utils@2.4.1":
   version "2.4.1"
