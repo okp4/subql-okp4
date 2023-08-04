@@ -5,4 +5,26 @@ updates:
     schedule:
       interval: "daily"
     reviewers:
-      - "maintainers"
+      - ccamel
+      - fredericvilcot
+      - ErikssonJoakim
+      - lolottetheclash
+    assignees:
+      - ccamel
+      - fredericvilcot
+      - lolottetheclash
+    open-pull-requests-limit: 5
+  - package-ecosystem: npm
+    directory: "/"
+    schedule:
+      interval: "daily"
+    reviewers:
+      - ccamel
+      - fredericvilcot
+      - ErikssonJoakim
+      - lolottetheclash
+    assignees:
+      - ccamel
+      - fredericvilcot
+      - lolottetheclash
+    open-pull-requests-limit: 5
