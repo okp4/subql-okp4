@@ -37,7 +37,7 @@
         "@subql/node-cosmos": "2.5.3",
         "@subql/testing": "latest",
         "@types/jest": "^29.5.3",
-        "@typescript-eslint/eslint-plugin": "^5.52.0",
+        "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
         "eslint": "^8.43.0",
         "eslint-import-resolver-alias": "^1.1.2",
