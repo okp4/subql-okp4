@@ -49,7 +49,7 @@
     },
     "dependencies": {
         "@subql/types-cosmos": "latest",
-        "@types/node": "^17.0.21",
+        "@types/node": "^20.4.8",
         "pino": "^7.8.0",
         "ts-proto": "^1.112.1",
         "tslib": "^2.6.1"
