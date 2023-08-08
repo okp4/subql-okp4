@@ -32,7 +32,7 @@
         "project.yaml"
     ],
     "devDependencies": {
-        "@cosmjs/stargate": "^0.28.9",
+        "@cosmjs/stargate": "^0.31.0",
         "@subql/cli": "3.3.3",
         "@subql/node-cosmos": "2.5.3",
         "@subql/testing": "latest",
