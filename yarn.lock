@@ -2477,7 +2477,7 @@
   resolved "https://registry.yarnpkg.com/@subql/types-algorand/-/types-algorand-2.1.0.tgz#e118463e39aa995f0231fd4e19df437711d9aedd"
   integrity sha512-2NELKlODUNi6HB40MTsrrhHTFs0XOCtsOHmtGpLF63KUI9tDDoK0zfe1wQo65Q5upl50stjRDB0X72+9PzhggA==
 
-"@subql/types-cosmos@2.2.0", "@subql/types-cosmos@latest":
+"@subql/types-cosmos@2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@subql/types-cosmos/-/types-cosmos-2.2.0.tgz#d3611fdd84e9bb2da6d961a65dcc9153eaea6ece"
   integrity sha512-GcWsJ4qNzKmpPh5rxSgza6stGXAJc+t6BBtzpminc8FAE9vPGI1JujVctzw7JaVbq/A49UcqTTDrFIy89nRX7g==
@@ -2486,7 +2486,7 @@
     "@cosmjs/proto-signing" "^0.30.1"
     "@cosmjs/stargate" "^0.30.1"
 
-"@subql/types-cosmos@2.2.1":
+"@subql/types-cosmos@2.2.1", "@subql/types-cosmos@latest":
   version "2.2.1"
   resolved "https://registry.yarnpkg.com/@subql/types-cosmos/-/types-cosmos-2.2.1.tgz#e7e2d56f41f8ee71440c181bc613c0a0371b0369"
   integrity sha512-ni/10F9b37F+2OKYoKLtXvDpat+KCctvagXRTFuMwFwBxpbgZdwCkIZzTROHUnO4a7vT3aZa8P5EoZbc6Xn1xw==
