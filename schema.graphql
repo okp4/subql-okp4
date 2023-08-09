@@ -15,4 +15,8 @@ type ObjectariumObject @entity {
     contract is the address of the smart contract instance (aka bucket) where the object is stored.
     """
     contract: String! @index
+    """
+    pins contains the addresses that have pinned the object.
+    """
+    pins: [String!]
 }
