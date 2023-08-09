@@ -34,7 +34,7 @@
     "devDependencies": {
         "@cosmjs/stargate": "^0.31.0",
         "@subql/cli": "3.3.3",
-        "@subql/node-cosmos": "2.5.3",
+        "@subql/node-cosmos": "2.10.1",
         "@subql/testing": "latest",
         "@types/jest": "^29.5.3",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
