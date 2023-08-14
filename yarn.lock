@@ -2240,10 +2240,10 @@
     ethers "^5.6.8"
     jwt-decode "^3.1.2"
 
-"@subql/cli@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-3.4.0.tgz#216a55e6f20558fea58b1d85d588c47ee5cafa3b"
-  integrity sha512-eMcSgotW1e3N1dS8J0TVGUJpmSfUhtdnywtsuaAp3+XVyE5FlDYaRWYTDR098zTsW/dCvI/JmMli8kNUMeB3YA==
+"@subql/cli@3.5.0":
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-3.5.0.tgz#1dbfd60b6f148158acf538aa522668b19ec9dfe9"
+  integrity sha512-ivNoaJlMTOfno8NS68czJ3b0sNAENxLOEDbLL64J/KhVEHYvLW97oYcB2rGIGiDVOUh7X95JHxmN8cYUPaoztg==
   dependencies:
     "@oclif/command" "^1.8.16"
     "@oclif/config" "^1.18.3"
