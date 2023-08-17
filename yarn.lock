@@ -2240,10 +2240,10 @@
     ethers "^5.6.8"
     jwt-decode "^3.1.2"
 
-"@subql/cli@3.5.0":
-  version "3.5.0"
-  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-3.5.0.tgz#1dbfd60b6f148158acf538aa522668b19ec9dfe9"
-  integrity sha512-ivNoaJlMTOfno8NS68czJ3b0sNAENxLOEDbLL64J/KhVEHYvLW97oYcB2rGIGiDVOUh7X95JHxmN8cYUPaoztg==
+"@subql/cli@3.5.1":
+  version "3.5.1"
+  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-3.5.1.tgz#86c451b8572482580dbc9a869fb204ce1e6ac7fe"
+  integrity sha512-q6uywAxJTWWj2mi3M6rBtR+z91cc0aHoahxaIZu62NO3vnVSffA8E39ICxRN9eLAF5Xr0jUpFLyzbRrkuznB5A==
   dependencies:
     "@oclif/command" "^1.8.16"
     "@oclif/config" "^1.18.3"
@@ -2256,7 +2256,7 @@
     "@subql/common-flare" latest
     "@subql/common-near" latest
     "@subql/common-stellar" "^2.2.1-1"
-    "@subql/common-substrate" "2.3.0"
+    "@subql/common-substrate" "2.4.0"
     "@subql/utils" "2.4.3"
     "@subql/validator" "2.2.0"
     "@typechain/ethers-v5" "10.2.0"
@@ -2371,6 +2371,16 @@
   dependencies:
     "@subql/common" "2.5.0"
     "@subql/types" "2.1.3"
+    js-yaml "^4.1.0"
+    reflect-metadata "^0.1.13"
+
+"@subql/common-substrate@2.4.0":
+  version "2.4.0"
+  resolved "https://registry.yarnpkg.com/@subql/common-substrate/-/common-substrate-2.4.0.tgz#9dc71b1501dceab1d84ce9e8f30a899444770376"
+  integrity sha512-03ANhHg+jRdYLB9aZ2C2b72RThvk37fUxXHAnoaJIaYQzCuJ/H42gpgosiXXkq9MZiBttN/j/IATaaPJJkZNFw==
+  dependencies:
+    "@subql/common" "2.5.0"
+    "@subql/types" "2.2.0"
     js-yaml "^4.1.0"
     reflect-metadata "^0.1.13"
 
@@ -2526,6 +2536,11 @@
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@subql/types/-/types-2.1.3.tgz#10886d7bb9d2773e87a983e51efd05375eae1e5f"
   integrity sha512-YNnH3npZwogTe3zM/ET6CXX4ouY1fTxR8uMl2x7fdGLIhWRbxNCbZwRvQ8pHupreYxRREghSZwQ4gQmImTKNlw==
+
+"@subql/types@2.2.0":
+  version "2.2.0"
+  resolved "https://registry.yarnpkg.com/@subql/types/-/types-2.2.0.tgz#0aa63a5c764e4dec07a60e1d7c71823129c4262f"
+  integrity sha512-M+10vuKUQecRM65T4ip22BniqZpirDn9SYQpiOk88oUI3gCsSyPKb+dKmbHbZPaQE6KeDB3gP5nyBulTzMxcYA==
 
 "@subql/utils@2.4.3":
   version "2.4.3"
