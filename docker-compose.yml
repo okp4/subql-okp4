@@ -1,18 +1,18 @@
 version: "3"
 
 services:
-  postgres:
+  postgres-subql:
     build:
       context: .
       dockerfile: ./docker/pg-Dockerfile
     ports:
-      - "${DB_PORT}:${DB_PORT}"
+      - ${DB_SUBQL_PORT}:5432
     volumes:
-      - postgres-data:/var/lib/postgresql/data
+      - postgres-subql-data:/var/lib/postgresql/data
     environment:
-      POSTGRES_PASSWORD: ${DB_PASSWORD}
+      POSTGRES_PASSWORD: ${DB_SUBQL_PASSWORD}
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_SUBQL_USER}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -20,15 +20,15 @@ services:
   subquery-node:
     image: onfinality/subql-node-cosmos:v2.8.0
     depends_on:
-      postgres:
+      postgres-subql:
         condition: service_healthy
     restart: always
     environment:
-      DB_USER: ${DB_USER}
-      DB_PASS: ${DB_PASSWORD}
-      DB_DATABASE: ${DB_NAME}
-      DB_HOST: postgres
-      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_SUBQL_USER}
+      DB_PASS: ${DB_SUBQL_PASSWORD}
+      DB_DATABASE: ${DB_SUBQL_NAME}
+      DB_HOST: postgres-subql
+      DB_PORT: ${DB_SUBQL_PORT}
     volumes:
       - ${PWD}:/app
     command:
@@ -46,21 +46,22 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      postgres:
+      postgres-subql:
         condition: service_healthy
       subquery-node:
         condition: service_healthy
     restart: always
     environment:
-      DB_USER: ${DB_USER}
-      DB_PASS: ${DB_PASSWORD}
-      DB_DATABASE: ${DB_NAME}
-      DB_HOST: postgres
-      DB_PORT: ${DB_PORT}
+      DB_USER: ${DB_SUBQL_USER}
+      DB_PASS: ${DB_SUBQL_PASSWORD}
+      DB_DATABASE: ${DB_SUBQL_NAME}
+      DB_HOST: postgres-subql
+      DB_PORT: ${DB_SUBQL_PORT}
     command:
       - --name=app
       - --playground
       - --indexer=http://subquery-node:3000
 
 volumes:
-  postgres-data:
+  postgres-subql-data:
+
