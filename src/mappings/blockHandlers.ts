@@ -17,6 +17,7 @@ export const handleBlock = async (block: CosmosBlock): Promise<void> => {
 
     await blockEntity.save();
 };
+
 export const handleTransaction = async (
     tx: CosmosTransaction
 ): Promise<void> => {
@@ -55,3 +56,18 @@ export const handleTransaction = async (
     });
     await save(txEntity);
 };
+
+export const handleMessage = async (msg: CosmosMessage): Promise<void> => {
+  const msgEntity = Message.create({
+    id: messageId(msg),
+    message: msg.msg,
+    transactionId: msg.tx.hash,
+    blockId: msg.block.block.id,
+  });
+
+  await msgEntity.save();
+}
+
+const coinId = (tx: CosmosTransaction, idx: number): string => {
+  return `${tx.hash}-${idx}`;
+}

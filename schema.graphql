@@ -4,6 +4,9 @@ type AnyJSON @jsonField {
   _: String
 }
 
+type MessageJSON @jsonField {
+  typeUrl: String
+}
 
 type Block @entity {
   id: ID! # The block header hash
@@ -39,6 +42,14 @@ type Transaction @entity {
   timeoutHeight: BigInt @index
   messages: [Message] @derivedFrom(field: "transaction")
 }
+
+type Message @entity {
+  id: ID!
+  message: MessageJSON!
+  transaction: Transaction!
+  block: Block!
+}
+
 """
 ObjectariumObject is the type of an object stored in the Objectarium smart contract instance.
 """
@@ -59,5 +70,5 @@ type ObjectariumObject @entity {
     """
     pins contains the addresses that have pinned the object.
     """
-    pins: [String!]
+    pins: [String!]!
 }

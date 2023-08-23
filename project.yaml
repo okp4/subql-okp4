@@ -36,6 +36,8 @@ dataSources:
           kind: cosmos/BlockHandler
         - handler: handleTransaction
           kind: cosmos/TransactionHandler
+        - handler: handleMessage
+          kind: cosmos/MessageHandler
         - handler: handleStoreObject
           kind: cosmos/MessageHandler
           filter:
