@@ -1,3 +1,9 @@
+# Equivalent to typescript any type
+type AnyJSON @jsonField {
+  # Need to have one value in this field
+  _: String
+}
+
 
 type Block @entity {
   id: ID! # The block header hash
@@ -7,6 +13,32 @@ type Block @entity {
   transactions: [Transaction] @derivedFrom(field: "block")
   messages: [Message] @derivedFrom(field: "block")
 } 
+
+enum TxStatus {
+  Success
+  Error
+}
+
+type Coin @entity {
+  id: ID!
+  denom: String!
+  amount: BigInt!
+  transaction: Transaction!
+}
+
+type Transaction @entity {
+  id: ID!
+  index: Int! @index
+  block: Block!
+  gasUsed: BigInt!
+  gasWanted: BigInt!
+  fees: [Coin] @derivedFrom(field: "transaction")
+  memo: String @index
+  status: TxStatus!
+  log: AnyJSON!
+  timeoutHeight: BigInt @index
+  messages: [Message] @derivedFrom(field: "transaction")
+}
 """
 ObjectariumObject is the type of an object stored in the Objectarium smart contract instance.
 """
