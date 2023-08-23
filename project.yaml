@@ -17,7 +17,6 @@ network:
   chainId: okp4-nemeton-1
   endpoint:
     - https://api.testnet.okp4.network/rpc
-  dictionary: "https://api.subquery.network/sq/subquery/cosmos-hub-dictionary"
   chainTypes:
     cosmos.base.v1beta1:
       file: ./proto/cosmos/base/v1beta1/coin.proto
