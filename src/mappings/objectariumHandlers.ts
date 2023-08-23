@@ -28,17 +28,19 @@ export const handleStoreObject = async (
 ): Promise<void> => {
     const objectId = getObjectariumObjectId(msg.tx.tx.events);
 
-    if (objectId) {
-        const { sender, contract } = msg.msg.decodedMsg;
-        const { pin: isPinned } = msg.msg.decodedMsg.msg.store_object;
-
-        await ObjectariumObject.create({
-            id: objectId,
-            sender,
-            contract,
-            pins: isPinned ? [sender] : [],
-        }).save();
+    if (!objectId) {
+        return;
     }
+
+    const { sender, contract } = msg.msg.decodedMsg;
+    const { pin: isPinned } = msg.msg.decodedMsg.msg.store_object;
+
+    await ObjectariumObject.create({
+        id: objectId,
+        sender,
+        contract,
+        pins: isPinned ? [sender] : [],
+    }).save();
 };
 
 export const handlePinObject = async (
@@ -47,15 +49,15 @@ export const handlePinObject = async (
     const objectId = getObjectariumObjectId(msg.tx.tx.events);
     const object = objectId ? await ObjectariumObject.get(objectId) : null;
 
-    if (object) {
-        const { sender } = msg.msg.decodedMsg;
+    if (!object) {
+        return;
+    }
 
-        object.pins = object.pins || [];
+    const { sender } = msg.msg.decodedMsg;
 
-        if (!object.pins.includes(sender)) {
-            object.pins.push(sender);
-            await object.save();
-        }
+    if (!object.pins.includes(sender)) {
+        object.pins.push(sender);
+        await object.save();
     }
 };
 
@@ -65,15 +67,15 @@ export const handleUnpinObject = async (
     const objectId = getObjectariumObjectId(msg.tx.tx.events);
     const object = objectId ? await ObjectariumObject.get(objectId) : null;
 
-    if (object?.pins) {
-        const { sender } = msg.msg.decodedMsg;
-        const filteredPins = object.pins.filter(
-            (address) => address !== sender
-        );
+    if (!object) {
+        return;
+    }
 
-        if (filteredPins.length !== object.pins.length) {
-            object.pins = filteredPins;
-            await object.save();
-        }
+    const { sender } = msg.msg.decodedMsg;
+    const filteredPins = object.pins.filter((address) => address !== sender);
+
+    if (filteredPins.length !== object.pins.length) {
+        object.pins = filteredPins;
+        await object.save();
     }
 };
