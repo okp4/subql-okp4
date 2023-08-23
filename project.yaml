@@ -32,6 +32,8 @@ dataSources:
     mapping:
       file: ./dist/index.js
       handlers:
+        - handler: handleBlock
+          kind: cosmos/BlockHandler
         - handler: handleStoreObject
           kind: cosmos/MessageHandler
           filter:

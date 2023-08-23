@@ -1,3 +1,12 @@
+
+type Block @entity {
+  id: ID! # The block header hash
+  chainId: String! @index
+  height: BigInt! @index
+  timestamp: String!
+  transactions: [Transaction] @derivedFrom(field: "block")
+  messages: [Message] @derivedFrom(field: "block")
+} 
 """
 ObjectariumObject is the type of an object stored in the Objectarium smart contract instance.
 """
