@@ -1,74 +1,158 @@
-# Equivalent to typescript any type
+"""
+AnyJSON is the type of a JSON object that can contain any valid JSON value.
+"""
 type AnyJSON @jsonField {
-  # Need to have one value in this field
+  """
+  Any other field of the message.
+  """
   _: String
 }
 
+"""
+A JSON object that represents a Cosmos SDK message, with typeUrl being the type of the message.
+"""
 type MessageJSON @jsonField {
+  """
+  Type of the message.
+  """
   typeUrl: String
+  """
+  Any other field of the message.
+  """
+   _: String
 }
 
+"""
+A Cosmos SDK block in the blockchain.
+"""
 type Block @entity {
-  id: ID! # The block header hash
+  """
+  Unique identifier of t he block and hash of the block.
+  """
+  id: ID!
+  """
+  Chain identifier of the blockchain.
+  """
   chainId: String! @index
+  """
+  Height of the block in the blockchain.
+  """
   height: BigInt! @index
+  """
+  Time at which the block was committed to the blockchain.
+  """
   timestamp: String!
+  """
+  List of transactions contained in the block.
+  """
   transactions: [Transaction] @derivedFrom(field: "block")
+  """
+  List of messages contained in the block transactions.
+  """
   messages: [Message] @derivedFrom(field: "block")
 } 
 
-enum TxStatus {
-  Success
-  Error
-}
-
-type Coin @entity {
-  id: ID!
+"""
+A Cosmos SDK coin.
+"""
+type Coin @jsonField {
+  """
+  Denomination of the coin.
+  """
   denom: String!
-  amount: BigInt!
-  transaction: Transaction!
+  """
+  Amount of the coin.
+  """
+  amount: String!
 }
 
+"""
+A Cosmos SDK transaction in the blockchain.
+"""
 type Transaction @entity {
+  """
+  Unique identifier of the transaction and hash of the transaction.
+  """
   id: ID!
+  """
+  Index of the transaction in the block.
+  """
   index: Int! @index
+  """
+  Block that transaction belongs to.
+  """
   block: Block!
+  """
+  Gas used by the transaction.
+  """
   gasUsed: BigInt!
+  """
+  Gas wanted by the transaction.
+  """
   gasWanted: BigInt!
-  fees: [Coin] @derivedFrom(field: "transaction")
+  """
+  List of fees paid by the transaction.
+  """
+  fees: [Coin]!
+  """
+  A memo that can be attached to the transaction.
+  """
   memo: String @index
-  status: TxStatus!
+  """
+  Log of the transaction.
+  """
   log: AnyJSON!
+  """
+  Timeout height of the transaction.
+  """
   timeoutHeight: BigInt @index
+  """
+  List of messages contained in the transaction.
+  """
   messages: [Message] @derivedFrom(field: "transaction")
 }
 
+"""
+A Cosmos SDK message in the blockchain.
+"""
 type Message @entity {
+  """
+  Unique identifier of the message and hash of the message.
+  """
   id: ID!
+  """
+  The decoded message in JSON format.
+  """
   message: MessageJSON!
+  """
+  Transaction that message belongs to.
+  """
   transaction: Transaction!
+  """
+  Block that message belongs to.
+  """
   block: Block!
 }
 
 """
-ObjectariumObject is the type of an object stored in the Objectarium smart contract instance.
+Type of an object stored in the Objectarium smart contract instance.
 """
 type ObjectariumObject @entity {
     """
-    id is the type of identifier of an object in the smart contract instance (aka bucket).
+    Identifier of an object in the smart contract instance (aka bucket).
     It is the hash of the object's content using the hash algorithm configured for the bucket.
     """
     id: ID!
     """
-    sender is the address of the user who stored the object.
+    Address of the user who stored the object.
     """
     sender: String! @index
     """
-    contract is the address of the smart contract instance (aka bucket) where the object is stored.
+    Address of the smart contract instance (aka bucket) where the object is stored.
     """
     contract: String! @index
     """
-    pins contains the addresses that have pinned the object.
+    Addresses that have pinned the object.
     """
     pins: [String!]!
 }

@@ -1,6 +1,9 @@
-import type { CosmosBlock, CosmosMessage, CosmosTransaction } from "@subql/types-cosmos";
-import { Coin, Block, TxStatus, Transaction, Message } from "../types";
-import { save, saveAll } from "../utils/utils";
+import type {
+    CosmosBlock,
+    CosmosMessage,
+    CosmosTransaction,
+} from "@subql/types-cosmos";
+import { Block, Transaction, Message } from "../types";
 import { messageId } from "./helper";
 
 export const handleBlock = async (block: CosmosBlock): Promise<void> => {
@@ -21,53 +24,32 @@ export const handleBlock = async (block: CosmosBlock): Promise<void> => {
 export const handleTransaction = async (
     tx: CosmosTransaction
 ): Promise<void> => {
-    let status = TxStatus.Error;
-    if (tx.tx.log) {
-        try {
-            JSON.parse(tx.tx.log);
-            status = TxStatus.Success;
-        } catch {
-            // NB: assume tx failed
-        }
-    }
-
     const txId = tx.hash;
-    const coinEntities =
-        tx.decodedTx.authInfo.fee?.amount.map((coin, idx) =>
-            Coin.create({
-                id: coinId(tx, idx),
-                denom: coin.denom,
-                amount: BigInt(coin.amount),
-                transactionId: txId,
-            })
-        ) || [];
-    await saveAll(coinEntities);
-
     const txEntity = Transaction.create({
         id: txId,
         index: tx.idx,
         blockId: tx.block.block.id,
         gasUsed: BigInt(Math.trunc(tx.tx.gasUsed)),
         gasWanted: BigInt(Math.trunc(tx.tx.gasWanted)),
+        fees:
+            tx.decodedTx.authInfo.fee?.amount.map(({ denom, amount }) => ({
+                denom,
+                amount,
+            })) || [],
         memo: tx.decodedTx.body.memo,
         timeoutHeight: BigInt(tx.decodedTx.body.timeoutHeight.toString()),
         log: JSON.parse(tx.tx.log || "[]"),
-        status,
     });
-    await save(txEntity);
+    await txEntity.save();
 };
 
 export const handleMessage = async (msg: CosmosMessage): Promise<void> => {
-  const msgEntity = Message.create({
-    id: messageId(msg),
-    message: msg.msg,
-    transactionId: msg.tx.hash,
-    blockId: msg.block.block.id,
-  });
+    const msgEntity = Message.create({
+        id: messageId(msg),
+        message: msg.msg,
+        transactionId: msg.tx.hash,
+        blockId: msg.block.block.id,
+    });
 
-  await msgEntity.save();
-}
-
-const coinId = (tx: CosmosTransaction, idx: number): string => {
-  return `${tx.hash}-${idx}`;
-}
+    await msgEntity.save();
+};

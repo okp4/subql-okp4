@@ -1,7 +1,7 @@
 import type { CosmosMessage } from "@subql/types-cosmos";
 import type { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
 import { ObjectariumObject } from "../types";
-import { getObjectariumObjectId } from "../utils/utils";
+import { getObjectariumObjectId } from "./helper";
 
 type StoreObject = {
     pin: boolean;
