@@ -40,6 +40,7 @@ export const handleTransaction = async (
         timeoutHeight: BigInt(tx.decodedTx.body.timeoutHeight.toString()),
         log: JSON.parse(tx.tx.log || "[]"),
     });
+
     await txEntity.save();
 };
 

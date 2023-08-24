@@ -132,6 +132,10 @@ type Message @entity {
   Block that message belongs to.
   """
   block: Block!
+  """
+  Object that message relates to (for a message which concerns an object).
+  """
+  objectariumObject: ObjectariumObject
 }
 
 """
@@ -155,4 +159,8 @@ type ObjectariumObject @entity {
     Addresses that have pinned the object.
     """
     pins: [String!]!
+    """
+    Bozo
+    """
+    messages: [Message]! @derivedFrom(field: "objectariumObject")
 }
