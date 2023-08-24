@@ -12,8 +12,8 @@
         "prepack": "rm -rf dist && yarn build",
         "test": "jest",
         "test:watch": "jest --watch --no-cache",
-        "lint": "eslint src/**/*.ts --max-warnings=0 --no-ignore",
-        "lint:fix": "eslint --fix src/**/*.ts"
+        "lint": "eslint 'src/**'",
+        "lint:fix": "eslint --fix 'src/**'"
     },
     "homepage": "https://github.com/okp4/subql-okp4",
     "repository": "github:okp4/subql-okp4",
@@ -44,6 +44,7 @@
         "eslint-import-resolver-typescript": "^3.6.0",
         "eslint-plugin-import": "^2.28.1",
         "jest": "^29.6.4",
+        "prettier": "^3.0.2",
         "ts-jest": "^29.1.1",
         "typescript": "^5.2.2"
     },
