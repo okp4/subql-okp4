@@ -1,18 +1,23 @@
 version: "3"
 
 services:
-  postgres-subql:
+  postgres:
     build:
       context: .
-      dockerfile: ./docker/pg-Dockerfile
+      dockerfile_inline: |
+        FROM postgres:12-alpine
+
+        COPY docker/initialize-db.sh /docker-entrypoint-initdb.d/
     ports:
-      - ${DB_SUBQL_PORT}:5432
-    volumes:
-      - postgres-subql-data:/var/lib/postgresql/data
+      - ${DB_POSTGRES_PORT}:5432
     environment:
-      POSTGRES_PASSWORD: ${DB_SUBQL_PASSWORD}
+      POSTGRES_USER: ${DB_POSTGRES_USER}
+      POSTGRES_PASSWORD: ${DB_POSTGRES_PASSWORD}
+      DB_SUBQL_NAME: ${DB_SUBQL_NAME}
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
     healthcheck:
-      test: ["CMD-SHELL", "pg_isready -U ${DB_SUBQL_USER}"]
+      test: ["CMD-SHELL", "pg_isready -U ${DB_POSTGRES_USER}"]
       interval: 5s
       timeout: 5s
       retries: 5
@@ -20,15 +25,15 @@ services:
   subquery-node:
     image: onfinality/subql-node-cosmos:v2.8.0
     depends_on:
-      postgres-subql:
+      postgres:
         condition: service_healthy
     restart: always
     environment:
+      DB_HOST: postgres
+      DB_PORT: ${DB_POSTGRES_PORT}
+      DB_DATABASE: ${DB_SUBQL_NAME}
       DB_USER: ${DB_SUBQL_USER}
       DB_PASS: ${DB_SUBQL_PASSWORD}
-      DB_DATABASE: ${DB_SUBQL_NAME}
-      DB_HOST: postgres-subql
-      DB_PORT: ${DB_SUBQL_PORT}
     volumes:
       - ${PWD}:/app
     command:
@@ -46,22 +51,21 @@ services:
     ports:
       - 3000:3000
     depends_on:
-      postgres-subql:
+      postgres:
         condition: service_healthy
       subquery-node:
         condition: service_healthy
     restart: always
     environment:
+      DB_HOST: postgres
+      DB_PORT: ${DB_POSTGRES_PORT}
+      DB_DATABASE: ${DB_SUBQL_NAME}
       DB_USER: ${DB_SUBQL_USER}
       DB_PASS: ${DB_SUBQL_PASSWORD}
-      DB_DATABASE: ${DB_SUBQL_NAME}
-      DB_HOST: postgres-subql
-      DB_PORT: ${DB_SUBQL_PORT}
     command:
       - --name=app
       - --playground
       - --indexer=http://subquery-node:3000
 
 volumes:
-  postgres-subql-data:
-
+  postgres-data:
