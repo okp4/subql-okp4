@@ -98,3 +98,22 @@ jobs:
       - name: Lint typescript code
         run: |
           yarn lint
+
+  lint-subql-project:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Setup node environment (for linting)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.16
+
+      - name: Fetch dependencies
+        run: |
+          yarn
+
+      - name: Lint subql project
+        run: |
+          yarn subql validate
