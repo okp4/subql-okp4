@@ -25,7 +25,7 @@ Be sure to have the following properly installed:
 - [Docker](https://www.docker.com/)
 - [subql-cli](https://academy.subquery.network/run_publish/cli.html#installation) `v3.2.0` - Install SubQuery CLI globally on your terminal by using NPM (we don't recommend using Yarn to install global dependencies): `npm install -g @subql/cli@3.2.0`
 
-### Setup
+### Build
 
 🚚 Install the dependencies:
 
@@ -41,9 +41,11 @@ yarn prepack
 
 ## Usage
 
-### Run locally
+### Run
 
-🚀 Run the project locally:
+🚀 Run the project with the default stack:
+
+```sh
 
 ```sh
 yarn start:docker
@@ -76,6 +78,46 @@ You should get the following result:
   }
 }
 ```
+
+## Database
+
+During development, it can be useful to access the database directly to inspect and understand the data indexed. The database is a PostgreSQL database, and it is run in a Docker container by the `docker-compose` command. Note that the database is contained in a Docker volume, so it will persist between runs.
+
+### CLI
+
+You can access the PostgreSQL database via the following command:
+
+```sh
+psql -h localhost -p 5432 -U subql -d subql
+```
+
+The tables are in the `app` schema.
+
+```sql
+subql=> SET schema 'app';
+SET
+subql=> \dt
+              List of relations
+ Schema |        Name         | Type  | Owner 
+--------+---------------------+-------+-------
+ app    | _metadata           | table | subql
+ app    | blocks              | table | subql
+ app    | messages            | table | subql
+ app    | objectarium_objects | table | subql
+ app    | transactions        | table | subql
+```
+
+## Metabase
+
+Since the project uses PostgreSQL to index the data, you can use [Metabase](https://www.metabase.com/) to explore the database and create dashboards.
+
+The docker-compose comes with a profile for Metabase. To start it, run:
+
+```sh
+docker-compose --profile metabase up
+```
+
+Then, open <http://localhost:3001/> on your browser, and connect to the database with the information you can find in the `.env` file.
 
 ## You want to get involved? 😍
 
