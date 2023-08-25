@@ -36,7 +36,7 @@ yarn
 Generate the types:
 
 ```sh
-yarn codegen && yarn build
+yarn prepack
 ```
 
 ## Usage
@@ -46,7 +46,7 @@ yarn codegen && yarn build
 🚀 Run the project locally:
 
 ```sh
-docker-compose pull & docker-compose up
+yarn start:docker
 ```
 
 ### Query
