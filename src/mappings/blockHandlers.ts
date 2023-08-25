@@ -11,21 +11,25 @@ export const handleBlock = async (block: CosmosBlock): Promise<void> => {
         id,
         header: { chainId, height, time: timestamp },
     } = block.block;
-    const blockEntity = Block.create({
+    
+    if (await Block.get(id)) {
+        return;
+    }
+    await Block.create({
         id,
         chainId,
         height: BigInt(height),
         timestamp: timestamp.toISOString(),
-    });
-
-    await blockEntity.save();
+    }).save();
 };
 
 export const handleTransaction = async (
     tx: CosmosTransaction
 ): Promise<void> => {
     const txId = tx.hash;
-    const txEntity = Transaction.create({
+
+    await handleBlock(tx.block);
+    await Transaction.create({
         id: txId,
         index: tx.idx,
         blockId: tx.block.block.id,
@@ -39,9 +43,7 @@ export const handleTransaction = async (
         memo: tx.decodedTx.body.memo,
         timeoutHeight: BigInt(tx.decodedTx.body.timeoutHeight.toString()),
         log: JSON.parse(tx.tx.log || "[]"),
-    });
-
-    await txEntity.save();
+    }).save();
 };
 
 export const handleMessage = async (msg: CosmosMessage): Promise<void> => {
