@@ -117,3 +117,16 @@ jobs:
       - name: Lint subql project
         run: |
           yarn subql validate
+
+  lint-format:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Prettify code
+        uses: creyD/prettier_action@v4.3
+        with:
+          dry: True
+          prettier_options: --check .
+          prettier_version: 3.0.2
