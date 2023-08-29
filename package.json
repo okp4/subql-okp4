@@ -18,7 +18,8 @@
         "test": "jest",
         "test:watch": "jest --watch --no-cache",
         "lint": "eslint 'src/**'",
-        "lint:fix": "eslint --fix 'src/**'"
+        "lint:fix": "eslint --fix 'src/**'",
+        "format": "prettier . --write"
     },
     "homepage": "https://github.com/okp4/subql-okp4",
     "repository": "github:okp4/subql-okp4",
