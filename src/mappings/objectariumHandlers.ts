@@ -17,7 +17,7 @@ type ObjectariumMsgExecuteContract = Omit<MsgExecuteContract, "msg"> & {
 };
 
 export const handleStoreObject = async (
-    msg: CosmosMessage<ObjectariumMsgExecuteContract>
+    msg: CosmosMessage<ObjectariumMsgExecuteContract>,
 ): Promise<void> => {
     const objectId = objectariumObjectId(msg.tx.tx.events);
     if (!objectId) {
@@ -38,7 +38,7 @@ export const handleStoreObject = async (
 };
 
 export const handleForgetObject = async (
-    msg: CosmosMessage<MsgExecuteContract>
+    msg: CosmosMessage<MsgExecuteContract>,
 ): Promise<void> => {
     const objectId = objectariumObjectId(msg.tx.tx.events);
     if (!objectId) {
@@ -50,7 +50,7 @@ export const handleForgetObject = async (
 };
 
 export const handlePinObject = async (
-    msg: CosmosMessage<MsgExecuteContract>
+    msg: CosmosMessage<MsgExecuteContract>,
 ): Promise<void> => {
     const object = await retrieveObjectariumObject(msg);
     if (!object) {
@@ -68,7 +68,7 @@ export const handlePinObject = async (
 };
 
 export const handleUnpinObject = async (
-    msg: CosmosMessage<MsgExecuteContract>
+    msg: CosmosMessage<MsgExecuteContract>,
 ): Promise<void> => {
     const object = await retrieveObjectariumObject(msg);
     if (!object) {
@@ -88,7 +88,7 @@ export const handleUnpinObject = async (
 
 export const referenceObjectInMessage = async (
     msg: CosmosMessage,
-    objectId: string
+    objectId: string,
 ): Promise<void> => {
     const message = await Message.get(messageId(msg));
     if (!message) {
@@ -100,7 +100,7 @@ export const referenceObjectInMessage = async (
 };
 
 export const retrieveObjectariumObject = async (
-    msg: CosmosMessage
+    msg: CosmosMessage,
 ): Promise<ObjectariumObject | undefined> => {
     const objectId = objectariumObjectId(msg.tx.tx.events);
     if (!objectId) {
@@ -111,7 +111,7 @@ export const retrieveObjectariumObject = async (
 };
 
 export const objectariumObjectId = (
-    events: Readonly<Event[]>
+    events: Readonly<Event[]>,
 ): string | undefined =>
     events
         .find((event) => event.type === "wasm")
