@@ -160,7 +160,7 @@ type ObjectariumObject @entity {
     """
     pins: [String!]!
     """
-    Bozo
+    List of messages that concern the object.
     """
     messages: [Message]! @derivedFrom(field: "objectariumObject")
 }
