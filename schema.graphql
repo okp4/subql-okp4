@@ -2,140 +2,140 @@
 AnyJSON is the type of a JSON object that can contain any valid JSON value.
 """
 type AnyJSON @jsonField {
-  """
-  Any other field of the message.
-  """
-  _: String
+    """
+    Any other field of the message.
+    """
+    _: String
 }
 
 """
 A JSON object that represents a Cosmos SDK message, with typeUrl being the type of the message.
 """
 type MessageJSON @jsonField {
-  """
-  Type of the message.
-  """
-  typeUrl: String
-  """
-  Any other field of the message.
-  """
-   _: String
+    """
+    Type of the message.
+    """
+    typeUrl: String
+    """
+    Any other field of the message.
+    """
+    _: String
 }
 
 """
 A Cosmos SDK block in the blockchain.
 """
 type Block @entity {
-  """
-  Unique identifier of t he block and hash of the block.
-  """
-  id: ID!
-  """
-  Chain identifier of the blockchain.
-  """
-  chainId: String! @index
-  """
-  Height of the block in the blockchain.
-  """
-  height: BigInt! @index
-  """
-  Time at which the block was committed to the blockchain.
-  """
-  timestamp: String!
-  """
-  List of transactions contained in the block.
-  """
-  transactions: [Transaction] @derivedFrom(field: "block")
-  """
-  List of messages contained in the block transactions.
-  """
-  messages: [Message] @derivedFrom(field: "block")
-} 
+    """
+    Unique identifier of t he block and hash of the block.
+    """
+    id: ID!
+    """
+    Chain identifier of the blockchain.
+    """
+    chainId: String! @index
+    """
+    Height of the block in the blockchain.
+    """
+    height: BigInt! @index
+    """
+    Time at which the block was committed to the blockchain.
+    """
+    timestamp: String!
+    """
+    List of transactions contained in the block.
+    """
+    transactions: [Transaction] @derivedFrom(field: "block")
+    """
+    List of messages contained in the block transactions.
+    """
+    messages: [Message] @derivedFrom(field: "block")
+}
 
 """
 A Cosmos SDK coin.
 """
 type Coin @jsonField {
-  """
-  Denomination of the coin.
-  """
-  denom: String!
-  """
-  Amount of the coin.
-  """
-  amount: String!
+    """
+    Denomination of the coin.
+    """
+    denom: String!
+    """
+    Amount of the coin.
+    """
+    amount: String!
 }
 
 """
 A Cosmos SDK transaction in the blockchain.
 """
 type Transaction @entity {
-  """
-  Unique identifier of the transaction and hash of the transaction.
-  """
-  id: ID!
-  """
-  Index of the transaction in the block.
-  """
-  index: Int! @index
-  """
-  Block that transaction belongs to.
-  """
-  block: Block!
-  """
-  Gas used by the transaction.
-  """
-  gasUsed: BigInt!
-  """
-  Gas wanted by the transaction.
-  """
-  gasWanted: BigInt!
-  """
-  List of fees paid by the transaction.
-  """
-  fees: [Coin]!
-  """
-  A memo that can be attached to the transaction.
-  """
-  memo: String @index
-  """
-  Log of the transaction.
-  """
-  log: AnyJSON!
-  """
-  Timeout height of the transaction.
-  """
-  timeoutHeight: BigInt @index
-  """
-  List of messages contained in the transaction.
-  """
-  messages: [Message] @derivedFrom(field: "transaction")
+    """
+    Unique identifier of the transaction and hash of the transaction.
+    """
+    id: ID!
+    """
+    Index of the transaction in the block.
+    """
+    index: Int! @index
+    """
+    Block that transaction belongs to.
+    """
+    block: Block!
+    """
+    Gas used by the transaction.
+    """
+    gasUsed: BigInt!
+    """
+    Gas wanted by the transaction.
+    """
+    gasWanted: BigInt!
+    """
+    List of fees paid by the transaction.
+    """
+    fees: [Coin]!
+    """
+    A memo that can be attached to the transaction.
+    """
+    memo: String @index
+    """
+    Log of the transaction.
+    """
+    log: AnyJSON!
+    """
+    Timeout height of the transaction.
+    """
+    timeoutHeight: BigInt @index
+    """
+    List of messages contained in the transaction.
+    """
+    messages: [Message] @derivedFrom(field: "transaction")
 }
 
 """
 A Cosmos SDK message in the blockchain.
 """
 type Message @entity {
-  """
-  Unique identifier of the message and hash of the message.
-  """
-  id: ID!
-  """
-  The decoded message in JSON format.
-  """
-  message: MessageJSON!
-  """
-  Transaction that message belongs to.
-  """
-  transaction: Transaction!
-  """
-  Block that message belongs to.
-  """
-  block: Block!
-  """
-  Object that message relates to (for a message which concerns an object).
-  """
-  objectariumObject: ObjectariumObject
+    """
+    Unique identifier of the message and hash of the message.
+    """
+    id: ID!
+    """
+    The decoded message in JSON format.
+    """
+    message: MessageJSON!
+    """
+    Transaction that message belongs to.
+    """
+    transaction: Transaction!
+    """
+    Block that message belongs to.
+    """
+    block: Block!
+    """
+    Object that message relates to (for a message which concerns an object).
+    """
+    objectariumObject: ObjectariumObject
 }
 
 """

@@ -11,7 +11,7 @@ export const handleBlock = async (block: CosmosBlock): Promise<void> => {
         id,
         header: { chainId, height, time: timestamp },
     } = block.block;
-    
+
     if (await Block.get(id)) {
         return;
     }
@@ -24,7 +24,7 @@ export const handleBlock = async (block: CosmosBlock): Promise<void> => {
 };
 
 export const handleTransaction = async (
-    tx: CosmosTransaction
+    tx: CosmosTransaction,
 ): Promise<void> => {
     const txId = tx.hash;
 
