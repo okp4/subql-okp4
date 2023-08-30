@@ -35,7 +35,7 @@ services:
       DB_USER: ${DB_SUBQL_USER}
       DB_PASS: ${DB_SUBQL_PASSWORD}
     volumes:
-      - ${PWD}:/app
+      - .:/app
     command:
       - ${SUB_COMMAND}
       - -f=/app
@@ -59,7 +59,7 @@ services:
     environment:
       DB_HOST: postgres
       DB_PORT: ${DB_POSTGRES_PORT}
-      DB_DATABASE: ${DB_SUBQL_NAME}
+      DB_DATABASE: ${DB_POSTGRES_NAME}
       DB_USER: ${DB_SUBQL_USER}
       DB_PASS: ${DB_SUBQL_PASSWORD}
     command:

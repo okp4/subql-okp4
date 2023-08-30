@@ -46,8 +46,6 @@ yarn prepack
 🚀 Run the project with the default stack:
 
 ```sh
-
-```sh
 yarn start:docker
 ```
 
@@ -98,7 +96,7 @@ subql=> SET schema 'app';
 SET
 subql=> \dt
               List of relations
- Schema |        Name         | Type  | Owner 
+ Schema |        Name         | Type  | Owner
 --------+---------------------+-------+-------
  app    | _metadata           | table | subql
  app    | blocks              | table | subql
