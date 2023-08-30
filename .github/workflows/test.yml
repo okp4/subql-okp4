@@ -36,3 +36,30 @@ jobs:
       - name: Test project
         run: |
           yarn test
+
+  test-docker-compose:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Setup node environment (for building)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.16
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Fetch dependencies
+        run: |
+          yarn --frozen-lockfile
+
+      - name: Generate code
+        run: |
+          yarn codegen
+
+      - name: Build project
+        run: |
+          yarn build
+
+      - name: Start Docker Compose
+        uses: isbang/compose-action@v1.5.1
+        timeout-minutes: 5
