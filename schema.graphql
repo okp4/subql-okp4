@@ -152,9 +152,9 @@ type ObjectariumObject @entity {
     """
     sender: String! @index
     """
-    Address of the smart contract instance (aka bucket) where the object is stored.
+    The smart contract instance (aka bucket) where the object is stored.
     """
-    contract: String! @index
+    objectarium: Objectarium!
     """
     Addresses that have pinned the object.
     """
@@ -163,4 +163,27 @@ type ObjectariumObject @entity {
     List of messages that concern the object.
     """
     messages: [Message]! @derivedFrom(field: "objectariumObject")
+}
+
+"""
+Objectarium smart contract instance (aka bucket).
+"""
+type Objectarium @entity {
+    """
+    Identifier of the smart contract instance.
+    It is the address of the smart contract instance.
+    """
+    id: ID!
+    """
+    The owner of the bucket.
+    """
+    owner: String!
+    """
+    The name of the bucket.
+    """
+    name: String!
+    """
+    List of objects contained within the Objectarium instance.
+    """
+    objectariumObjects: [ObjectariumObject] @derivedFrom(field: "objectarium")
 }
