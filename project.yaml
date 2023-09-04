@@ -26,9 +26,10 @@ network:
       file: ./proto/cosmwasm/wasm/v1/tx.proto
       messages:
         - MsgExecuteContract
+        - MsgInstantiateContract
 dataSources:
   - kind: cosmos/Runtime
-    startBlock: 3507305
+    startBlock: 2720090
     mapping:
       file: ./dist/index.js
       handlers:
@@ -56,3 +57,10 @@ dataSources:
           filter:
             type: /cosmwasm.wasm.v1.MsgExecuteContract
             contractCall: unpin_object
+        - handler: handleInitObjectarium
+          kind: cosmos/MessageHandler
+          filter:
+            type: /cosmwasm.wasm.v1.MsgInstantiateContract
+            contractCall: instantiate
+            attributes:
+              code_id: "4"

@@ -1,6 +1,9 @@
 import type { CosmosMessage } from "@subql/types-cosmos";
-import type { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
-import { Message, ObjectariumObject } from "../types";
+import type {
+    MsgExecuteContract,
+    MsgInstantiateContract,
+} from "cosmjs-types/cosmwasm/wasm/v1/tx";
+import { Message, ObjectariumObject, Objectarium } from "../types";
 import { messageId } from "./helper";
 import type { Event } from "@cosmjs/tendermint-rpc/build/tendermint37";
 
@@ -8,16 +11,21 @@ type StoreObject = {
     pin: boolean;
 };
 
-type Msg = {
-    store_object: StoreObject;
+type Execute = Omit<MsgExecuteContract, "msg"> & {
+    msg: {
+        store_object: StoreObject;
+    };
 };
 
-type ObjectariumMsgExecuteContract = Omit<MsgExecuteContract, "msg"> & {
-    msg: Msg;
+type Instantiate = Omit<MsgInstantiateContract, "msg"> & {
+    msg: { bucket: string };
 };
+
+type ContractCalls = Execute | Instantiate;
+type ObjectariumMsg<T extends ContractCalls> = T;
 
 export const handleStoreObject = async (
-    msg: CosmosMessage<ObjectariumMsgExecuteContract>,
+    msg: CosmosMessage<ObjectariumMsg<Execute>>,
 ): Promise<void> => {
     const objectId = objectariumObjectId(msg.tx.tx.events);
     if (!objectId) {
@@ -30,7 +38,7 @@ export const handleStoreObject = async (
     await ObjectariumObject.create({
         id: objectId,
         sender,
-        contract,
+        objectariumId: contract,
         pins: isPinned ? [sender] : [],
     }).save();
 
@@ -84,6 +92,30 @@ export const handleUnpinObject = async (
     }
 
     await referenceObjectInMessage(msg, object.id);
+};
+
+export const handleInitObjectarium = async (
+    msg: CosmosMessage<ObjectariumMsg<Instantiate>>,
+): Promise<void> => {
+    const contractAddress = msg.tx.tx.events
+        .find(({ type }) => type === "instantiate")
+        ?.attributes.find((attribute) => attribute.key === "_contract_address")
+        ?.value;
+
+    if (!contractAddress) {
+        return;
+    }
+
+    const {
+        sender,
+        msg: { bucket },
+    } = msg.msg.decodedMsg;
+
+    await Objectarium.create({
+        id: contractAddress,
+        owner: sender,
+        name: bucket,
+    }).save();
 };
 
 export const referenceObjectInMessage = async (
