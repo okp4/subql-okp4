@@ -102,7 +102,16 @@ export const handleInitObjectarium = async (
         ?.attributes.find((attribute) => attribute.key === "_contract_address")
         ?.value;
 
-    if (!contractAddress) {
+    // TODO: filter the calling of this handler through the manifest.
+    // Justification: There seems to be a bug with the filtering of events
+    // that make it impossible to filter on the contract code id. The
+    // following codeId variable allows to filter the handling of the
+    // message before treating the msg as a objectarium instantiate msg.
+    const codeId = msg.tx.tx.events
+        .find(({ type }) => type === "instantiate")
+        ?.attributes.find((attribute) => attribute.key === "code_id")?.value;
+
+    if (!contractAddress || codeId !== "4") {
         return;
     }
 

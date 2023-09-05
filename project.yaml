@@ -62,5 +62,3 @@ dataSources:
           filter:
             type: /cosmwasm.wasm.v1.MsgInstantiateContract
             contractCall: instantiate
-            attributes:
-              code_id: "4"
