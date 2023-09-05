@@ -41,6 +41,8 @@ services:
       - -f=/app
       - --batch-size=${SUB_BATCH_SIZE}
       - --query-limit=${SUB_QUERY_LIMIT}
+      - --debug=${SUB_DEBUG}
+      - --log-level=${SUB_LOG_LEVEL}
       - --db-schema=app
     healthcheck:
       test: ["CMD", "curl", "-f", "http://subquery-node:3000/ready"]
