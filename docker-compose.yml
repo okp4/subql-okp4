@@ -39,6 +39,7 @@ services:
     command:
       - ${SUB_COMMAND}
       - -f=/app
+      - --batch-size=${SUB_BATCH_SIZE}
       - --db-schema=app
     healthcheck:
       test: ["CMD", "curl", "-f", "http://subquery-node:3000/ready"]
