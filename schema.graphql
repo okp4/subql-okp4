@@ -220,6 +220,10 @@ type Objectarium @entity {
     """
     owner: String!
     """
+    Label of the bucket.
+    """
+    label: String!
+    """
     The name of the bucket.
     """
     name: String!

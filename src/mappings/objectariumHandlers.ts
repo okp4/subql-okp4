@@ -150,6 +150,7 @@ export const handleInitObjectarium = async (
 
     const {
         sender,
+        label,
         msg: { bucket, limits: bucketLimits, config: bucketConfig },
     } = msg.msg.decodedMsg;
     const limits: BucketLimits = {
@@ -167,6 +168,7 @@ export const handleInitObjectarium = async (
     await Objectarium.create({
         id: contractAddress,
         owner: sender,
+        label,
         name: bucket,
         config,
         limits,
