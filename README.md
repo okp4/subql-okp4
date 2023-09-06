@@ -84,7 +84,7 @@ docker run -ti --rm --name my-indexer \
   subql-okp4 --batch-size=32 --log-level=debug
 ```
 
-> **_NOTE:_**  To run the container in detached mode replace `-it --rm` by `-d` in the above commands.
+> **_NOTE:_** To run the container in detached mode replace `-it --rm` by `-d` in the above commands.
 
 ## Usage
 
