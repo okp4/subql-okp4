@@ -9,8 +9,7 @@ RUN yarn --frozen-lockfile
 
 COPY . .
 
-RUN yarn codegen
-RUN yarn build
+RUN yarn codegen && yarn build
 
 FROM onfinality/subql-node-cosmos:v2.8.0
 
