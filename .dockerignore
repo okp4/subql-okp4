@@ -1,0 +1,8 @@
+*
+!project.yaml
+!src
+!proto
+!schema.graphql
+!package.json
+!yarn.lock
+!tsconfig.json
