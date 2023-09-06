@@ -4,13 +4,12 @@ import type {
     MsgInstantiateContract,
 } from "cosmjs-types/cosmwasm/wasm/v1/tx";
 import {
-    Message,
     ObjectariumObject,
     Objectarium,
     BucketConfig,
     BucketLimits,
 } from "../types";
-import { messageId } from "./helper";
+import { referenceEntityInMessage } from "./helper";
 import type { Event } from "@cosmjs/tendermint-rpc/build/tendermint37";
 
 type StoreObject = {
@@ -64,7 +63,10 @@ export const handleStoreObject = async (
         pins: isPinned ? [sender] : [],
     }).save();
 
-    await referenceObjectInMessage(msg, objectId);
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumObjectId",
+        id: objectId,
+    });
 };
 
 export const handleForgetObject = async (
@@ -76,7 +78,10 @@ export const handleForgetObject = async (
     }
 
     await ObjectariumObject.remove(objectId);
-    await referenceObjectInMessage(msg, objectId);
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumObjectId",
+        id: objectId,
+    });
 };
 
 export const handlePinObject = async (
@@ -94,7 +99,10 @@ export const handlePinObject = async (
         await object.save();
     }
 
-    await referenceObjectInMessage(msg, object.id);
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumObjectId",
+        id: object.id,
+    });
 };
 
 export const handleUnpinObject = async (
@@ -113,7 +121,10 @@ export const handleUnpinObject = async (
         await object.save();
     }
 
-    await referenceObjectInMessage(msg, object.id);
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumObjectId",
+        id: object.id,
+    });
 };
 
 export const handleInitObjectarium = async (
@@ -160,19 +171,11 @@ export const handleInitObjectarium = async (
         config,
         limits,
     }).save();
-};
 
-export const referenceObjectInMessage = async (
-    msg: CosmosMessage,
-    objectId: string,
-): Promise<void> => {
-    const message = await Message.get(messageId(msg));
-    if (!message) {
-        return;
-    }
-
-    message.objectariumObjectId = objectId;
-    await message.save();
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumId",
+        id: contractAddress,
+    });
 };
 
 export const retrieveObjectariumObject = async (

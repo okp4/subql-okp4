@@ -133,6 +133,10 @@ type Message @entity {
     """
     block: Block!
     """
+    Objectarium that message relates to (for a message which concerns an objectarium smart contract).
+    """
+    objectarium: Objectarium
+    """
     Object that message relates to (for a message which concerns an object).
     """
     objectariumObject: ObjectariumObject
@@ -231,4 +235,8 @@ type Objectarium @entity {
     List of objects contained within the Objectarium instance.
     """
     objectariumObjects: [ObjectariumObject] @derivedFrom(field: "objectarium")
+    """
+    List of messages that concern the entity.
+    """
+    messages: [Message]! @derivedFrom(field: "objectarium")
 }
