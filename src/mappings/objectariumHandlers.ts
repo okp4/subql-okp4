@@ -3,7 +3,13 @@ import type {
     MsgExecuteContract,
     MsgInstantiateContract,
 } from "cosmjs-types/cosmwasm/wasm/v1/tx";
-import { Message, ObjectariumObject, Objectarium } from "../types";
+import {
+    Message,
+    ObjectariumObject,
+    Objectarium,
+    BucketConfig,
+    BucketLimits,
+} from "../types";
 import { messageId } from "./helper";
 import type { Event } from "@cosmjs/tendermint-rpc/build/tendermint37";
 
@@ -17,8 +23,24 @@ type Execute = Omit<MsgExecuteContract, "msg"> & {
     };
 };
 
+type ObjectariumBucketConfig = {
+    hash_algorithm?: string;
+    accepted_compression_algorithms?: string[];
+};
+
+type ObjectariumBucketLimits = {
+    max_total_size?: bigint;
+    max_objects?: bigint;
+    max_object_size?: bigint;
+    max_object_pins?: bigint;
+};
+
 type Instantiate = Omit<MsgInstantiateContract, "msg"> & {
-    msg: { bucket: string };
+    msg: {
+        bucket: string;
+        config?: ObjectariumBucketConfig;
+        limits?: ObjectariumBucketLimits;
+    };
 };
 
 type ContractCalls = Execute | Instantiate;
@@ -117,13 +139,26 @@ export const handleInitObjectarium = async (
 
     const {
         sender,
-        msg: { bucket },
+        msg: { bucket, limits: bucketLimits, config: bucketConfig },
     } = msg.msg.decodedMsg;
+    const limits: BucketLimits = {
+        maxTotalSize: bucketLimits?.max_total_size,
+        maxObjectSize: bucketLimits?.max_object_size,
+        maxObjects: bucketLimits?.max_objects,
+        maxObjectPins: bucketLimits?.max_object_pins,
+    };
+    const config: BucketConfig = {
+        hashAlgorithm: bucketConfig?.hash_algorithm,
+        acceptedCompressionAlgorithms:
+            bucketConfig?.accepted_compression_algorithms,
+    };
 
     await Objectarium.create({
         id: contractAddress,
         owner: sender,
         name: bucket,
+        config,
+        limits,
     }).save();
 };
 

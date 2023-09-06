@@ -166,6 +166,43 @@ type ObjectariumObject @entity {
 }
 
 """
+BucketConfig is the type of the configuration of a bucket.
+"""
+type BucketConfig @jsonField {
+    """
+    The algorithm used to hash the content of the objects to generate the id of the objects.
+    """
+    hashAlgorithm: String
+    """
+    The acceptable compression algorithms for the objects in the bucket.
+    """
+    acceptedCompressionAlgorithms: [String!]
+}
+
+"""
+BucketLimits is the type of the limits of a Objectarium bucket.
+The limits are optional and if not set, there is no limit.
+"""
+type BucketLimits @jsonField {
+    """
+    The maximum total size of the objects in the bucket.
+    """
+    maxTotalSize: BigInt
+    """
+    The maximum number of objects in the bucket.
+    """
+    maxObjects: BigInt
+    """
+    The maximum size of the objects in the bucket.
+    """
+    maxObjectSize: BigInt
+    """
+    The maximum number of pins in the bucket for an object.
+    """
+    maxObjectPins: BigInt
+}
+
+"""
 Objectarium smart contract instance (aka bucket).
 """
 type Objectarium @entity {
@@ -182,6 +219,14 @@ type Objectarium @entity {
     The name of the bucket.
     """
     name: String!
+    """
+    The configuration of the bucket.
+    """
+    config: BucketConfig
+    """
+    The limits of the bucket.
+    """
+    limits: BucketLimits
     """
     List of objects contained within the Objectarium instance.
     """
