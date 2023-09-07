@@ -39,6 +39,53 @@ Generate the types:
 yarn prepack
 ```
 
+### Build Docker
+
+🐳 Build the docker image:
+
+```sh
+docker build -t subql-okp4 .
+```
+
+Run it:
+
+```sh
+docker run -ti --rm --name my-indexer \
+  -e DB_HOST=postgres \
+  -e DB_PORT=5432 \
+  -e DB_DATABASE=subql \
+  -e DB_USER=subql \
+  -e DB_PASS=secret \
+  subql-okp4
+```
+
+Provide an alternate configuration:
+
+```sh
+docker run -ti --rm --name my-indexer \
+  -e DB_HOST=postgres \
+  -e DB_PORT=5432 \
+  -e DB_DATABASE=subql \
+  -e DB_USER=subql \
+  -e DB_PASS=secret \
+  -v /path/to/new-conf.yaml:/srv/subql/project.yaml \
+  subql-okp4
+```
+
+Give additional arguments to the subql node:
+
+```sh
+docker run -ti --rm --name my-indexer \
+  -e DB_HOST=postgres \
+  -e DB_PORT=5432 \
+  -e DB_DATABASE=subql \
+  -e DB_USER=subql \
+  -e DB_PASS=secret \
+  subql-okp4 --batch-size=32 --log-level=debug
+```
+
+> **_NOTE:_** To run the container in detached mode replace `-it --rm` by `-d` in the above commands.
+
 ## Usage
 
 ### Run
