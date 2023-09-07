@@ -1,23 +1,52 @@
 import type { CosmosMessage } from "@subql/types-cosmos";
-import type { MsgExecuteContract } from "cosmjs-types/cosmwasm/wasm/v1/tx";
-import { Message, ObjectariumObject } from "../types";
-import { messageId } from "./helper";
+import type {
+    MsgExecuteContract,
+    MsgInstantiateContract,
+} from "cosmjs-types/cosmwasm/wasm/v1/tx";
+import {
+    ObjectariumObject,
+    Objectarium,
+    BucketConfig,
+    BucketLimits,
+} from "../types";
+import { findEventAttribute, referenceEntityInMessage } from "./helper";
 import type { Event } from "@cosmjs/tendermint-rpc/build/tendermint37";
 
 type StoreObject = {
     pin: boolean;
 };
 
-type Msg = {
-    store_object: StoreObject;
+type Execute = Omit<MsgExecuteContract, "msg"> & {
+    msg: {
+        store_object: StoreObject;
+    };
 };
 
-type ObjectariumMsgExecuteContract = Omit<MsgExecuteContract, "msg"> & {
-    msg: Msg;
+type ObjectariumBucketConfig = {
+    hash_algorithm?: string;
+    accepted_compression_algorithms?: string[];
 };
+
+type ObjectariumBucketLimits = {
+    max_total_size?: bigint;
+    max_objects?: bigint;
+    max_object_size?: bigint;
+    max_object_pins?: bigint;
+};
+
+type Instantiate = Omit<MsgInstantiateContract, "msg"> & {
+    msg: {
+        bucket: string;
+        config?: ObjectariumBucketConfig;
+        limits?: ObjectariumBucketLimits;
+    };
+};
+
+type ContractCalls = Execute | Instantiate;
+type ObjectariumMsg<T extends ContractCalls> = T;
 
 export const handleStoreObject = async (
-    msg: CosmosMessage<ObjectariumMsgExecuteContract>,
+    msg: CosmosMessage<ObjectariumMsg<Execute>>,
 ): Promise<void> => {
     const objectId = objectariumObjectId(msg.tx.tx.events);
     if (!objectId) {
@@ -30,11 +59,14 @@ export const handleStoreObject = async (
     await ObjectariumObject.create({
         id: objectId,
         sender,
-        contract,
+        objectariumId: contract,
         pins: isPinned ? [sender] : [],
     }).save();
 
-    await referenceObjectInMessage(msg, objectId);
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumObjectId",
+        id: objectId,
+    });
 };
 
 export const handleForgetObject = async (
@@ -46,7 +78,10 @@ export const handleForgetObject = async (
     }
 
     await ObjectariumObject.remove(objectId);
-    await referenceObjectInMessage(msg, objectId);
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumObjectId",
+        id: objectId,
+    });
 };
 
 export const handlePinObject = async (
@@ -64,7 +99,10 @@ export const handlePinObject = async (
         await object.save();
     }
 
-    await referenceObjectInMessage(msg, object.id);
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumObjectId",
+        id: object.id,
+    });
 };
 
 export const handleUnpinObject = async (
@@ -83,20 +121,66 @@ export const handleUnpinObject = async (
         await object.save();
     }
 
-    await referenceObjectInMessage(msg, object.id);
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumObjectId",
+        id: object.id,
+    });
 };
 
-export const referenceObjectInMessage = async (
-    msg: CosmosMessage,
-    objectId: string,
+export const handleInitObjectarium = async (
+    msg: CosmosMessage<ObjectariumMsg<Instantiate>>,
 ): Promise<void> => {
-    const message = await Message.get(messageId(msg));
-    if (!message) {
+    const contractAddress = findEventAttribute(
+        msg.tx.tx.events,
+        "instantiate",
+        "_contract_address",
+    )?.value;
+
+    // TODO: filter the calling of this handler through the manifest.
+    // Justification: There seems to be a bug with the filtering of events
+    // that make it impossible to filter on the contract code id. The
+    // following codeId variable allows to filter the handling of the
+    // message before treating the msg as a objectarium instantiate msg.
+    const codeId = findEventAttribute(
+        msg.tx.tx.events,
+        "instantiate",
+        "code_id",
+    )?.value;
+
+    if (!contractAddress || codeId !== "4") {
         return;
     }
 
-    message.objectariumObjectId = objectId;
-    await message.save();
+    const {
+        sender,
+        label,
+        msg: { bucket, limits: bucketLimits, config: bucketConfig },
+    } = msg.msg.decodedMsg;
+    const limits: BucketLimits = {
+        maxTotalSize: bucketLimits?.max_total_size,
+        maxObjectSize: bucketLimits?.max_object_size,
+        maxObjects: bucketLimits?.max_objects,
+        maxObjectPins: bucketLimits?.max_object_pins,
+    };
+    const config: BucketConfig = {
+        hashAlgorithm: bucketConfig?.hash_algorithm,
+        acceptedCompressionAlgorithms:
+            bucketConfig?.accepted_compression_algorithms,
+    };
+
+    await Objectarium.create({
+        id: contractAddress,
+        owner: sender,
+        label,
+        name: bucket,
+        config,
+        limits,
+    }).save();
+
+    await referenceEntityInMessage(msg, {
+        messageField: "objectariumId",
+        id: contractAddress,
+    });
 };
 
 export const retrieveObjectariumObject = async (
@@ -112,7 +196,4 @@ export const retrieveObjectariumObject = async (
 
 export const objectariumObjectId = (
     events: Readonly<Event[]>,
-): string | undefined =>
-    events
-        .find((event) => event.type === "wasm")
-        ?.attributes.find((attribute) => attribute.key === "id")?.value;
+): string | undefined => findEventAttribute(events, "wasm", "id")?.value;

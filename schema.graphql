@@ -133,6 +133,10 @@ type Message @entity {
     """
     block: Block!
     """
+    Objectarium that message relates to (for a message which concerns an objectarium smart contract).
+    """
+    objectarium: Objectarium
+    """
     Object that message relates to (for a message which concerns an object).
     """
     objectariumObject: ObjectariumObject
@@ -152,9 +156,9 @@ type ObjectariumObject @entity {
     """
     sender: String! @index
     """
-    Address of the smart contract instance (aka bucket) where the object is stored.
+    The smart contract instance (aka bucket) where the object is stored.
     """
-    contract: String! @index
+    objectarium: Objectarium!
     """
     Addresses that have pinned the object.
     """
@@ -163,4 +167,80 @@ type ObjectariumObject @entity {
     List of messages that concern the object.
     """
     messages: [Message]! @derivedFrom(field: "objectariumObject")
+}
+
+"""
+BucketConfig is the type of the configuration of a bucket.
+"""
+type BucketConfig @jsonField {
+    """
+    The algorithm used to hash the content of the objects to generate the id of the objects.
+    """
+    hashAlgorithm: String
+    """
+    The acceptable compression algorithms for the objects in the bucket.
+    """
+    acceptedCompressionAlgorithms: [String!]
+}
+
+"""
+BucketLimits is the type of the limits of a Objectarium bucket.
+The limits are optional and if not set, there is no limit.
+"""
+type BucketLimits @jsonField {
+    """
+    The maximum total size of the objects in the bucket.
+    """
+    maxTotalSize: BigInt
+    """
+    The maximum number of objects in the bucket.
+    """
+    maxObjects: BigInt
+    """
+    The maximum size of the objects in the bucket.
+    """
+    maxObjectSize: BigInt
+    """
+    The maximum number of pins in the bucket for an object.
+    """
+    maxObjectPins: BigInt
+}
+
+"""
+Objectarium smart contract instance (aka bucket).
+"""
+type Objectarium @entity {
+    """
+    Identifier of the smart contract instance.
+    It is the address of the smart contract instance.
+    """
+    id: ID!
+    """
+    The owner of the bucket.
+    """
+    owner: String!
+    """
+    Label of the bucket.
+    """
+    label: String!
+    """
+    The name of the bucket.
+    """
+    name: String!
+    """
+    The configuration of the bucket.
+    """
+    config: BucketConfig
+    """
+    The limits of the bucket.
+    """
+    limits: BucketLimits
+    """
+    List of objects contained within the Objectarium instance.
+    """
+    objectariumObjects: [ObjectariumObject] @derivedFrom(field: "objectarium")
+    """
+    List of messages that concern the entity.
+    """
+    messages: [Message]! @derivedFrom(field: "objectarium")
 }
