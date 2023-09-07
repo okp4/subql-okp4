@@ -9,7 +9,7 @@ import {
     BucketConfig,
     BucketLimits,
 } from "../types";
-import { referenceEntityInMessage } from "./helper";
+import { findEventAttribute, referenceEntityInMessage } from "./helper";
 import type { Event } from "@cosmjs/tendermint-rpc/build/tendermint37";
 
 type StoreObject = {
@@ -130,19 +130,22 @@ export const handleUnpinObject = async (
 export const handleInitObjectarium = async (
     msg: CosmosMessage<ObjectariumMsg<Instantiate>>,
 ): Promise<void> => {
-    const contractAddress = msg.tx.tx.events
-        .find(({ type }) => type === "instantiate")
-        ?.attributes.find((attribute) => attribute.key === "_contract_address")
-        ?.value;
+    const contractAddress = findEventAttribute(
+        msg.tx.tx.events,
+        "instantiate",
+        "_contract_address",
+    )?.value;
 
     // TODO: filter the calling of this handler through the manifest.
     // Justification: There seems to be a bug with the filtering of events
     // that make it impossible to filter on the contract code id. The
     // following codeId variable allows to filter the handling of the
     // message before treating the msg as a objectarium instantiate msg.
-    const codeId = msg.tx.tx.events
-        .find(({ type }) => type === "instantiate")
-        ?.attributes.find((attribute) => attribute.key === "code_id")?.value;
+    const codeId = findEventAttribute(
+        msg.tx.tx.events,
+        "instantiate",
+        "code_id",
+    )?.value;
 
     if (!contractAddress || codeId !== "4") {
         return;
@@ -193,7 +196,4 @@ export const retrieveObjectariumObject = async (
 
 export const objectariumObjectId = (
     events: Readonly<Event[]>,
-): string | undefined =>
-    events
-        .find((event) => event.type === "wasm")
-        ?.attributes.find((attribute) => attribute.key === "id")?.value;
+): string | undefined => findEventAttribute(events, "wasm", "id")?.value;
