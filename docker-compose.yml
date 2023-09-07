@@ -3,11 +3,11 @@ version: "3"
 services:
   postgres:
     build:
-      context: .
+      context: docker
       dockerfile_inline: |
         FROM postgres:12-alpine
 
-        COPY docker/initialize-db.sh /docker-entrypoint-initdb.d/
+        COPY initialize-db.sh /docker-entrypoint-initdb.d/
     ports:
       - ${DB_POSTGRES_PORT?}:5432
     environment:
