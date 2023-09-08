@@ -1,0 +1,88 @@
+name: Deploy
+
+on:
+  push:
+    tags: ["v*"]
+
+concurrency:
+  group: deploy-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  deploy-on-ipfs:
+    runs-on: ubuntu-22.04
+    env:
+      SUBQL_ACCESS_TOKEN: ${{ secrets.SUBQL_ACCESS_TOKEN }}
+    outputs:
+      ipfs-cid: ${{ steps.ipfs-upload.outputs.ipfs-cid }}
+    steps:
+      - name: Setup node environment (for deployment)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.16
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Patch startBlock to 1
+        uses: mikefarah/yq@v4.35.1
+        with:
+          cmd: yq eval ".dataSources[].startBlock = env(START_BLOCK)" project.yaml -i
+        env:
+          START_BLOCK: 1
+
+      - name: Fetch dependencies
+        run: |
+          yarn --frozen-lockfile
+
+      - name: Generate code
+        run: |
+          yarn codegen
+
+      - name: Build project
+        run: |
+          yarn build
+
+      - name: Upload to IPFS
+        id: ipfs-upload
+        run: |
+          yarn subql publish
+
+          IPFS_CID=$(cat .project-cid)
+          echo "🚀 Uploaded to IPFS: ${IPFS_CID}"
+          echo "ipfs-cid=${IPFS_CID}" >> $GITHUB_OUTPUT
+
+  deploy-on-subquery-managed-service:
+    runs-on: ubuntu-22.04
+    needs: deploy-on-ipfs
+    env:
+      SUBQL_ACCESS_TOKEN: ${{ secrets.SUBQL_ACCESS_TOKEN }}
+      IPFS_CID: ${{ needs.deploy-on-ipfs.outputs.ipfs-cid }}
+    strategy:
+      max-parallel: 1
+      matrix:
+        project:
+          - org: "okp4"
+            name: "nemeton-1"
+            endpoint: "https://api.testnet.okp4.network/rpc"
+    steps:
+      - name: Setup node environment (for deployment)
+        uses: actions/setup-node@v3
+        with:
+          node-version: 18.16
+
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - name: Fetch dependencies
+        run: |
+          yarn --frozen-lockfile
+
+      - name: Deploy to SubQuery Managed service (${{ matrix.project.name }})
+        run: |
+          yarn subql deployment:deploy \
+            -d \
+            --ipfsCID="$IPFS_CID" \
+            --projectName="${{ matrix.project.name }}" \
+            --org="${{ matrix.project.org }}" \
+            --endpoint="${{ matrix.project.endpoint }}"
