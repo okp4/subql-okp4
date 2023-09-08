@@ -136,7 +136,7 @@ jobs:
     if: github.actor != 'dependabot[bot]'
     steps:
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Lint dockerfile (hadolint)
         uses: hadolint/hadolint-action@v3.1.0
