@@ -140,6 +140,10 @@ type Message @entity {
     Object that message relates to (for a message which concerns an object).
     """
     objectariumObject: ObjectariumObject
+    """
+    Smart contract from which smart contract instances are created.
+    """
+    contract: Contract
 }
 
 """
@@ -243,4 +247,57 @@ type Objectarium @entity {
     List of messages that concern the entity.
     """
     messages: [Message]! @derivedFrom(field: "objectarium")
+    """
+    Smart contract from which the bucket instance were created.
+    """
+    contract: Contract!
+}
+
+"""
+An object describing the permissions of a smart contract.
+"""
+type AccessConfig @jsonField {
+    """
+    AccessType permission type.
+    """
+    permission: String!
+    """
+    Address concerned by permission.
+    """
+    address: String!
+    """
+    List of addresses included in the permission.
+    """
+    addresses: [String]!
+}
+
+"""
+COSMWASM smart contract.
+"""
+type Contract @entity {
+    """
+    Identifier of the smart contract.
+    Corresponds to the code id of the contract.
+    """
+    id: ID!
+    """
+    The sha256sum hash of the contract.
+    """
+    dataHash: String!
+    """
+    The creator of the smart contract.
+    """
+    creator: String!
+    """
+    Contract creation permissions.
+    """
+    instantiatePermission: AccessConfig
+    """
+    List of messages that concern the smart contract.
+    """
+    messages: [Message]! @derivedFrom(field: "contract")
+    """
+    List of objectarium smart contracts instantiated from contract.
+    """
+    objectariums: [Objectarium] @derivedFrom(field: "contract")
 }
