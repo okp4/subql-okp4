@@ -4,7 +4,7 @@ import type {
     CosmosTransaction,
 } from "@subql/types-cosmos";
 import { Block, Transaction, Message } from "../types";
-import { messageId } from "./helper";
+import { findEventAttribute, messageId } from "./helper";
 
 export const handleBlock = async (block: CosmosBlock): Promise<void> => {
     const {
@@ -47,12 +47,17 @@ export const handleTransaction = async (
 };
 
 export const handleMessage = async (msg: CosmosMessage): Promise<void> => {
-    const msgEntity = Message.create({
+    const contractId = findEventAttribute(
+        msg.tx.tx.events,
+        "store_code",
+        "code_id",
+    )?.value;
+
+    await Message.create({
         id: messageId(msg),
         message: msg.msg,
         transactionId: msg.tx.hash,
         blockId: msg.block.block.id,
-    });
-
-    await msgEntity.save();
+        contractId,
+    }).save();
 };

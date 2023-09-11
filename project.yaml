@@ -62,3 +62,7 @@ dataSources:
           filter:
             type: /cosmwasm.wasm.v1.MsgInstantiateContract
             contractCall: instantiate
+        - handler: handleStoreContract
+          kind: cosmos/MessageHandler
+          filter:
+            type: /cosmwasm.wasm.v1.MsgStoreCode
