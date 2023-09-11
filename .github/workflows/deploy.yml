@@ -22,7 +22,7 @@ jobs:
           node-version: 18.16
 
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Patch startBlock to 1
         uses: mikefarah/yq@v4.35.1
@@ -72,7 +72,7 @@ jobs:
           node-version: 18.16
 
       - name: Check out repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
       - name: Fetch dependencies
         run: |
