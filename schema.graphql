@@ -257,6 +257,9 @@ type Objectarium @entity {
 An object describing the permissions of a smart contract.
 """
 type AccessConfig @jsonField {
+    # TODO: Change permission type to Enum for better value representaion.
+    # Explanation: As of date (12/09/2023) SubQuery does not support Enum fields in jsonFields
+    # See function "processFields" in https://github.com/subquery/subql/blob/main/packages/cli/src/controller/codegen-controller.ts.
     """
     AccessType permission type.
     """
