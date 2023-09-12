@@ -175,6 +175,7 @@ export const handleInitObjectarium = async (
         name: bucket,
         config,
         limits,
+        contractId: codeId,
     }).save();
 
     await referenceEntityInMessage(msg, {
