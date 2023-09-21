@@ -3592,23 +3592,23 @@
     ethers "^5.6.8"
     jwt-decode "^3.1.2"
 
-"@subql/cli@3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-3.5.1.tgz#86c451b8572482580dbc9a869fb204ce1e6ac7fe"
-  integrity sha512-q6uywAxJTWWj2mi3M6rBtR+z91cc0aHoahxaIZu62NO3vnVSffA8E39ICxRN9eLAF5Xr0jUpFLyzbRrkuznB5A==
+"@subql/cli@3.6.1":
+  version "3.6.1"
+  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-3.6.1.tgz#91d670b22c7bea562df94f5af2876ade44300a05"
+  integrity sha512-JjEd2XAxqieR1WjAU6G8iyY+17/Uyut/8Lw5h3YOs8NN5bYILT0kx6MsCqwaTGHrm/5b0m+qlJJopFQa6KKzpA==
   dependencies:
     "@oclif/command" "^1.8.16"
     "@oclif/config" "^1.18.3"
     "@oclif/core" "^1.3.3"
     "@oclif/plugin-help" "^3.2.3"
-    "@subql/common" "2.5.0"
+    "@subql/common" "2.6.1-2"
     "@subql/common-algorand" latest
     "@subql/common-cosmos" latest
     "@subql/common-ethereum" latest
     "@subql/common-flare" latest
     "@subql/common-near" latest
     "@subql/common-stellar" "^2.2.1-1"
-    "@subql/common-substrate" "2.4.0"
+    "@subql/common-substrate" "2.4.1-0"
     "@subql/utils" "2.4.3"
     "@subql/validator" "2.2.0"
     "@typechain/ethers-v5" "10.2.0"
@@ -3736,12 +3736,12 @@
     js-yaml "^4.1.0"
     reflect-metadata "^0.1.13"
 
-"@subql/common-substrate@2.4.0":
-  version "2.4.0"
-  resolved "https://registry.yarnpkg.com/@subql/common-substrate/-/common-substrate-2.4.0.tgz#9dc71b1501dceab1d84ce9e8f30a899444770376"
-  integrity sha512-03ANhHg+jRdYLB9aZ2C2b72RThvk37fUxXHAnoaJIaYQzCuJ/H42gpgosiXXkq9MZiBttN/j/IATaaPJJkZNFw==
+"@subql/common-substrate@2.4.1-0":
+  version "2.4.1-0"
+  resolved "https://registry.yarnpkg.com/@subql/common-substrate/-/common-substrate-2.4.1-0.tgz#8b4ca69dd131ba90ae6530ba19aae89a89ca80b1"
+  integrity sha512-BIORmBwMOmPhgSig+SiGwuKYLRCqo1afLvjvzKGcPfR0wTUuBMQzCV3OvWiz8MZv2/5kOO2SB7jElgjh5LgwPQ==
   dependencies:
-    "@subql/common" "2.5.0"
+    "@subql/common" "2.6.1-1"
     "@subql/types" "2.2.0"
     js-yaml "^4.1.0"
     reflect-metadata "^0.1.13"
@@ -3779,6 +3779,36 @@
   version "2.6.0"
   resolved "https://registry.yarnpkg.com/@subql/common/-/common-2.6.0.tgz#f784ecbaad3a1a6d0ce202b5908d99a3a68ecd7f"
   integrity sha512-yMABeCWU9QU4DfhZl1aO4FcMGbBc9Gp5IbjLXRXLg4VBs7lB2SVF4t9zAFmlgO8z8KY6TjIOT6+/idhgG9q3sQ==
+  dependencies:
+    axios "^0.27.2"
+    class-transformer "^0.5.1"
+    class-validator "^0.14.0"
+    fs-extra "^10.1.0"
+    ipfs-http-client "56"
+    js-yaml "^4.1.0"
+    reflect-metadata "^0.1.13"
+    semver "^7.5.2"
+    update-notifier "5.1.0"
+
+"@subql/common@2.6.1-1":
+  version "2.6.1-1"
+  resolved "https://registry.yarnpkg.com/@subql/common/-/common-2.6.1-1.tgz#0442b21d1d9d2511f229d2e2ef881f858c622869"
+  integrity sha512-rlTwP0beyJ6H4i0iuIEgSI8jVCJ7gIPx1i5dJFaPc1gSkQVXst7aLkJKqHeIfSAlObC1SOvGSqjaEzz0KrhCtQ==
+  dependencies:
+    axios "^0.27.2"
+    class-transformer "^0.5.1"
+    class-validator "^0.14.0"
+    fs-extra "^10.1.0"
+    ipfs-http-client "56"
+    js-yaml "^4.1.0"
+    reflect-metadata "^0.1.13"
+    semver "^7.5.2"
+    update-notifier "5.1.0"
+
+"@subql/common@2.6.1-2":
+  version "2.6.1-2"
+  resolved "https://registry.yarnpkg.com/@subql/common/-/common-2.6.1-2.tgz#a18afe1929fb47eaa9ee2404ba7afbdf297ef3e7"
+  integrity sha512-MHk2TNRLVEARQde0tS0ie3NxTRE9JJbU4X46MEVLXr4XwFARONNp1dV5WZFE27Wyr2K6sjUlb6YSWCX5Xb6Rrw==
   dependencies:
     axios "^0.27.2"
     class-transformer "^0.5.1"
@@ -10551,14 +10581,7 @@ node-fetch@2.6.7, "node-fetch@https://registry.npmjs.org/@achingbrain/node-fetch
   version "2.6.7"
   resolved "https://registry.npmjs.org/@achingbrain/node-fetch/-/node-fetch-2.6.7.tgz#1b5d62978f2ed07b99444f64f0df39f960a6d34d"
 
-node-fetch@^2.6.1, node-fetch@^2.6.11, node-fetch@^2.6.12, node-fetch@^2.6.7:
-  version "2.6.12"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.12.tgz#02eb8e22074018e3d5a83016649d04df0e348fba"
-  integrity sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g==
-  dependencies:
-    whatwg-url "^5.0.0"
-
-node-fetch@^2.6.8:
+node-fetch@^2.6.1, node-fetch@^2.6.11, node-fetch@^2.6.12, node-fetch@^2.6.7, node-fetch@^2.6.8:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
