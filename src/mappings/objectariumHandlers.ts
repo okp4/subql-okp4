@@ -8,8 +8,14 @@ import {
     Objectarium,
     BucketConfig,
     BucketLimits,
+    ObjectariumObjectPin,
+    Account,
 } from "../types";
-import { findEventAttribute, referenceEntityInMessage } from "./helper";
+import {
+    findEventAttribute,
+    objectariumObjectPinId,
+    referenceEntityInMessage,
+} from "./helper";
 import type { Event } from "@cosmjs/tendermint-rpc/build/tendermint37";
 
 type StoreObject = {
@@ -54,14 +60,37 @@ export const handleStoreObject = async (
     }
 
     const { sender, contract } = msg.msg.decodedMsg;
-    const { pin: isPinned } = msg.msg.decodedMsg.msg.store_object;
+    const senderAccount = await Account.get(sender);
+
+    if (!senderAccount) {
+        const publicKey = msg.tx.decodedTx.authInfo.signerInfos.find(
+            (signerInfo) => signerInfo.publicKey,
+        )?.publicKey;
+
+        await Account.create({
+            id: msg.msg.decodedMsg.sender,
+            pubKey: publicKey && {
+                typeUrl: publicKey.typeUrl,
+                key: Buffer.from(publicKey.value).toString("base64"),
+            },
+            balances: [],
+        }).save();
+    }
 
     await ObjectariumObject.create({
         id: objectId,
-        sender,
+        senderId: sender,
         objectariumId: contract,
-        pins: isPinned ? [sender] : [],
     }).save();
+
+    const { pin: isPinned } = msg.msg.decodedMsg.msg.store_object;
+
+    isPinned &&
+        (await ObjectariumObjectPin.create({
+            id: objectariumObjectPinId(objectId, sender),
+            objectariumObjectId: objectId,
+            accountId: sender,
+        }).save());
 
     await referenceEntityInMessage(msg, {
         messageField: "objectariumObjectId",
@@ -87,43 +116,43 @@ export const handleForgetObject = async (
 export const handlePinObject = async (
     msg: CosmosMessage<MsgExecuteContract>,
 ): Promise<void> => {
-    const object = await retrieveObjectariumObject(msg);
-    if (!object) {
+    const objectId = objectariumObjectId(msg.tx.tx.events);
+    if (!objectId) {
         return;
     }
 
     const { sender } = msg.msg.decodedMsg;
+    const objectPin = ObjectariumObjectPin.get(
+        objectariumObjectPinId(objectId, sender),
+    );
 
-    if (!object.pins.includes(sender)) {
-        object.pins.push(sender);
-        await object.save();
+    if (!objectPin) {
+        await ObjectariumObjectPin.create({
+            id: objectariumObjectPinId(objectId, sender),
+            objectariumObjectId: objectId,
+            accountId: sender,
+        }).save();
     }
 
     await referenceEntityInMessage(msg, {
         messageField: "objectariumObjectId",
-        id: object.id,
+        id: objectId,
     });
 };
 
 export const handleUnpinObject = async (
     msg: CosmosMessage<MsgExecuteContract>,
 ): Promise<void> => {
-    const object = await retrieveObjectariumObject(msg);
-    if (!object) {
+    const objectId = objectariumObjectId(msg.tx.tx.events);
+    if (!objectId) {
         return;
     }
-
     const { sender } = msg.msg.decodedMsg;
-    const filteredPins = object.pins.filter((address) => address !== sender);
 
-    if (filteredPins.length !== object.pins.length) {
-        object.pins = filteredPins;
-        await object.save();
-    }
-
+    await ObjectariumObjectPin.remove(objectariumObjectPinId(objectId, sender));
     await referenceEntityInMessage(msg, {
         messageField: "objectariumObjectId",
-        id: object.id,
+        id: objectId,
     });
 };
 
@@ -153,6 +182,7 @@ export const handleInitObjectarium = async (
 
     const {
         sender,
+        admin,
         label,
         msg: { bucket, limits: bucketLimits, config: bucketConfig },
     } = msg.msg.decodedMsg;
@@ -170,7 +200,8 @@ export const handleInitObjectarium = async (
 
     await Objectarium.create({
         id: contractAddress,
-        owner: sender,
+        creatorId: sender,
+        ownerId: admin,
         label,
         name: bucket,
         config,

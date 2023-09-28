@@ -8,6 +8,16 @@ import type {
 export const messageId = (msg: CosmosMessage | CosmosEvent): string =>
     `${msg.tx.hash}-${msg.idx}`;
 
+export const objectariumObjectPinId = (
+    objectId: string,
+    sender: string,
+): string => `${objectId}-${sender}`;
+
+export const contractPermissionAccountId = (
+    contractId: string,
+    account: string,
+): string => `${contractId}-${account}`;
+
 export const findEvent = (
     events: Readonly<Event[]>,
     event: string,
