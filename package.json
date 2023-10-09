@@ -58,7 +58,7 @@
     },
     "dependencies": {
         "@subql/types-cosmos": "^2.2.1",
-        "@types/node": "^20.8.2",
+        "@types/node": "^20.8.3",
         "pino": "^8.15.6",
         "ts-proto": "^1.157.0",
         "tslib": "^2.6.2"
