@@ -40,7 +40,7 @@
     ],
     "devDependencies": {
         "@cosmjs/stargate": "^0.31.1",
-        "@subql/cli": "3.5.1",
+        "@subql/cli": "4.0.2",
         "@subql/node-cosmos": "2.10.3",
         "@subql/testing": "latest",
         "@types/jest": "^29.5.5",
