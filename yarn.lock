@@ -3862,6 +3862,13 @@
   resolved "https://registry.yarnpkg.com/@subql/types-algorand/-/types-algorand-2.1.0.tgz#e118463e39aa995f0231fd4e19df437711d9aedd"
   integrity sha512-2NELKlODUNi6HB40MTsrrhHTFs0XOCtsOHmtGpLF63KUI9tDDoK0zfe1wQo65Q5upl50stjRDB0X72+9PzhggA==
 
+"@subql/types-core@^0.1.1":
+  version "0.1.1"
+  resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.1.1.tgz#1b30804c67d781e25b9d03ea41118a0b6064b4ac"
+  integrity sha512-cQQ6LEPflouxTg1HE+znv0DBkwBYlqPC4BdxdwJ6aTOlMzu7pFvgDCFywzJHL2N+wBbkSK8QeoNoAhj/nyA7hg==
+  dependencies:
+    package-json-type "^1.0.3"
+
 "@subql/types-cosmos@2.2.0":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@subql/types-cosmos/-/types-cosmos-2.2.0.tgz#d3611fdd84e9bb2da6d961a65dcc9153eaea6ece"
@@ -3880,14 +3887,15 @@
     "@cosmjs/proto-signing" "^0.30.1"
     "@cosmjs/stargate" "^0.30.1"
 
-"@subql/types-cosmos@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@subql/types-cosmos/-/types-cosmos-2.2.1.tgz#e7e2d56f41f8ee71440c181bc613c0a0371b0369"
-  integrity sha512-ni/10F9b37F+2OKYoKLtXvDpat+KCctvagXRTFuMwFwBxpbgZdwCkIZzTROHUnO4a7vT3aZa8P5EoZbc6Xn1xw==
+"@subql/types-cosmos@^3.0.2":
+  version "3.0.2"
+  resolved "https://registry.yarnpkg.com/@subql/types-cosmos/-/types-cosmos-3.0.2.tgz#a17c9231470d243da0feaa5e7f50ada5479e746e"
+  integrity sha512-vycMhyXBRRO8RnCPrkQbE+O37RVk2efm+A6NIBRYGEy2PF7CMUpOvgbGNvAG0qZf4oqCfPE1MBtyk2ej/W99aw==
   dependencies:
     "@cosmjs/cosmwasm-stargate" "^0.30.1"
     "@cosmjs/proto-signing" "^0.30.1"
     "@cosmjs/stargate" "^0.30.1"
+    "@subql/types-core" "^0.1.1"
 
 "@subql/types-ethereum@2.2.2":
   version "2.2.2"
