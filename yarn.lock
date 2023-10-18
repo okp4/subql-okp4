@@ -3850,17 +3850,31 @@
     vm2 "^3.9.9"
     yargs "^16.2.0"
 
-"@subql/testing@2.0.2", "@subql/testing@latest":
+"@subql/testing@2.0.2":
   version "2.0.2"
   resolved "https://registry.yarnpkg.com/@subql/testing/-/testing-2.0.2.tgz#4c1774332c84ff98144676236361b5d2efbe2165"
   integrity sha512-hRnUIYpIaW66bHBI68m4PI56KDnu1JbdwwbRod94/O0rdJfq8pQnPz/0DZQepIpTjz3J1mMYOY9dhY6ACQKwmg==
   dependencies:
     "@subql/types" "^2.1.3"
 
+"@subql/testing@latest":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@subql/testing/-/testing-2.1.0.tgz#3b7212bb67f2cb0934ef166d9c3ec46448aed030"
+  integrity sha512-MACwwB1LF3QrsDg7cQvbEcrwgb3D/gHRU4x//k4PnVaxihzEBniBojOZ+2ddVizVdAg1DGR3eDnjsS8V9PItwQ==
+  dependencies:
+    "@subql/types-core" "^0.1.2-0"
+
 "@subql/types-algorand@2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@subql/types-algorand/-/types-algorand-2.1.0.tgz#e118463e39aa995f0231fd4e19df437711d9aedd"
   integrity sha512-2NELKlODUNi6HB40MTsrrhHTFs0XOCtsOHmtGpLF63KUI9tDDoK0zfe1wQo65Q5upl50stjRDB0X72+9PzhggA==
+
+"@subql/types-core@^0.1.2-0":
+  version "0.1.2-0"
+  resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.1.2-0.tgz#ccc07d70f24730aab66094e049e7b76c0ecb2abb"
+  integrity sha512-7KBjIYP53copaxbG3pITBrgSghtITICvLDvVMz1v1IK/HRRS61EIaCpnv+eS0jJKSeyjWgIkDXKtTnmutS/D5Q==
+  dependencies:
+    package-json-type "^1.0.3"
 
 "@subql/types-cosmos@2.2.0":
   version "2.2.0"
@@ -3918,12 +3932,12 @@
   dependencies:
     soroban-client "0.9.2"
 
-"@subql/types@2.1.3", "@subql/types@^2.1.3":
+"@subql/types@2.1.3":
   version "2.1.3"
   resolved "https://registry.yarnpkg.com/@subql/types/-/types-2.1.3.tgz#10886d7bb9d2773e87a983e51efd05375eae1e5f"
   integrity sha512-YNnH3npZwogTe3zM/ET6CXX4ouY1fTxR8uMl2x7fdGLIhWRbxNCbZwRvQ8pHupreYxRREghSZwQ4gQmImTKNlw==
 
-"@subql/types@2.2.0":
+"@subql/types@2.2.0", "@subql/types@^2.1.3":
   version "2.2.0"
   resolved "https://registry.yarnpkg.com/@subql/types/-/types-2.2.0.tgz#0aa63a5c764e4dec07a60e1d7c71823129c4262f"
   integrity sha512-M+10vuKUQecRM65T4ip22BniqZpirDn9SYQpiOk88oUI3gCsSyPKb+dKmbHbZPaQE6KeDB3gP5nyBulTzMxcYA==
