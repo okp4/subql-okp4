@@ -17,7 +17,7 @@ jobs:
       ipfs-cid: ${{ steps.ipfs-upload.outputs.ipfs-cid }}
     steps:
       - name: Setup node environment (for deployment)
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.16
 
@@ -67,7 +67,7 @@ jobs:
             endpoint: "https://api.testnet.okp4.network/rpc"
     steps:
       - name: Setup node environment (for deployment)
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version: 18.16
 
