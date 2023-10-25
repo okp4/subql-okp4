@@ -2,6 +2,7 @@
 
 > 🔁 Subquery indexer for the [OKP4 protocol](https://okp4.network).
 
+[![release](https://img.shields.io/github/v/release/okp4/subql-okp4?style=for-the-badge&logo=github)](https://github.com/okp4/subql-okp4/releases)
 [![lint](https://img.shields.io/github/actions/workflow/status/okp4/subql-okp4/lint.yml?label=lint&style=for-the-badge&logo=github)](https://github.com/okp4/subql-okp4/actions/workflows/lint.yml)
 [![build](https://img.shields.io/github/actions/workflow/status/okp4/subql-okp4/build.yml?branch=main&label=build&style=for-the-badge&logo=github)](https://github.com/okp4/subql-okp4/actions/workflows/build.yml)
 [![test](https://img.shields.io/github/actions/workflow/status/okp4/dataverse-portal/test.yml?branch=main&label=test&style=for-the-badge&logo=github)](https://github.com/okp4/dataverse-portal/actions/workflows/test.yml)
