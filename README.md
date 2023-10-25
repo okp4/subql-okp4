@@ -14,6 +14,15 @@
 
 This repository is home to the OKP4 SubQuery Indexer, a tool that provides chain data from the [OKP4 protocol](https://okp4.network) via a GraphQL API. The project is based on [SubQuery](https://subquery.network/), an open-source tool that helps create fast and reliable APIs for blockchain applications.
 
+## Explore
+
+The following services are available:
+
+| ChainID          | Service    | Endpoint                                                    |
+| ---------------- | ---------- | ----------------------------------------------------------- |
+| `okp4-nemeton-1` | Playground | <https://explorer.subquery.network/subquery/okp4/nemeton-1> |
+| `okp4-nemeton-1` | GraphQL    | <https://api.subquery.network/sq/okp4/nemeton-1>            |
+
 ## Install
 
 ### Prerequisites
