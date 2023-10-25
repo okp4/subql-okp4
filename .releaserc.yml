@@ -1,0 +1,32 @@
+branches:
+  - main
+
+plugins:
+  - - "@semantic-release/commit-analyzer"
+    - preset: conventionalcommits
+  - - "@semantic-release/release-notes-generator"
+    - preset: conventionalcommits
+  - - "@semantic-release/changelog"
+    - changelogFile: CHANGELOG.md
+      changelogTitle: "# okp4-subql changelog"
+  - - "@semantic-release/npm"
+    - npmPublish: false
+      tarballDir: "false"
+  - "@semantic-release/github"
+  - - "@google/semantic-release-replace-plugin"
+    - replacements:
+        - files: [project.yaml]
+          from: 'version: v(\d+\.\d+\.\d+)'
+          to: "version: v${nextRelease.version}"
+          countMatches: true
+          results:
+            - file: project.yaml
+              hasChanged: true
+              numMatches: 1
+              numReplacements: 1
+  - - "@semantic-release/git"
+    - assets:
+        - CHANGELOG.md
+        - package.json
+        - project.yaml
+      message: "chore(release): perform release ${nextRelease.version}"
