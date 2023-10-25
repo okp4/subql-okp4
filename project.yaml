@@ -27,9 +27,39 @@ network:
       messages:
         - MsgExecuteContract
         - MsgInstantiateContract
+    cosmos.slashing.v1beta1:
+      file: ./proto/cosmos/slashing/v1beta1/tx.proto
+      messages:
+        - MsgUnjail
+    cosmos.bank.v1beta1:
+      file: ./proto/cosmos/bank/v1beta1/tx.proto
+      messages:
+        - MsgSend
+        - MsgMultiSend
+    cosmos.gov.v1beta1:
+      file: ./proto/cosmos/gov/v1beta1/tx.proto
+      messages:
+        - MsgSubmitProposal
+        - MsgVote
+        - MsgVoteWeighted
+        - MsgDeposit
+    cosmos.upgrade.v1beta1:
+      file: ./proto/cosmos/upgrade/v1beta1/tx.proto
+      messages:
+        - MsgSoftwareUpgrade
+        - MsgCancelUpgrade
+    cosmos.staking.v1beta1:
+      file: ./proto/cosmos/staking/v1beta1/tx.proto
+      messages:
+        - MsgCreateValidator
+        - MsgEditValidator
+        - MsgDelegate
+        - MsgBeginRedelegate
+        - MsgUndelegate
+        - MsgCancelUnbondingDelegation
 dataSources:
   - kind: cosmos/Runtime
-    startBlock: 2720090
+    startBlock: 2731890 #MsgUnjail
     mapping:
       file: ./dist/index.js
       handlers:
