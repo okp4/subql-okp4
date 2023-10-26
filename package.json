@@ -57,7 +57,7 @@
         "typescript": "^5.2.2"
     },
     "dependencies": {
-        "@subql/types-cosmos": "^2.2.1",
+        "@subql/types-cosmos": "^3.1.0",
         "@types/node": "^20.8.9",
         "pino": "^8.16.1",
         "ts-proto": "^1.157.0",
