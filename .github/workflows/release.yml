@@ -40,7 +40,7 @@ jobs:
       - name: Release project
         uses: cycjimmy/semantic-release-action@v4
         with:
-          semantic_version: 19.0.2
+          semantic_version: 22.0.5
           branch: main
           extra_plugins: |
             @semantic-release/changelog@6.0.3
