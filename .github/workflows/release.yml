@@ -43,10 +43,10 @@ jobs:
           semantic_version: 19.0.2
           branch: main
           extra_plugins: |
-            @semantic-release/changelog
-            @semantic-release/git
-            @semantic-release/npm
-            @google/semantic-release-replace-plugin
+            @semantic-release/changelog@6.0.3
+            @semantic-release/git@10.0.1
+            @semantic-release/npm@11.0.0
+            @google/semantic-release-replace-plugin@1.2.7
           extends: |
             conventional-changelog-conventionalcommits@6.1.0
         env:
