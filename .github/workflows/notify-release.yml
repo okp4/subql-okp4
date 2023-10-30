@@ -1,0 +1,49 @@
+name: Notify release
+
+on:
+  release:
+    types: [published]
+
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The version's tag to notify
+        required: true
+        type: string
+
+concurrency:
+  group: notify-release-${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.event.release.tag_name }}
+  cancel-in-progress: true
+
+jobs:
+  check-permissions:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Not authorized
+        if: ${{ github.event_name == 'workflow_dispatch' && github.actor != env.AUTH_USER }}
+        run: |
+          echo "Error: Only $AUTH_USER can trigger this workflow."
+          exit 1
+    env:
+      AUTH_USER: "bot-anik"
+
+  notify-discord:
+    runs-on: ubuntu-22.04
+    needs:
+      - check-permissions
+    steps:
+      - name: Notify Discord
+        uses: fjogeleit/http-request-action@v1
+        with:
+          url: ${{ secrets.OKP4_DISCORD_WEBHOOK }}
+          method: "POST"
+          customHeaders: '{"Content-Type": "application/json"}'
+          data: |-
+            {
+              "avatar_url":"https://avatars.githubusercontent.com/u/98603954?v=4",
+              "username":"Bot Anik",
+              "content":"🚨 A new version of @${{ env.REPOSITORY }} ${{ env.TAG_NAME }} has been released! 🎉\n\n👉 Changelog: https://github.com/${{ env.REPOSITORY }}/releases/tag/${{ env.TAG_NAME }}\n👉 Official repo: https://github.com/${{ env.REPOSITORY }}"
+            }
+    env:
+      REPOSITORY: ${{github.repository}}
+      TAG_NAME: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.event.release.tag_name }}
