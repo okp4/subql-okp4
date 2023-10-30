@@ -4,13 +4,33 @@ on:
   push:
     tags: ["v*"]
 
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: The version's tag to deploy
+        required: true
+        type: string
+
 concurrency:
   group: deploy-${{ github.ref }}
   cancel-in-progress: true
 
 jobs:
+  check-permissions:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Not authorized
+        if: ${{ github.event_name == 'workflow_dispatch' && github.actor != env.AUTH_USER }}
+        run: |
+          echo "Error: Only $AUTH_USER can trigger this workflow."
+          exit 1
+    env:
+      AUTH_USER: "bot-anik"
+
   deploy-on-ipfs:
     runs-on: ubuntu-22.04
+    needs:
+      - check-permissions
     env:
       SUBQL_ACCESS_TOKEN: ${{ secrets.SUBQL_ACCESS_TOKEN }}
     outputs:
@@ -23,6 +43,8 @@ jobs:
 
       - name: Check out repository
         uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.ref }}
 
       - name: Patch startBlock to 1
         uses: mikefarah/yq@v4.35.2
@@ -54,7 +76,9 @@ jobs:
 
   deploy-on-subquery-managed-service:
     runs-on: ubuntu-22.04
-    needs: deploy-on-ipfs
+    needs:
+      - check-permissions
+      - deploy-on-ipfs
     env:
       SUBQL_ACCESS_TOKEN: ${{ secrets.SUBQL_ACCESS_TOKEN }}
       IPFS_CID: ${{ needs.deploy-on-ipfs.outputs.ipfs-cid }}
