@@ -37,18 +37,20 @@ jobs:
         with:
           node-version: 18.17
 
+      - name: Fetch dependencies
+        run: |
+          yarn --frozen-lockfile
+
       - name: Release project
-        uses: cycjimmy/semantic-release-action@v4
-        with:
-          semantic_version: 22.0.5
-          branch: main
-          extra_plugins: |
-            @semantic-release/changelog@6.0.3
-            @semantic-release/git@10.0.1
-            @semantic-release/npm@11.0.0
-            @google/semantic-release-replace-plugin@1.2.7
-          extends: |
-            conventional-changelog-conventionalcommits@6.1.0
+        run: >-
+          npx
+          -p "@semantic-release/changelog@6.0.3"
+          -p "@semantic-release/git@10.0.1"
+          -p "@semantic-release/npm@11.0.0"
+          -p "@google/semantic-release-replace-plugin@1.2.7"
+          -p "conventional-changelog-conventionalcommits@6.1.0"
+          -p "semantic-release@22.0.5"
+          -- "semantic-release"
         env:
           GITHUB_TOKEN: ${{ secrets.OKP4_TOKEN }}
           GIT_AUTHOR_NAME: ${{ secrets.OKP4_BOT_GIT_AUTHOR_NAME }}
