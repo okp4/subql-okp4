@@ -1,6 +1,6 @@
 specVersion: 1.0.0
 name: subql-okp4
-version: 0.1.0
+version: 1.0.0
 runner:
   node:
     name: "@subql/node-cosmos"

@@ -1,6 +1,6 @@
 {
     "name": "@okp4/subql-okp4",
-    "version": "0.1.0",
+    "version": "1.0.0",
     "private": false,
     "description": "SubQuery Project for the OKP4 protocol",
     "main": "dist/index.js",
