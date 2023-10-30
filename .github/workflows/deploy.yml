@@ -82,6 +82,7 @@ jobs:
         run: |
           yarn subql deployment:deploy \
             -d \
+            --disableHistorical \
             --ipfsCID="$IPFS_CID" \
             --projectName="${{ matrix.project.name }}" \
             --org="${{ matrix.project.org }}" \
