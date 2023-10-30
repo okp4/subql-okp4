@@ -9,6 +9,8 @@ plugins:
   - - "@semantic-release/changelog"
     - changelogFile: CHANGELOG.md
       changelogTitle: "# okp4-subql changelog"
+  - - "@semantic-release/exec"
+    - prepareCmd: yarn prettier CHANGELOG.md --write
   - - "@semantic-release/npm"
     - npmPublish: false
       tarballDir: "false"
