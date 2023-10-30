@@ -16,8 +16,8 @@ plugins:
   - - "@google/semantic-release-replace-plugin"
     - replacements:
         - files: [project.yaml]
-          from: 'version: v(\d+\.\d+\.\d+)'
-          to: "version: v${nextRelease.version}"
+          from: 'version: (\d+\.\d+\.\d+)'
+          to: "version: ${nextRelease.version}"
           countMatches: true
           results:
             - file: project.yaml
