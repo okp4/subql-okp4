@@ -3469,7 +3469,7 @@
     vm2 "^3.9.9"
     yargs "^16.2.0"
 
-"@subql/testing@2.1.0", "@subql/testing@latest":
+"@subql/testing@2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@subql/testing/-/testing-2.1.0.tgz#3b7212bb67f2cb0934ef166d9c3ec46448aed030"
   integrity sha512-MACwwB1LF3QrsDg7cQvbEcrwgb3D/gHRU4x//k4PnVaxihzEBniBojOZ+2ddVizVdAg1DGR3eDnjsS8V9PItwQ==
