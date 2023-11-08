@@ -3529,15 +3529,6 @@
     "@cosmjs/stargate" "^0.30.1"
     "@subql/types-core" "^0.3.0"
 
-"@subql/types-cosmos@^2.2.1":
-  version "2.2.1"
-  resolved "https://registry.yarnpkg.com/@subql/types-cosmos/-/types-cosmos-2.2.1.tgz#e7e2d56f41f8ee71440c181bc613c0a0371b0369"
-  integrity sha512-ni/10F9b37F+2OKYoKLtXvDpat+KCctvagXRTFuMwFwBxpbgZdwCkIZzTROHUnO4a7vT3aZa8P5EoZbc6Xn1xw==
-  dependencies:
-    "@cosmjs/cosmwasm-stargate" "^0.30.1"
-    "@cosmjs/proto-signing" "^0.30.1"
-    "@cosmjs/stargate" "^0.30.1"
-
 "@subql/types-ethereum@3.2.0":
   version "3.2.0"
   resolved "https://registry.yarnpkg.com/@subql/types-ethereum/-/types-ethereum-3.2.0.tgz#63a18d2c6f07b82aef737ddf38396ceabc98a875"
