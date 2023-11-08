@@ -36,15 +36,16 @@ jobs:
     outputs:
       ipfs-cid: ${{ steps.ipfs-upload.outputs.ipfs-cid }}
     steps:
-      - name: Setup node environment (for deployment)
-        uses: actions/setup-node@v4
-        with:
-          node-version: 18.18
-
       - name: Check out repository
         uses: actions/checkout@v4
         with:
           ref: ${{ github.event_name == 'workflow_dispatch' && github.event.inputs.tag || github.ref }}
+
+      - name: Setup node environment (for deployment)
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18.18
+          cache: yarn
 
       - name: Patch startBlock to 1
         uses: mikefarah/yq@v4.40.1
@@ -90,13 +91,14 @@ jobs:
             name: "nemeton-1"
             endpoint: "https://api.testnet.okp4.network/rpc"
     steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
       - name: Setup node environment (for deployment)
         uses: actions/setup-node@v4
         with:
           node-version: 18.18
-
-      - name: Check out repository
-        uses: actions/checkout@v4
+          cache: yarn
 
       - name: Fetch dependencies
         run: |
