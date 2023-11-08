@@ -35,7 +35,7 @@ jobs:
 
       - uses: actions/setup-node@v4
         with:
-          node-version: 18.17
+          node-version: 18.18
 
       - name: Fetch dependencies
         run: |

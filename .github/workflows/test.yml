@@ -20,7 +20,7 @@ jobs:
       - name: Setup node environment (for building)
         uses: actions/setup-node@v4
         with:
-          node-version: 18.16
+          node-version: 18.18
 
       - name: Check out repository
         uses: actions/checkout@v4
@@ -43,7 +43,7 @@ jobs:
       - name: Setup node environment (for building)
         uses: actions/setup-node@v4
         with:
-          node-version: 18.16
+          node-version: 18.18
 
       - name: Check out repository
         uses: actions/checkout@v4

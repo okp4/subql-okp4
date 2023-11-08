@@ -29,7 +29,7 @@
         "web": "https://okp4.network"
     },
     "engines": {
-        "node": "^18.16",
+        "node": "^18.18",
         "yarn": "^1.22"
     },
     "license": "BSD-3-Clause",

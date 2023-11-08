@@ -91,7 +91,7 @@ jobs:
       - name: Setup node environment (for building)
         uses: actions/setup-node@v4
         with:
-          node-version: 18.16
+          node-version: 18.18
 
       - name: Fetch dependencies
         run: |
@@ -122,7 +122,7 @@ jobs:
       - name: Setup node environment (for linting)
         uses: actions/setup-node@v4
         with:
-          node-version: 18.16
+          node-version: 18.18
 
       - name: Fetch dependencies
         run: |
