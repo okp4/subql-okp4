@@ -1,3 +1,5 @@
+[![okp4 / subquery banner](./etc/okp4-subquery-banner.webp)](https://explorer.subquery.network/subquery/okp4/nemeton-1)
+
 # SubQL-OKP4
 
 > 🔁 Subquery indexer for the [OKP4 protocol](https://okp4.network).
