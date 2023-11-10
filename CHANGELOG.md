@@ -1,5 +1,7 @@
 # okp4-subql changelog
 
+## [1.0.1](https://github.com/okp4/subql-okp4/compare/v1.0.0...v1.0.1) (2023-11-10)
+
 ## 1.0.0 (2023-10-30)
 
 ### Features
