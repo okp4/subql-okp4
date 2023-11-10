@@ -34,7 +34,6 @@ plugins:
   - - "@semantic-release/npm"
     - npmPublish: false
       tarballDir: "false"
-  - "@semantic-release/github"
   - - "@google/semantic-release-replace-plugin"
     - replacements:
         - files: [project.yaml]
@@ -46,6 +45,22 @@ plugins:
               hasChanged: true
               numMatches: 1
               numReplacements: 1
+  - - "@semantic-release/exec"
+    - prepareCmd: |
+        yarn prepack
+  - - "@semantic-release/github"
+    - assets:
+        - label: Packaged JS Code
+          path:
+            - dist/index.js
+            - package.json
+            - project.yaml
+            - schema.graphql
+            - README.md
+            - CHANGELOG.md
+            - LICENSE
+        - label: Schema
+          path: schema.graphql
   - - "@semantic-release/git"
     - assets:
         - CHANGELOG.md
