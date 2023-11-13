@@ -2874,7 +2874,7 @@
     "@substrate/ss58-registry" "^1.43.0"
     tslib "^2.6.2"
 
-"@polkadot/util-crypto@^12.2.1":
+"@polkadot/util-crypto@^12.2.1", "@polkadot/util-crypto@^12.5.1":
   version "12.5.1"
   resolved "https://registry.yarnpkg.com/@polkadot/util-crypto/-/util-crypto-12.5.1.tgz#1753b23abfb9d72db950399ef65b0cbe5bef9f2f"
   integrity sha512-Y8ORbMcsM/VOqSG3DgqutRGQ8XXK+X9M3C8oOEI2Tji65ZsXbh9Yh+ryPLM0oBp/9vqOXjkLgZJbbVuQceOw0A==
@@ -2890,7 +2890,7 @@
     "@scure/base" "^1.1.3"
     tslib "^2.6.2"
 
-"@polkadot/util@12.5.1", "@polkadot/util@^12.2.1":
+"@polkadot/util@12.5.1", "@polkadot/util@^12.2.1", "@polkadot/util@^12.5.1":
   version "12.5.1"
   resolved "https://registry.yarnpkg.com/@polkadot/util/-/util-12.5.1.tgz#f4e7415600b013d3b69527aa88904acf085be3f5"
   integrity sha512-fDBZL7D4/baMG09Qowseo884m3QBzErGkRWNBId1UjWR99kyex+cIY9fOSzmuQxo6nLdJlLHw1Nz2caN3+Bq0A==
@@ -3248,10 +3248,10 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/cli@4.2.0":
-  version "4.2.0"
-  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.2.0.tgz#28f1138ea2fe240a17ade8e7622815642ff0212c"
-  integrity sha512-AriDJYGfEuIM4QpOh7wF5CL9SqHw08xg0KuI44WxyGaeBFP5kcvLX/hokUOFlNRQG49s9Ev3ExG2qACuEwpC2Q==
+"@subql/cli@4.2.1":
+  version "4.2.1"
+  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.2.1.tgz#a8ff6ca3b8fd4572d8b634d78570aa99fe38164d"
+  integrity sha512-D3qoiwP88Z5JJrkVqU6kmZv/LTxg33eKFHb2oNryFlr3cCneHL9XzgdE4JRy/55b1WGTnncQ193XsLT1ydmumQ==
   dependencies:
     "@oclif/core" "^2.15.0"
     "@subql/common" "3.3.0"
@@ -3263,7 +3263,7 @@
     "@subql/common-near" "^3.0.0"
     "@subql/common-stellar" "^3.0.0"
     "@subql/common-substrate" "3.2.0"
-    "@subql/utils" "2.5.0"
+    "@subql/utils" "2.6.0"
     algosdk "^1.19.0"
     boxen "5.1.2"
     cli-ux "^6.0.9"
@@ -3577,6 +3577,27 @@
   dependencies:
     "@polkadot/util" "^12.2.1"
     "@polkadot/util-crypto" "^12.2.1"
+    "@subql/x-sequelize" "6.32.0-0.0.2"
+    ansi-styles "^6.1.0"
+    axios "^0.27.1"
+    chalk "^4.1.2"
+    detect-port "^1.3.0"
+    flatted "^3.2.5"
+    graphql "^15.8.0"
+    graphql-tag "^2.12.6"
+    lodash "^4.17.21"
+    pino "^6.13.3"
+    rotating-file-stream "^3.0.2"
+    semver "^7.5.2"
+    tar "^6.1.11"
+
+"@subql/utils@2.6.0":
+  version "2.6.0"
+  resolved "https://registry.yarnpkg.com/@subql/utils/-/utils-2.6.0.tgz#986bf1b95e2c9d4843f3d0380f38e4ca50a56427"
+  integrity sha512-3eIU9cX64SMo2911AysA1Ea6auOtVzX1g9Khhpjvet/hXHSk1G9KpBt8uOeX8rMnP7vjcSGNikOEQ/aIf0/lng==
+  dependencies:
+    "@polkadot/util" "^12.5.1"
+    "@polkadot/util-crypto" "^12.5.1"
     "@subql/x-sequelize" "6.32.0-0.0.2"
     ansi-styles "^6.1.0"
     axios "^0.27.1"
@@ -9127,17 +9148,10 @@ node-fetch@2.6.7, "node-fetch@https://registry.npmjs.org/@achingbrain/node-fetch
   version "2.6.7"
   resolved "https://registry.npmjs.org/@achingbrain/node-fetch/-/node-fetch-2.6.7.tgz#1b5d62978f2ed07b99444f64f0df39f960a6d34d"
 
-node-fetch@^2.6.1, node-fetch@^2.6.8:
+node-fetch@^2.6.1, node-fetch@^2.6.12, node-fetch@^2.6.8:
   version "2.7.0"
   resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.7.0.tgz#d0f0fa6e3e2dc1d27efcd8ad99d550bda94d187d"
   integrity sha512-c4FRfUm/dbcWZ7U+1Wq0AwCyFL+3nt2bEw05wfxSz+DWpWsitgmSgYmy2dQdWyKC1694ELPqMs/YzUSNozLt8A==
-  dependencies:
-    whatwg-url "^5.0.0"
-
-node-fetch@^2.6.12:
-  version "2.6.12"
-  resolved "https://registry.yarnpkg.com/node-fetch/-/node-fetch-2.6.12.tgz#02eb8e22074018e3d5a83016649d04df0e348fba"
-  integrity sha512-C/fGU2E8ToujUivIO0H+tpQ6HWo4eEmchoPIoXtxCrVghxdKq+QOHqEZW7tuP3KlV3bC8FRMO5nMCC7Zm1VP6g==
   dependencies:
     whatwg-url "^5.0.0"
 
