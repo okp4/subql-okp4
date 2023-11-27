@@ -3245,13 +3245,13 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/cli@4.2.1":
-  version "4.2.1"
-  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.2.1.tgz#a8ff6ca3b8fd4572d8b634d78570aa99fe38164d"
-  integrity sha512-D3qoiwP88Z5JJrkVqU6kmZv/LTxg33eKFHb2oNryFlr3cCneHL9XzgdE4JRy/55b1WGTnncQ193XsLT1ydmumQ==
+"@subql/cli@4.2.2":
+  version "4.2.2"
+  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.2.2.tgz#c87d6e607afaa25fae60e15b2208b2391543f199"
+  integrity sha512-PEI2a05DFTWeDPHIC/lPBNs69KuEZqvDNlKHH6ZYFTL1xExvhfOl3X6GAolG/pX5pdiVMyNNLzLTqB3MOD59FQ==
   dependencies:
     "@oclif/core" "^2.15.0"
-    "@subql/common" "3.3.0"
+    "@subql/common" "3.3.1-0"
     "@subql/common-algorand" "^3.0.0"
     "@subql/common-concordium" "^3.1.3"
     "@subql/common-cosmos" "^3.0.1"
@@ -3260,7 +3260,7 @@
     "@subql/common-near" "^3.0.0"
     "@subql/common-stellar" "^3.0.0"
     "@subql/common-substrate" "3.2.0"
-    "@subql/utils" "2.6.0"
+    "@subql/utils" "2.6.1-0"
     algosdk "^1.19.0"
     boxen "5.1.2"
     cli-ux "^6.0.9"
@@ -3582,27 +3582,6 @@
   integrity sha512-uDkB9ISj/X+di2KOm4TMUkxTV7eVmHRSBRz1aDxisg/DlbOVGmK7dZReMn9yz5RY/4gDRfUfdbd91iS1Xu8SzQ==
   dependencies:
     "@subql/types-core" "0.3.0"
-
-"@subql/utils@2.6.0":
-  version "2.6.0"
-  resolved "https://registry.yarnpkg.com/@subql/utils/-/utils-2.6.0.tgz#986bf1b95e2c9d4843f3d0380f38e4ca50a56427"
-  integrity sha512-3eIU9cX64SMo2911AysA1Ea6auOtVzX1g9Khhpjvet/hXHSk1G9KpBt8uOeX8rMnP7vjcSGNikOEQ/aIf0/lng==
-  dependencies:
-    "@polkadot/util" "^12.5.1"
-    "@polkadot/util-crypto" "^12.5.1"
-    "@subql/x-sequelize" "6.32.0-0.0.2"
-    ansi-styles "^6.1.0"
-    axios "^0.27.1"
-    chalk "^4.1.2"
-    detect-port "^1.3.0"
-    flatted "^3.2.5"
-    graphql "^15.8.0"
-    graphql-tag "^2.12.6"
-    lodash "^4.17.21"
-    pino "^6.13.3"
-    rotating-file-stream "^3.0.2"
-    semver "^7.5.2"
-    tar "^6.1.11"
 
 "@subql/utils@2.6.1-0":
   version "2.6.1-0"
@@ -4592,7 +4571,7 @@ axios@^0.21.2:
   dependencies:
     follow-redirects "^1.14.0"
 
-axios@^0.27.1, axios@^0.27.2:
+axios@^0.27.2:
   version "0.27.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
   integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
