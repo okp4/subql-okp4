@@ -1866,12 +1866,30 @@
   resolved "https://registry.yarnpkg.com/@eslint/js/-/js-8.54.0.tgz#4fab9a2ff7860082c304f750e94acd644cf984cf"
   integrity sha512-ut5V+D+fOoWPgGGNj83GGjnntO39xDy6DWxO0wb7Jp3DcMX0TfIqdzHF85VTQkerdyGmuuMD9AKAo5KiNlf/AQ==
 
+"@ethereumjs/common@^3.2.0":
+  version "3.2.0"
+  resolved "https://registry.yarnpkg.com/@ethereumjs/common/-/common-3.2.0.tgz#b71df25845caf5456449163012074a55f048e0a0"
+  integrity sha512-pksvzI0VyLgmuEF2FA/JR/4/y6hcPq8OUail3/AvycBaW1d5VSauOZzqGvJ3RTmR4MU35lWE8KseKOsEhrFRBA==
+  dependencies:
+    "@ethereumjs/util" "^8.1.0"
+    crc-32 "^1.2.0"
+
 "@ethereumjs/rlp@^4.0.1":
   version "4.0.1"
   resolved "https://registry.yarnpkg.com/@ethereumjs/rlp/-/rlp-4.0.1.tgz#626fabfd9081baab3d0a3074b0c7ecaf674aaa41"
   integrity sha512-tqsQiBQDQdmPWE1xkkBq4rlSW5QZpLOUJ5RJh2/9fug+q9tnUhuZoVLk7s0scUIKTOzEtR72DFBXI4WiZcMpvw==
 
-"@ethereumjs/util@^8.0.6":
+"@ethereumjs/tx@^4.2.0":
+  version "4.2.0"
+  resolved "https://registry.yarnpkg.com/@ethereumjs/tx/-/tx-4.2.0.tgz#5988ae15daf5a3b3c815493bc6b495e76009e853"
+  integrity sha512-1nc6VO4jtFd172BbSnTnDQVr9IYBFl1y4xPzZdtkrkKIncBCkdbgfdRV+MiTkJYAtTxvV12GRZLqBFT1PNK6Yw==
+  dependencies:
+    "@ethereumjs/common" "^3.2.0"
+    "@ethereumjs/rlp" "^4.0.1"
+    "@ethereumjs/util" "^8.1.0"
+    ethereum-cryptography "^2.0.0"
+
+"@ethereumjs/util@^8.0.6", "@ethereumjs/util@^8.1.0":
   version "8.1.0"
   resolved "https://registry.yarnpkg.com/@ethereumjs/util/-/util-8.1.0.tgz#299df97fb6b034e0577ce9f94c7d9d1004409ed4"
   integrity sha512-zQ0IqbdX8FZ9aw11vP+dZkKDkS+kgIvQPHnSAXzP9pLu+Rfu3D3XEeLbicvoXJTYnhZiPmsZUxgdzXwNKxRPbA==
@@ -2651,6 +2669,14 @@
   resolved "https://registry.yarnpkg.com/@lukeed/csprng/-/csprng-1.1.0.tgz#1e3e4bd05c1cc7a0b2ddbd8a03f39f6e4b5e6cfe"
   integrity sha512-Z7C/xXCiGWsg0KuKsHTKJxbWhpI3Vs5GwLfOean7MGyVFGqdRgBbAjOCh6u4bbjPc/8MJ2pZmK/0DLdCbivLDA==
 
+"@metamask/abi-utils@^2.0.2":
+  version "2.0.2"
+  resolved "https://registry.yarnpkg.com/@metamask/abi-utils/-/abi-utils-2.0.2.tgz#ad394e9cb8a95ac177cad942daadd88a246c0de8"
+  integrity sha512-B/A1dY/w4F/t6cDHUscklO6ovb/ztFsrsTXFd8QlqSByk/vyy+QbPE3VVpmmyI/7RX+PA1AJcvBdzCIz+r9dVQ==
+  dependencies:
+    "@metamask/utils" "^8.0.0"
+    superstruct "^1.0.3"
+
 "@metamask/eth-sig-util@5.1.0":
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/@metamask/eth-sig-util/-/eth-sig-util-5.1.0.tgz#a47f62800ee1917fef976ba67544a0ccd7d1bd6b"
@@ -2662,6 +2688,32 @@
     ethjs-util "^0.1.6"
     tweetnacl "^1.0.3"
     tweetnacl-util "^0.15.1"
+
+"@metamask/eth-sig-util@^7.0.0":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@metamask/eth-sig-util/-/eth-sig-util-7.0.1.tgz#ad3227d6120f15f9293478de7dd9685a5c329586"
+  integrity sha512-59GSrMyFH2fPfu7nKeIQdZ150zxXNNhAQIUaFRUW+MGtVA4w/ONbiQobcRBLi+jQProfIyss51G8pfLPcQ0ylg==
+  dependencies:
+    "@ethereumjs/util" "^8.1.0"
+    "@metamask/abi-utils" "^2.0.2"
+    "@metamask/utils" "^8.1.0"
+    ethereum-cryptography "^2.1.2"
+    tweetnacl "^1.0.3"
+    tweetnacl-util "^0.15.1"
+
+"@metamask/utils@^8.0.0", "@metamask/utils@^8.1.0":
+  version "8.2.1"
+  resolved "https://registry.yarnpkg.com/@metamask/utils/-/utils-8.2.1.tgz#2f8b60c3b3c49423ca9d15061bb797464440e385"
+  integrity sha512-dlnpow8r0YHDDL1xKCEwUoTGOAo9icdv+gaJG0EbgDnkD/BDqW2eH1XMtm9i7rPaiHWo/aLtcrh9WBhkCq/viw==
+  dependencies:
+    "@ethereumjs/tx" "^4.2.0"
+    "@noble/hashes" "^1.3.1"
+    "@scure/base" "^1.1.3"
+    "@types/debug" "^4.1.7"
+    debug "^4.3.4"
+    pony-cause "^2.1.10"
+    semver "^7.5.4"
+    superstruct "^1.0.3"
 
 "@nestjs/common@^9.4.0":
   version "9.4.3"
@@ -2717,6 +2769,13 @@
   dependencies:
     "@noble/hashes" "1.3.0"
 
+"@noble/curves@1.1.0", "@noble/curves@~1.1.0":
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/@noble/curves/-/curves-1.1.0.tgz#f13fc667c89184bc04cccb9b11e8e7bae27d8c3d"
+  integrity sha512-091oBExgENk/kGj3AZmtBDMpxQPDtxQABR2B9lb1JbVTs6ytdzZNwvhxQ4MWasRNEzlbEH8jCWFCwhF/Obj5AA==
+  dependencies:
+    "@noble/hashes" "1.3.1"
+
 "@noble/curves@^1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@noble/curves/-/curves-1.2.0.tgz#92d7e12e4e49b23105a2555c6984d41733d65c35"
@@ -2734,15 +2793,15 @@
   resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.3.0.tgz#085fd70f6d7d9d109671090ccae1d3bec62554a1"
   integrity sha512-ilHEACi9DwqJB0pw7kv+Apvh50jiiSyR/cQ3y4W7lOR5mhvn/50FLUfsnfJz0BDZtl/RR16kXvptiv6q1msYZg==
 
-"@noble/hashes@1.3.2", "@noble/hashes@^1", "@noble/hashes@^1.0.0", "@noble/hashes@^1.3.2":
-  version "1.3.2"
-  resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.3.2.tgz#6f26dbc8fbc7205873ce3cee2f690eba0d421b39"
-  integrity sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ==
-
-"@noble/hashes@~1.3.0":
+"@noble/hashes@1.3.1", "@noble/hashes@~1.3.0":
   version "1.3.1"
   resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.3.1.tgz#8831ef002114670c603c458ab8b11328406953a9"
   integrity sha512-EbqwksQwz9xDRGfDST86whPBgM65E0OH/pCgqW0GBVzO22bNE+NuIbeTb714+IfSjU3aRk47EUvXIb5bTsenKA==
+
+"@noble/hashes@1.3.2", "@noble/hashes@^1", "@noble/hashes@^1.0.0", "@noble/hashes@^1.3.1", "@noble/hashes@^1.3.2", "@noble/hashes@~1.3.1":
+  version "1.3.2"
+  resolved "https://registry.yarnpkg.com/@noble/hashes/-/hashes-1.3.2.tgz#6f26dbc8fbc7205873ce3cee2f690eba0d421b39"
+  integrity sha512-MVC8EAQp7MvEcm30KWENFjgR+Mkmf+D189XJTkFIlwohU5hcBbn1ZkKq7KVTi2Hme3PMGF390DaL52beVrIihQ==
 
 "@nodelib/fs.scandir@2.1.5":
   version "2.1.5"
@@ -3185,6 +3244,15 @@
     "@noble/hashes" "~1.3.0"
     "@scure/base" "~1.1.0"
 
+"@scure/bip32@1.3.1":
+  version "1.3.1"
+  resolved "https://registry.yarnpkg.com/@scure/bip32/-/bip32-1.3.1.tgz#7248aea723667f98160f593d621c47e208ccbb10"
+  integrity sha512-osvveYtyzdEVbt3OfwwXFr4P2iVBL5u1Q3q4ONBfDY/UpOuXmOlbgwc1xECEboY8wIays8Yt6onaWMUdUbfl0A==
+  dependencies:
+    "@noble/curves" "~1.1.0"
+    "@noble/hashes" "~1.3.1"
+    "@scure/base" "~1.1.0"
+
 "@scure/bip39@1.2.0":
   version "1.2.0"
   resolved "https://registry.yarnpkg.com/@scure/bip39/-/bip39-1.2.0.tgz#a207e2ef96de354de7d0002292ba1503538fc77b"
@@ -3193,7 +3261,7 @@
     "@noble/hashes" "~1.3.0"
     "@scure/base" "~1.1.0"
 
-"@scure/bip39@^1.1.0":
+"@scure/bip39@1.2.1", "@scure/bip39@^1.1.0":
   version "1.2.1"
   resolved "https://registry.yarnpkg.com/@scure/bip39/-/bip39-1.2.1.tgz#5cee8978656b272a917b7871c981e0541ad6ac2a"
   integrity sha512-Z3/Fsz1yr904dduJD0NpiyRHhRYHdcnyh73FZWiV+/qhWi83wNJ3NWolYqCEN+ZWsUz2TWwajJggcRE9r1zUYg==
@@ -3230,14 +3298,14 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@subql/apollo-links@^1.2.2":
-  version "1.2.2"
-  resolved "https://registry.yarnpkg.com/@subql/apollo-links/-/apollo-links-1.2.2.tgz#3be385b44fda926216f94ad1616b21c64884769c"
-  integrity sha512-iXUSfHX4qwVBN6aCa5oPGS0vRX4SZCDFFQk/ZcVEv6fgsBtrhSiwf6UZ9vlG7E12C3fMLeUMIh883WJe1LcMzQ==
+"@subql/apollo-links@^1.2.3":
+  version "1.2.3"
+  resolved "https://registry.yarnpkg.com/@subql/apollo-links/-/apollo-links-1.2.3.tgz#4e77659ed32770d91b7c8c3eb43f5a7bcf27f2ff"
+  integrity sha512-k9y76GErUWoXojCzGHHXAamLsrGyHR7eCjn6J76ZAabzWwZu3fBsLXX7/hud2Xdex2vYvVxm/OxuCxOhHT07fA==
   dependencies:
     "@metamask/eth-sig-util" "5.1.0"
+    "@subql/network-support" "0.1.0"
     apollo-link-error "^1.1.13"
-    axios "^0.27.2"
     buffer "^6.0.3"
     cross-fetch "^4.0.0"
     ethers "^5.6.8"
@@ -3423,16 +3491,27 @@
     semver "^7.5.2"
     update-notifier "5.1.0"
 
-"@subql/node-core@^6.4.2":
-  version "6.4.2"
-  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-6.4.2.tgz#d83db2b117c5ec316be057f29d0c4d3587d60099"
-  integrity sha512-aXFQI8LSFIqg0fiCPr52ScFdKtd7IV1nIGXn3BZWJu8NX5XguU3ABNYt56cEitrLh6io/f+q5zcbL/Drd4N0/A==
+"@subql/network-support@0.1.0":
+  version "0.1.0"
+  resolved "https://registry.yarnpkg.com/@subql/network-support/-/network-support-0.1.0.tgz#80ce4a9f52878e9b84ba7faa4c0c77edd70eed24"
+  integrity sha512-51UTa/udOHUwKs/Jjl8h/yl0wEDvm1yeaD2ccUnqg+Ue4JFqiEwZ8HhnMwywxyAhTL72sGH+TKkPNYF/kVNxbA==
+  dependencies:
+    "@metamask/eth-sig-util" "^7.0.0"
+    cross-fetch "^4.0.0"
+    js-base64 "^3.7.5"
+    jwt-decode "^3.1.2"
+    lru-cache "^10.0.1"
+
+"@subql/node-core@^7.0.0":
+  version "7.0.1"
+  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.0.1.tgz#218b09dd1dcde543d7526a0bb8170588d06f6f52"
+  integrity sha512-KJJnfngY6MwWP/zotcFGOopkkKNlvxaRwFnJKYlgom0k/wNCUQcbQ1l6ruLNa+1njFqriSu76NGiwKHLV5Q39Q==
   dependencies:
     "@apollo/client" "^3.7.16"
     "@nestjs/common" "^9.4.0"
     "@nestjs/event-emitter" "^2.0.0"
     "@nestjs/schedule" "^3.0.1"
-    "@subql/apollo-links" "^1.2.2"
+    "@subql/apollo-links" "^1.2.3"
     "@subql/common" "3.3.1-0"
     "@subql/testing" "2.1.0"
     "@subql/types" "3.3.0"
@@ -3452,10 +3531,10 @@
     vm2 "^3.9.19"
     yargs "^16.2.0"
 
-"@subql/node-cosmos@3.4.1":
-  version "3.4.1"
-  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.4.1.tgz#34869427fd8adff8a18a06e35d716f1d4370f83d"
-  integrity sha512-49e/tOYk/GF8Bs/yHAbU42Mkq4u2rTbYEulNfoscELWr4CsvQReDWGO00Yg5lK2Czer5Mbib4kjqx7lRPjGOeQ==
+"@subql/node-cosmos@3.4.2":
+  version "3.4.2"
+  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.4.2.tgz#a18c190140df3db58d2bd3000d9a539cea24ad95"
+  integrity sha512-GZTLlb0U6SYDEHMaLpWs/USIIqZOamqgGKtlVtAWQ4VHqDluTi87ITk7lS2CO/HadHrm7K6F0iWNmkBCbGUSOQ==
   dependencies:
     "@apollo/client" "3.5.8"
     "@cosmjs/cosmwasm-stargate" "^0.30.1"
@@ -3468,7 +3547,7 @@
     "@nestjs/schedule" "^3.0.1"
     "@subql/common" "^3.3.0"
     "@subql/common-cosmos" "3.2.1"
-    "@subql/node-core" "^6.4.2"
+    "@subql/node-core" "^7.0.0"
     "@subql/types-cosmos" "3.2.1"
     cosmjs-types "^0.7.0"
     cron-converter "^1.0.2"
@@ -5496,6 +5575,11 @@ cosmjs-types@^0.9.0:
   resolved "https://registry.yarnpkg.com/cosmjs-types/-/cosmjs-types-0.9.0.tgz#c3bc482d28c7dfa25d1445093fdb2d9da1f6cfcc"
   integrity sha512-MN/yUe6mkJwHnCFfsNPeCfXVhyxHYW6c/xDUzrSbBycYzw++XvWDMJArXp2pLdgD6FQ8DW79vkPjeNKVrXaHeQ==
 
+crc-32@^1.2.0:
+  version "1.2.2"
+  resolved "https://registry.yarnpkg.com/crc-32/-/crc-32-1.2.2.tgz#3cad35a934b8bf71f25ca524b6da51fb7eace2ff"
+  integrity sha512-ROmzCKrTnOwybPcJApAA6WBWij23HVfGVNKqqrZpuyZOHqK2CwHSvpGuyt/UNNvaIjEd8X5IFGp4Mh+Ie1IHJQ==
+
 crc@^3.5.0:
   version "3.8.0"
   resolved "https://registry.yarnpkg.com/crc/-/crc-3.8.0.tgz#ad60269c2c856f8c299e2c4cc0de4556914056c6"
@@ -6315,6 +6399,16 @@ ethereum-cryptography@^2.0.0:
     "@noble/hashes" "1.3.0"
     "@scure/bip32" "1.3.0"
     "@scure/bip39" "1.2.0"
+
+ethereum-cryptography@^2.1.2:
+  version "2.1.2"
+  resolved "https://registry.yarnpkg.com/ethereum-cryptography/-/ethereum-cryptography-2.1.2.tgz#18fa7108622e56481157a5cb7c01c0c6a672eb67"
+  integrity sha512-Z5Ba0T0ImZ8fqXrJbpHcbpAvIswRte2wGNR/KePnu8GbbvgJ47lMxT/ZZPG6i9Jaht4azPDop4HaM00J0J59ug==
+  dependencies:
+    "@noble/curves" "1.1.0"
+    "@noble/hashes" "1.3.1"
+    "@scure/bip32" "1.3.1"
+    "@scure/bip39" "1.2.1"
 
 ethers@^5.6.8, ethers@^5.7.0:
   version "5.7.2"
@@ -9641,6 +9735,11 @@ pkg-dir@^4.2.0:
   dependencies:
     find-up "^4.0.0"
 
+pony-cause@^2.1.10:
+  version "2.1.10"
+  resolved "https://registry.yarnpkg.com/pony-cause/-/pony-cause-2.1.10.tgz#828457ad6f13be401a075dbf14107a9057945174"
+  integrity sha512-3IKLNXclQgkU++2fSi93sQ6BznFuxSLB11HdvZQ6JW/spahf/P1pAHBQEahr20rs0htZW0UDkM1HmA+nZkXKsw==
+
 postgres-array@~2.0.0:
   version "2.0.0"
   resolved "https://registry.yarnpkg.com/postgres-array/-/postgres-array-2.0.0.tgz#48f8fce054fbc69671999329b8834b772652d82e"
@@ -10752,6 +10851,11 @@ strip-json-comments@~2.0.1:
   version "2.0.1"
   resolved "https://registry.yarnpkg.com/strip-json-comments/-/strip-json-comments-2.0.1.tgz#3c531942e908c2697c0ec344858c286c7ca0a60a"
   integrity sha512-4gB8na07fecVVkOI6Rs4e7T6NOTki5EmL7TUduTs6bu3EdnSycntVJ4re8kgZA+wx9IueI2Y11bfbgwtzuE0KQ==
+
+superstruct@^1.0.3:
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/superstruct/-/superstruct-1.0.3.tgz#de626a5b49c6641ff4d37da3c7598e7a87697046"
+  integrity sha512-8iTn3oSS8nRGn+C2pgXSKPI3jmpm6FExNazNpjvqS6ZUJQCej3PUXEKM8NjHBOs54ExM+LPW/FBRhymrdcCiSg==
 
 supports-color@^2.0.0:
   version "2.0.0"
