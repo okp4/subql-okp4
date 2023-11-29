@@ -3502,7 +3502,7 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/node-core@^7.0.0":
+"@subql/node-core@^7.0.1":
   version "7.0.1"
   resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.0.1.tgz#218b09dd1dcde543d7526a0bb8170588d06f6f52"
   integrity sha512-KJJnfngY6MwWP/zotcFGOopkkKNlvxaRwFnJKYlgom0k/wNCUQcbQ1l6ruLNa+1njFqriSu76NGiwKHLV5Q39Q==
@@ -3531,10 +3531,10 @@
     vm2 "^3.9.19"
     yargs "^16.2.0"
 
-"@subql/node-cosmos@3.4.2":
-  version "3.4.2"
-  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.4.2.tgz#a18c190140df3db58d2bd3000d9a539cea24ad95"
-  integrity sha512-GZTLlb0U6SYDEHMaLpWs/USIIqZOamqgGKtlVtAWQ4VHqDluTi87ITk7lS2CO/HadHrm7K6F0iWNmkBCbGUSOQ==
+"@subql/node-cosmos@3.4.3":
+  version "3.4.3"
+  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.4.3.tgz#05b121290704b3441534e74d758bc40e3b615e3d"
+  integrity sha512-CQVUBUDcyuZT9E8AhrJrZ1mpi+GrfzaZQPfaQyBQkxi1sxGBnCfjTx+k5RyLtFcp/UOm07ufVCQClorJDEsELw==
   dependencies:
     "@apollo/client" "3.5.8"
     "@cosmjs/cosmwasm-stargate" "^0.30.1"
@@ -3547,7 +3547,7 @@
     "@nestjs/schedule" "^3.0.1"
     "@subql/common" "^3.3.0"
     "@subql/common-cosmos" "3.2.1"
-    "@subql/node-core" "^7.0.0"
+    "@subql/node-core" "^7.0.1"
     "@subql/types-cosmos" "3.2.1"
     cosmjs-types "^0.7.0"
     cron-converter "^1.0.2"
