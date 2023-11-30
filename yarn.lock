@@ -3313,10 +3313,10 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/cli@4.2.2":
-  version "4.2.2"
-  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.2.2.tgz#c87d6e607afaa25fae60e15b2208b2391543f199"
-  integrity sha512-PEI2a05DFTWeDPHIC/lPBNs69KuEZqvDNlKHH6ZYFTL1xExvhfOl3X6GAolG/pX5pdiVMyNNLzLTqB3MOD59FQ==
+"@subql/cli@4.2.3":
+  version "4.2.3"
+  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.2.3.tgz#89a6a689b0b3ed7e68dc2efb81f6da2df006ec6f"
+  integrity sha512-J+q4kBw8gmQgG6NUG9UXKVgaq8Y0ots525D7wzwRk2PGnaT5bUIkXYOJPb2PclK2pBxLkP0ECaVpTyQI3pJT9g==
   dependencies:
     "@oclif/core" "^2.15.0"
     "@subql/common" "3.3.1-0"
