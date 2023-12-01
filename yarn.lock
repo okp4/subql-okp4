@@ -3611,6 +3611,13 @@
   dependencies:
     package-json-type "^1.0.3"
 
+"@subql/types-core@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.4.0.tgz#56254b559ce357062f19aa22cf020a6477c231c0"
+  integrity sha512-SknwtffckOqLLaWUFOLZCLTRY/3PlwJLEZZMMW/xb0TQBCnixGS8njFWdk3kq+LqeGrnfhpIYS9HrPHsjfqsrQ==
+  dependencies:
+    package-json-type "^1.0.3"
+
 "@subql/types-cosmos@3.2.1":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@subql/types-cosmos/-/types-cosmos-3.2.1.tgz#1edc405bc4a984b4c9935e5a8febe18c1756447d"
@@ -3620,6 +3627,16 @@
     "@cosmjs/proto-signing" "^0.30.1"
     "@cosmjs/stargate" "^0.30.1"
     "@subql/types-core" "^0.3.0"
+
+"@subql/types-cosmos@3.2.2":
+  version "3.2.2"
+  resolved "https://registry.yarnpkg.com/@subql/types-cosmos/-/types-cosmos-3.2.2.tgz#33539f60665f646e3c57fbc71b6e28246a934b2d"
+  integrity sha512-+XnxTSBiFFP97RgVFS94HlerfVfdKXz0omVizLlgHT2S961qRUDt+DaWuzUphv4NvvJJPdn5+5YXtRrrz5P1LA==
+  dependencies:
+    "@cosmjs/cosmwasm-stargate" "^0.30.1"
+    "@cosmjs/proto-signing" "^0.30.1"
+    "@cosmjs/stargate" "^0.30.1"
+    "@subql/types-core" "^0.4.0"
 
 "@subql/types-ethereum@3.2.0":
   version "3.2.0"
