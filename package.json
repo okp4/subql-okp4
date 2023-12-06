@@ -43,7 +43,7 @@
         "@subql/cli": "4.2.3",
         "@subql/node-cosmos": "3.4.4",
         "@subql/testing": "2.1.0",
-        "@types/jest": "^29.5.10",
+        "@types/jest": "^29.5.11",
         "@typescript-eslint/eslint-plugin": "^5.62.0",
         "@typescript-eslint/parser": "^5.62.0",
         "eslint": "^8.55.0",
