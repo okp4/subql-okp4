@@ -48,17 +48,20 @@ plugins:
   - - "@semantic-release/exec"
     - prepareCmd: |
         yarn prepack
+  - - "@semantic-release/exec"
+    - prepareCmd: |
+        tar -cvzf dist/subql-okp4-${nextRelease.version}.tar.gz \
+          dist/index.js \
+          package.json \
+          project.yaml \
+          schema.graphql \
+          README.md \
+          CHANGELOG.md \
+          LICENSE
   - - "@semantic-release/github"
     - assets:
-        - label: Packaged JS Code
-          path:
-            - dist/index.js
-            - package.json
-            - project.yaml
-            - schema.graphql
-            - README.md
-            - CHANGELOG.md
-            - LICENSE
+        - label: Tarball (tar.gz)
+          path: dist/subql-okp4-*.tar.gz
         - label: Schema
           path: schema.graphql
   - - "@semantic-release/git"
