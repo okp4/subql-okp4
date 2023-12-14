@@ -3381,7 +3381,27 @@
     pino "^6.13.3"
     reflect-metadata "^0.1.13"
 
-"@subql/common-cosmos@3.2.1", "@subql/common-cosmos@^3.0.1":
+"@subql/common-cosmos@4.0.0":
+  version "4.0.0"
+  resolved "https://registry.yarnpkg.com/@subql/common-cosmos/-/common-cosmos-4.0.0.tgz#d5fa555bf3cec8e426d85b38a096006672fdaeef"
+  integrity sha512-/biU3nOwk2LqzN3Bufpwqq/Qg9K52FWk9U/UGkSGLpqWLXZO1HtxhjFn78BoJye333IJsrhQCtKzMsit8Dvtsw==
+  dependencies:
+    "@cosmology/telescope" "^0.104.0"
+    "@cosmwasm/ts-codegen" "^0.35.3"
+    "@protobufs/cosmos" "^0.1.0"
+    "@protobufs/cosmos_proto" "^0.0.10"
+    "@protobufs/cosmwasm" "^0.1.1"
+    "@protobufs/gogoproto" "^0.0.10"
+    "@protobufs/google" "^0.0.10"
+    "@protobufs/ibc" "^0.1.0"
+    "@protobufs/tendermint" "^0.0.10"
+    "@subql/common" "^3.3.1"
+    "@subql/types-cosmos" "3.2.2"
+    fs-extra "^11.1.1"
+    js-yaml "^4.1.0"
+    reflect-metadata "^0.1.13"
+
+"@subql/common-cosmos@^3.0.1":
   version "3.2.1"
   resolved "https://registry.yarnpkg.com/@subql/common-cosmos/-/common-cosmos-3.2.1.tgz#8399c7830a5a19d4fe0cad55f29decc316c4cd95"
   integrity sha512-gjwmXbj9CX7/YTBf+opzRCPczlMzV920i+VGRwOCw+6k2z+P28Ia0mJVkWFHQ4+MmUypy+r6JHwg5FAPDbocYw==
@@ -3459,12 +3479,28 @@
     js-yaml "^4.1.0"
     reflect-metadata "^0.1.13"
 
-"@subql/common@3.3.0", "@subql/common@^3.1.1", "@subql/common@^3.2.0", "@subql/common@^3.3.0", "@subql/common@latest":
+"@subql/common@3.3.0", "@subql/common@latest":
   version "3.3.0"
   resolved "https://registry.yarnpkg.com/@subql/common/-/common-3.3.0.tgz#29122a430e34610e34e151b2cc7716b6f37919af"
   integrity sha512-uFPlNSg0LX6wEedUscJRzIccuKKJ30MjQV9u38AStSSknSmhtjhEVCyrgCwh9ve7HrgX0qagkyDs9FbmG32VpQ==
   dependencies:
     "@subql/types-core" "0.3.0"
+    axios "^0.27.2"
+    class-transformer "^0.5.1"
+    class-validator "^0.14.0"
+    fs-extra "^10.1.0"
+    ipfs-http-client "56"
+    js-yaml "^4.1.0"
+    reflect-metadata "^0.1.13"
+    semver "^7.5.2"
+    update-notifier "5.1.0"
+
+"@subql/common@3.3.1", "@subql/common@^3.1.1", "@subql/common@^3.2.0", "@subql/common@^3.3.0", "@subql/common@^3.3.1":
+  version "3.3.1"
+  resolved "https://registry.yarnpkg.com/@subql/common/-/common-3.3.1.tgz#d4038fbed29f857c41ef93704e3e431ba26a8614"
+  integrity sha512-Le3CWDOuH39kPndspYNHdbRx7y7XG0HfVmkzzaMxg1kxebWy7I+YHXJgquhNvgB6AzdoSRsfbhN7ZArBpgq8Ig==
+  dependencies:
+    "@subql/types-core" "0.4.0"
     axios "^0.27.2"
     class-transformer "^0.5.1"
     class-validator "^0.14.0"
@@ -3502,17 +3538,17 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/node-core@^7.0.2":
-  version "7.0.2"
-  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.0.2.tgz#759b97a8f63c43e32faa644e2e579c2193635d7f"
-  integrity sha512-sEPc58/rT/a8EZY3Qb813TsYegCuz/sMLfuhVyTD+9aKzf8JhNFGYWiyJZvlKb+UIKmHWkNzdZe2jR+Apx77BQ==
+"@subql/node-core@^7.0.4":
+  version "7.0.4"
+  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.0.4.tgz#55c243732b3d26b1ad3f1b5a09f7ad97e53984cb"
+  integrity sha512-5bwr3LUMG0DQ14yQk4e4XKRYekiRr+8XwCxFbJTr9/S0YehBkD5IllYg638BgObCw4Pjg1KignMumMWpqgKkoQ==
   dependencies:
     "@apollo/client" "^3.7.16"
     "@nestjs/common" "^9.4.0"
     "@nestjs/event-emitter" "^2.0.0"
     "@nestjs/schedule" "^3.0.1"
     "@subql/apollo-links" "^1.2.3"
-    "@subql/common" "3.3.1-0"
+    "@subql/common" "3.3.1"
     "@subql/testing" "2.1.0"
     "@subql/types" "3.3.0"
     "@subql/utils" "2.6.1-0"
@@ -3531,10 +3567,10 @@
     vm2 "^3.9.19"
     yargs "^16.2.0"
 
-"@subql/node-cosmos@3.4.4":
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.4.4.tgz#a3fb17776b0274137e981f06850b18fc07745305"
-  integrity sha512-wPv35m/O5BS3Yj8HVlLtSiP49GcO8qFENnTrhFd5dvebnUambiQ4wnadca7MOm+iBdkkGH6N+qnXKOfDSGvABA==
+"@subql/node-cosmos@3.4.5":
+  version "3.4.5"
+  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.4.5.tgz#127aef7c745312a298e3c060edbf7ee29cbd367b"
+  integrity sha512-Q4gR7079FC51Hs3JH/D9Zsm7Y+FPRxC7ERjiWCmp3wRwCiR4npB+67WXePwP+figue3u44ug7qfCZ11INz3rsA==
   dependencies:
     "@apollo/client" "3.5.8"
     "@cosmjs/cosmwasm-stargate" "^0.30.1"
@@ -3545,9 +3581,9 @@
     "@nestjs/event-emitter" "^2.0.0"
     "@nestjs/platform-express" "^9.4.0"
     "@nestjs/schedule" "^3.0.1"
-    "@subql/common" "^3.3.0"
-    "@subql/common-cosmos" "3.2.1"
-    "@subql/node-core" "^7.0.2"
+    "@subql/common" "^3.3.1"
+    "@subql/common-cosmos" "4.0.0"
+    "@subql/node-core" "^7.0.4"
     "@subql/types-cosmos" "3.2.2"
     cosmjs-types "^0.7.0"
     cron-converter "^1.0.2"
@@ -3597,6 +3633,13 @@
   dependencies:
     package-json-type "^1.0.3"
 
+"@subql/types-core@0.4.0", "@subql/types-core@^0.4.0":
+  version "0.4.0"
+  resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.4.0.tgz#56254b559ce357062f19aa22cf020a6477c231c0"
+  integrity sha512-SknwtffckOqLLaWUFOLZCLTRY/3PlwJLEZZMMW/xb0TQBCnixGS8njFWdk3kq+LqeGrnfhpIYS9HrPHsjfqsrQ==
+  dependencies:
+    package-json-type "^1.0.3"
+
 "@subql/types-core@^0.1.2-0":
   version "0.1.2-0"
   resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.1.2-0.tgz#ccc07d70f24730aab66094e049e7b76c0ecb2abb"
@@ -3608,13 +3651,6 @@
   version "0.2.0"
   resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.2.0.tgz#3ad10179d590a5dcf802c0a72a9f3d68e0f84c06"
   integrity sha512-qJk2gYlMPXNrNju3t51vFsDisdEvmtos5mQAsY8YiZiQQ5woCNyv2EKDzGYb2uf+ovIKKNBEb7ofdJ/HLh4QlQ==
-  dependencies:
-    package-json-type "^1.0.3"
-
-"@subql/types-core@^0.4.0":
-  version "0.4.0"
-  resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.4.0.tgz#56254b559ce357062f19aa22cf020a6477c231c0"
-  integrity sha512-SknwtffckOqLLaWUFOLZCLTRY/3PlwJLEZZMMW/xb0TQBCnixGS8njFWdk3kq+LqeGrnfhpIYS9HrPHsjfqsrQ==
   dependencies:
     package-json-type "^1.0.3"
 
