@@ -11,7 +11,7 @@ COPY . .
 
 RUN yarn codegen && yarn build
 
-FROM onfinality/subql-node-cosmos:v2.8.0
+FROM onfinality/subql-node-cosmos:v3.4.5
 
 EXPOSE 3000
 
