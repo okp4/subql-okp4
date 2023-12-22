@@ -3313,17 +3313,17 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/cli@4.2.4":
-  version "4.2.4"
-  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.2.4.tgz#389b2f06986d45e2871e3d6cb9b3364c97e6aef9"
-  integrity sha512-jkO9z4JusJMQR6TRh5EsERyre/2lvLHqBpAu9LQGIU0mlIUsb0EQFUuioghani8DsPTwwwdyodgszDPdYjz9Jw==
+"@subql/cli@4.2.5":
+  version "4.2.5"
+  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.2.5.tgz#390bce655c3496731bd431abff7727a6ccffa6dc"
+  integrity sha512-6gRqwbeCUHL9hcgjPnLM/HGL3i7gp2D2wOgOwAf3VFmdQ5yKOB6/Zyj4FPVtY4EV4aFQmAOd8mFvx04v+7+nmw==
   dependencies:
     "@oclif/core" "^2.15.0"
     "@subql/common" "3.3.1"
     "@subql/common-algorand" "^3.1.0"
     "@subql/common-concordium" "^3.3.2"
     "@subql/common-cosmos" "^4.0.0"
-    "@subql/common-ethereum" "^3.1.0"
+    "@subql/common-ethereum" "^3.1.2"
     "@subql/common-flare" "^3.1.0"
     "@subql/common-near" "^3.0.1"
     "@subql/common-stellar" "^3.0.0"
@@ -3401,13 +3401,13 @@
     js-yaml "^4.1.0"
     reflect-metadata "^0.1.13"
 
-"@subql/common-ethereum@^3.1.0":
-  version "3.1.0"
-  resolved "https://registry.yarnpkg.com/@subql/common-ethereum/-/common-ethereum-3.1.0.tgz#ed46c4e8b6747e8b5c02d6037c588af8b01f179c"
-  integrity sha512-8ym5/6VAXnLBncDl/4kJ/fy1QkhH3CsPCuVa9atHJvHeYSdJc0qsyHaVBO0IEPt0ilcuI5nxUIDrisc2LGpGDQ==
+"@subql/common-ethereum@^3.1.2":
+  version "3.1.2"
+  resolved "https://registry.yarnpkg.com/@subql/common-ethereum/-/common-ethereum-3.1.2.tgz#360a85edc94495c52c0959598e79a38a9a5dc2c6"
+  integrity sha512-xNKVcKXRgKxeLoTL1MBQb8YMshfv+3tHNgroaSwK3l53pGyV+yIGqSaLC0d2sfxUaRJl+b1DgLkrq6bhTm7gEg==
   dependencies:
-    "@subql/common" "^3.3.0"
-    "@subql/types-ethereum" "3.2.0"
+    "@subql/common" "^3.3.1"
+    "@subql/types-ethereum" "3.2.1"
     "@typechain/ethers-v5" "^11.1.1"
     js-yaml "^4.1.0"
     pino "^6.13.3"
@@ -3612,13 +3612,13 @@
     "@cosmjs/stargate" "^0.30.1"
     "@subql/types-core" "^0.4.0"
 
-"@subql/types-ethereum@3.2.0":
-  version "3.2.0"
-  resolved "https://registry.yarnpkg.com/@subql/types-ethereum/-/types-ethereum-3.2.0.tgz#63a18d2c6f07b82aef737ddf38396ceabc98a875"
-  integrity sha512-TEv/RS0gr0I5MVGXLRMvz7HhJYPnvwjX7KuOHmZysxne4tcyoyscABhzzeHo7GYEDwzl7ECnuK0HVASy90wpSg==
+"@subql/types-ethereum@3.2.1":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@subql/types-ethereum/-/types-ethereum-3.2.1.tgz#32543d76c863734b67c5396f7802e1faa9b34a19"
+  integrity sha512-OXEWQb/G1dngGF6rsS6qjH2F56UZG7fk67BjMxZ0C52g93fVdVu5X5/nxXd7oNgQkoLrEuMED606YGscNpVP9A==
   dependencies:
     "@ethersproject/abstract-provider" "^5.6.1"
-    "@subql/types-core" "^0.3.0"
+    "@subql/types-core" "^0.4.0"
 
 "@subql/types-flare@3.2.0":
   version "3.2.0"
