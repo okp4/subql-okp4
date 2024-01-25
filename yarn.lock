@@ -3515,10 +3515,10 @@
     vm2 "^3.9.19"
     yargs "^16.2.0"
 
-"@subql/node-cosmos@3.4.6":
-  version "3.4.6"
-  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.4.6.tgz#176761e7eb7cff10b008eaf855ef9b413f34f9d9"
-  integrity sha512-P9Z/CJkrkwZdSQkXCWuKzTHfgkGI2XbmpHjX6mzrwWmDz87+VXyfzYtOL9w4joRfXrnh1pTlLitQYO24U6dgWA==
+"@subql/node-cosmos@3.4.7":
+  version "3.4.7"
+  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.4.7.tgz#51781b4fd08879a4c79b0fc8aa1223b956cafab8"
+  integrity sha512-3eugiW0dLLC0mjfoPxmrIHm2cG7NOtWz6LbCZdLn9B4VfI0y3Ow+eXt6pRU5a3pwNXjJsNclOY94Vx6LQBsprA==
   dependencies:
     "@apollo/client" "3.5.8"
     "@cosmjs/cosmwasm-stargate" "^0.30.1"
