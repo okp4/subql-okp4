@@ -48,7 +48,7 @@ jobs:
           cache: yarn
 
       - name: Patch startBlock to 1
-        uses: mikefarah/yq@v4.40.5
+        uses: mikefarah/yq@v4.40.7
         with:
           cmd: yq eval ".dataSources[].startBlock = env(START_BLOCK)" project.yaml -i
         env:
