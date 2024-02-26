@@ -3152,7 +3152,7 @@
   dependencies:
     "@sinonjs/commons" "^3.0.0"
 
-"@subql/apollo-links@^1.3.2":
+"@subql/apollo-links@1.3.2":
   version "1.3.2"
   resolved "https://registry.yarnpkg.com/@subql/apollo-links/-/apollo-links-1.3.2.tgz#56d3ca471d2a047d8f781592db8dfecbc37d0e09"
   integrity sha512-J1v4PeATXaEQ0oxOArsxsZgf7FqovMtU0LdIxGEGHfK2tXPNRquDai+Xdc0swZhq5zERnB8YJG/uftj82sH3tg==
@@ -3235,10 +3235,10 @@
     pino "^6.13.3"
     reflect-metadata "^0.1.13"
 
-"@subql/common-cosmos@4.1.0", "@subql/common-cosmos@^4.0.1":
-  version "4.1.0"
-  resolved "https://registry.yarnpkg.com/@subql/common-cosmos/-/common-cosmos-4.1.0.tgz#8902938a664e76f06e932e33ebce2d45d66594ff"
-  integrity sha512-nsbX19iNcTNdh/X7g/grZNLyLq26ZxMQ4ZGUoaORpMBPU3EW1xfCPVRCUMuXpVn0It0IHdX0fM5BRbJQ0zyvrw==
+"@subql/common-cosmos@4.1.1", "@subql/common-cosmos@^4.0.1":
+  version "4.1.1"
+  resolved "https://registry.yarnpkg.com/@subql/common-cosmos/-/common-cosmos-4.1.1.tgz#28738e09e2434d0114a40b0a8b63f1427f6d1cbe"
+  integrity sha512-abfA/IrUe88mGxmvJeA3oqQfA2OIrgQerZZXS396Ng9d91ec7R8XuV6IWQM6Qnp3FclTvcWSx05vIXQz1kOlGg==
   dependencies:
     "@cosmwasm/ts-codegen" "^0.35.3"
     "@protobufs/cosmos" "^0.1.0"
@@ -3248,7 +3248,7 @@
     "@protobufs/google" "^0.0.10"
     "@protobufs/ibc" "^0.1.0"
     "@protobufs/tendermint" "^0.0.10"
-    "@subql/common" "^3.4.0"
+    "@subql/common" "^3.4.1"
     "@subql/types-cosmos" "3.2.3"
     "@subql/x-cosmology-telescope" "^1.4.14"
     fs-extra "^11.1.1"
@@ -3314,23 +3314,7 @@
     js-yaml "^4.1.0"
     reflect-metadata "^0.1.13"
 
-"@subql/common@3.4.0":
-  version "3.4.0"
-  resolved "https://registry.yarnpkg.com/@subql/common/-/common-3.4.0.tgz#b2edf88b599bd339e1ad5d0006b175357c9b9df3"
-  integrity sha512-tEx9h80Xl9ugDuVD6BxC3S8rAQtIqKYvsElA6deff3yHKYUEQ4YfbYaOI/EbVMcCoafl1pEa+Bk1wQGWzQJ1Jg==
-  dependencies:
-    "@subql/types-core" "0.4.1-0"
-    axios "^0.27.2"
-    class-transformer "^0.5.1"
-    class-validator "^0.14.0"
-    fs-extra "^10.1.0"
-    ipfs-http-client "56"
-    js-yaml "^4.1.0"
-    reflect-metadata "^0.1.13"
-    semver "^7.5.2"
-    update-notifier "5.1.0"
-
-"@subql/common@3.4.1", "@subql/common@^3.1.1", "@subql/common@^3.2.0", "@subql/common@^3.3.0", "@subql/common@^3.3.1", "@subql/common@^3.4.0":
+"@subql/common@3.4.1", "@subql/common@^3.1.1", "@subql/common@^3.2.0", "@subql/common@^3.3.0", "@subql/common@^3.3.1", "@subql/common@^3.4.1":
   version "3.4.1"
   resolved "https://registry.yarnpkg.com/@subql/common/-/common-3.4.1.tgz#8c72b95f96b04aaec4bdd936e13ab5af411b9fd6"
   integrity sha512-Z9T+DPFhLmCKiPuZGWkFCWnmFqUO5qy7QvijIXIMWGbLIED+2058hv1dhsKyvk7tMX+vdoTpFkNf2C5ORw6mGw==
@@ -3357,20 +3341,20 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/node-core@^7.2.1":
-  version "7.2.1"
-  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.2.1.tgz#a27c94b765199692924fee940555f2f48537e89c"
-  integrity sha512-9+TMaH2uwPmXXZ/zNHKCNV5iovsjskDaa43rymsT7UnLoPEkgom5Ekfl+ua2zrl/sBtfldWovLBtWtYmuyrQyA==
+"@subql/node-core@^7.3.0":
+  version "7.3.0"
+  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.3.0.tgz#46cf6c0135e254d8ff89671408d0dc8ae01ccd6d"
+  integrity sha512-BBhsX8vpo5vzTZ/MoWWLuKLNNjRzbMOQHk9i3zATxtKT6NjkmsbvqnCUmbwHSx9jMWUy2h/2u5mqhtHLRHzPnw==
   dependencies:
     "@apollo/client" "^3.8.8"
     "@nestjs/common" "^9.4.0"
     "@nestjs/event-emitter" "^2.0.0"
     "@nestjs/schedule" "^3.0.1"
-    "@subql/apollo-links" "^1.3.2"
-    "@subql/common" "3.4.0"
+    "@subql/apollo-links" "1.3.2"
+    "@subql/common" "3.4.1"
     "@subql/testing" "2.1.1-0"
-    "@subql/types" "3.3.1-0"
-    "@subql/utils" "2.7.1-0"
+    "@subql/types" "3.3.1"
+    "@subql/utils" "2.7.1-1"
     "@willsoto/nestjs-prometheus" "^5.4.0"
     async-lock "^1.4.0"
     async-mutex "^0.4.0"
@@ -3383,13 +3367,14 @@
     prom-client "^14.0.1"
     source-map "^0.7.4"
     tar "^6.1.11"
+    toposort-class "^1.0.1"
     vm2 "^3.9.19"
     yargs "^16.2.0"
 
-"@subql/node-cosmos@3.5.1":
-  version "3.5.1"
-  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.5.1.tgz#f86a6652f42cd3543a067b37d10186706a8caf97"
-  integrity sha512-tODVzG6HGYdqw1bLxftPknWQ5f47HP0OTWLJWivgtEAaSCJxv9sL51lR6CnwQxcFqYwVbuZ9rRAJeb5uK40EWg==
+"@subql/node-cosmos@3.8.0":
+  version "3.8.0"
+  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.8.0.tgz#5b858d5019f4edea2e3613e48d67616b6effa7c5"
+  integrity sha512-pG62BoWVA2kTVxOubKLfKWrK9MhKFzyh23G0hK5xWfZoFg/Hr2f+cRIXhZlCqiB4WXdKsGObnGHKYr7lPA7bQw==
   dependencies:
     "@apollo/client" "3.5.8"
     "@cosmjs/cosmwasm-stargate" "^0.30.1"
@@ -3400,9 +3385,9 @@
     "@nestjs/event-emitter" "^2.0.0"
     "@nestjs/platform-express" "^9.4.0"
     "@nestjs/schedule" "^3.0.1"
-    "@subql/common" "^3.4.0"
-    "@subql/common-cosmos" "4.1.0"
-    "@subql/node-core" "^7.2.1"
+    "@subql/common" "^3.4.1"
+    "@subql/common-cosmos" "4.1.1"
+    "@subql/node-core" "^7.3.0"
     "@subql/types-cosmos" "3.2.3"
     cosmjs-types "^0.7.0"
     cron-converter "^1.0.2"
@@ -3452,13 +3437,6 @@
   dependencies:
     package-json-type "^1.0.3"
 
-"@subql/types-core@0.4.1-0", "@subql/types-core@^0.4.1-0":
-  version "0.4.1-0"
-  resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.4.1-0.tgz#ae577b9f705d1848debc2c5942ff6983e9d91b5a"
-  integrity sha512-av3eW9CHFjH1rtHbyeHtYvq/8tI1ocQko0Ze7x4HOTSnvUVojwXeCOlFeGIL51dKAPPHQkHsknVrGsPDvbRheA==
-  dependencies:
-    package-json-type "^1.0.3"
-
 "@subql/types-core@0.5.0", "@subql/types-core@^0.5.0":
   version "0.5.0"
   resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.5.0.tgz#f1489fa314740f7c59ec9e0d75245df33e170ef3"
@@ -3491,6 +3469,13 @@
   version "0.4.0"
   resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.4.0.tgz#56254b559ce357062f19aa22cf020a6477c231c0"
   integrity sha512-SknwtffckOqLLaWUFOLZCLTRY/3PlwJLEZZMMW/xb0TQBCnixGS8njFWdk3kq+LqeGrnfhpIYS9HrPHsjfqsrQ==
+  dependencies:
+    package-json-type "^1.0.3"
+
+"@subql/types-core@^0.4.1-0":
+  version "0.4.1-0"
+  resolved "https://registry.yarnpkg.com/@subql/types-core/-/types-core-0.4.1-0.tgz#ae577b9f705d1848debc2c5942ff6983e9d91b5a"
+  integrity sha512-av3eW9CHFjH1rtHbyeHtYvq/8tI1ocQko0Ze7x4HOTSnvUVojwXeCOlFeGIL51dKAPPHQkHsknVrGsPDvbRheA==
   dependencies:
     package-json-type "^1.0.3"
 
@@ -3544,33 +3529,6 @@
   integrity sha512-Dc0kx9HBpVgdJAKeWpt7O/jMkD7kK6MlVzqEaawEzz16yEoPSMyelkmshIi/ZDITTe/EWK4Ew7QY7CJx3ryOOQ==
   dependencies:
     "@subql/types-core" "0.5.0"
-
-"@subql/types@3.3.1-0":
-  version "3.3.1-0"
-  resolved "https://registry.yarnpkg.com/@subql/types/-/types-3.3.1-0.tgz#d18546b0111d20a37ab8ba7d7e7c28a7f6e1c5cc"
-  integrity sha512-brPgTDOC6j3Pb8q5QBroECDNKJICsjqZxospAUnKgU7kMfZIWFm5tIlk53D0RXJAWUXxm7M+TMNjPWzEOwnISw==
-  dependencies:
-    "@subql/types-core" "0.4.1-0"
-
-"@subql/utils@2.7.1-0":
-  version "2.7.1-0"
-  resolved "https://registry.yarnpkg.com/@subql/utils/-/utils-2.7.1-0.tgz#a58a10ff1ed7a3127485ec1283d8fa2b7546ea86"
-  integrity sha512-TEdwWzy1qpu+igeTNCsdn0DS1KXi5WRnXNKV9XWkxr526JcmBNu+V2v7GloeVdW/adn6XI05m9KfKQu06gH4xg==
-  dependencies:
-    "@polkadot/util" "^12.5.1"
-    "@polkadot/util-crypto" "^12.5.1"
-    "@subql/x-sequelize" "6.32.0-0.0.4"
-    ansi-styles "^6.1.0"
-    chalk "^4.1.2"
-    detect-port "^1.3.0"
-    flatted "^3.2.5"
-    graphql "^15.8.0"
-    graphql-tag "^2.12.6"
-    lodash "^4.17.21"
-    pino "^6.13.3"
-    rotating-file-stream "^3.0.2"
-    semver "^7.5.2"
-    tar "^6.1.11"
 
 "@subql/utils@2.7.1-1":
   version "2.7.1-1"
@@ -4676,14 +4634,6 @@ axios@^0.21.2:
   integrity sha512-ut5vewkiu8jjGBdqpM44XxjuCjq9LAKeHVmoVfHVzy8eHgxxq8SbAVQNovDA8mVi05kP0Ea/n/UzcSHcTJQfNg==
   dependencies:
     follow-redirects "^1.14.0"
-
-axios@^0.27.2:
-  version "0.27.2"
-  resolved "https://registry.yarnpkg.com/axios/-/axios-0.27.2.tgz#207658cc8621606e586c85db4b41a750e756d972"
-  integrity sha512-t+yRIyySRTp/wua5xEr+z1q60QmLq8ABsS5O9Me1AsE5dfKqgnCFzwiCZZ/cGNd1lq4/7akDWMxdhVlucjmnOQ==
-  dependencies:
-    follow-redirects "^1.14.9"
-    form-data "^4.0.0"
 
 axios@^0.28.0:
   version "0.28.0"
@@ -6796,7 +6746,7 @@ flatted@^3.2.5:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.9.tgz#7eb4c67ca1ba34232ca9d2d93e9886e611ad7daf"
   integrity sha512-36yxDn5H7OFZQla0/jFJmbIKTdZAQHngCedGxiMmpNfEZM0sdEeT+WczLQrjK6D7o2aiyLYDnkw0R3JK0Qv1RQ==
 
-follow-redirects@^1.14.0, follow-redirects@^1.14.7, follow-redirects@^1.14.9, follow-redirects@^1.15.0:
+follow-redirects@^1.14.0, follow-redirects@^1.14.7, follow-redirects@^1.15.0:
   version "1.15.4"
   resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.15.4.tgz#cdc7d308bf6493126b17ea2191ea0ccf3e535adf"
   integrity sha512-Cr4D/5wlrb0z9dgERpUL3LrmPKVDsETIJhaCMeDfuFYcqa5bldGV6wBsAN6X/vxlXQtFBMrXdXxdL8CbDTGniw==
