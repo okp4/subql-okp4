@@ -3341,10 +3341,10 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/node-core@^7.3.1":
-  version "7.3.1"
-  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.3.1.tgz#3d8605181bd41ca3f80ee015ab5942acbdd5512d"
-  integrity sha512-XdbaSOrIQxmxu9n063anhdjJNBqiDIgNvM0KhwOsM6sGV8KQQwxG0E0ue5v9fuP+jNDd58hHUibJQkJgUdvYjQ==
+"@subql/node-core@^7.4.0":
+  version "7.4.0"
+  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.4.0.tgz#321fc288782fe992e9369528a3494e41724e737d"
+  integrity sha512-ULNvkIR5hb5ZICCV+gR8EK8b3I1sLqhvYptj1/e16uPVR3Q+T6LvGTpZgD8fNQz4dAE1TwtObQ84ztrCdB+HGg==
   dependencies:
     "@apollo/client" "^3.8.8"
     "@nestjs/common" "^9.4.0"
@@ -3354,7 +3354,7 @@
     "@subql/common" "3.4.1"
     "@subql/testing" "2.1.1-0"
     "@subql/types" "3.3.1"
-    "@subql/utils" "2.7.1"
+    "@subql/utils" "2.8.0"
     "@willsoto/nestjs-prometheus" "^5.4.0"
     async-lock "^1.4.0"
     async-mutex "^0.4.0"
@@ -3371,10 +3371,10 @@
     vm2 "^3.9.19"
     yargs "^16.2.0"
 
-"@subql/node-cosmos@3.8.1":
-  version "3.8.1"
-  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.8.1.tgz#3ec8c93c7bc40df8f2dd33b0c4fdd7f522898ba9"
-  integrity sha512-AdhiFtYMzwVtTT11JhlzKX3sgbicJbvI4KwJL9XRWRKrSYZt6L4eLQxN45vYaoYPY3TyVHZRnnpj6QWQwR9JNg==
+"@subql/node-cosmos@3.9.0":
+  version "3.9.0"
+  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.9.0.tgz#7170f3d177083fdfe1f2b734e4207487f19c1527"
+  integrity sha512-DLh0VJgMdmlrvoTRlfPqX6jr+qVALbMjfT9uGVLG56Vaoje/quHcEbio1IAYSDnfFtVP1MRUGiF+JEW2K4JarA==
   dependencies:
     "@apollo/client" "3.5.8"
     "@cosmjs/cosmwasm-stargate" "^0.30.1"
@@ -3387,7 +3387,7 @@
     "@nestjs/schedule" "^3.0.1"
     "@subql/common" "^3.4.1"
     "@subql/common-cosmos" "4.1.1"
-    "@subql/node-core" "^7.3.1"
+    "@subql/node-core" "^7.4.0"
     "@subql/types-cosmos" "3.2.3"
     cosmjs-types "^0.7.0"
     cron-converter "^1.0.2"
@@ -3529,26 +3529,6 @@
   integrity sha512-Dc0kx9HBpVgdJAKeWpt7O/jMkD7kK6MlVzqEaawEzz16yEoPSMyelkmshIi/ZDITTe/EWK4Ew7QY7CJx3ryOOQ==
   dependencies:
     "@subql/types-core" "0.5.0"
-
-"@subql/utils@2.7.1":
-  version "2.7.1"
-  resolved "https://registry.yarnpkg.com/@subql/utils/-/utils-2.7.1.tgz#08a504f52cb05e2f85fb43800661e7b31fefcb11"
-  integrity sha512-WLnfYCQomIuA2y54pD48sQDqsWdnhMIiBS456fPXaj+G6jailLUMDufyKUcMhibX1B6vroVlmgVErreFt+37dw==
-  dependencies:
-    "@polkadot/util" "^12.5.1"
-    "@polkadot/util-crypto" "^12.5.1"
-    "@subql/x-sequelize" "6.32.0-0.0.4"
-    ansi-styles "^6.1.0"
-    chalk "^4.1.2"
-    detect-port "^1.3.0"
-    flatted "^3.2.5"
-    graphql "^15.8.0"
-    graphql-tag "^2.12.6"
-    lodash "^4.17.21"
-    pino "^6.13.3"
-    rotating-file-stream "^3.0.2"
-    semver "^7.5.2"
-    tar "^6.1.11"
 
 "@subql/utils@2.8.0":
   version "2.8.0"
