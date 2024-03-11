@@ -3167,10 +3167,10 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/cli@4.4.0":
-  version "4.4.0"
-  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.4.0.tgz#3107e17a87d65ffca37b614276ad9f4a1486e01d"
-  integrity sha512-ZY3Npn1AUAk9PFZN1uVaQJx+twERK83EZ/m7UWDrht5rNbHXxlsMJeVLrY6GBiYn2ub0jRXwE7yIA+uIFk7SvQ==
+"@subql/cli@4.4.1":
+  version "4.4.1"
+  resolved "https://registry.yarnpkg.com/@subql/cli/-/cli-4.4.1.tgz#a6ab542767b7529cac989a7c3aa4d6ffebe89463"
+  integrity sha512-rDBGhouLn5YimoEF22TYVox1BC72WofwVTR9bV/W4jjIJBPQXlfKWwzfKzLMIGSFgYgy7prKTK68wgBZrgzxYg==
   dependencies:
     "@oclif/core" "^2.15.0"
     "@subql/common" "3.4.1"
