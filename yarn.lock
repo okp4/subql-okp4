@@ -3394,10 +3394,10 @@
     jwt-decode "^3.1.2"
     lru-cache "^10.0.1"
 
-"@subql/node-core@^7.4.2":
-  version "7.4.2"
-  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.4.2.tgz#3688c11d4dac3473cc7fe8f5951cd4b1bb9dee90"
-  integrity sha512-OkZkZY2A7Jrl0N7jT1+v74sccQ5ZrjcijyfCaAyLKWn+90eHSqQWVWB4NkikxWs8TILlcNdUwIBAzYvN/CH4hQ==
+"@subql/node-core@^7.4.3":
+  version "7.4.3"
+  resolved "https://registry.yarnpkg.com/@subql/node-core/-/node-core-7.4.3.tgz#4c143fd55325cbb14bf0d493ea19148d37e8df34"
+  integrity sha512-/qIhFQcaybMoAQjgmXh6ZUSkVoxuQtSSUZzW3w7O5xS0J059UUVvjD/i58dVSBzAe8Z7MsJOM1Ma8xwWSE5zfA==
   dependencies:
     "@apollo/client" "^3.8.8"
     "@nestjs/common" "^9.4.0"
@@ -3424,10 +3424,10 @@
     vm2 "^3.9.19"
     yargs "^16.2.0"
 
-"@subql/node-cosmos@3.9.1":
-  version "3.9.1"
-  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.9.1.tgz#7042381e4d14b60d720ce65eb8cf75cf12d1416b"
-  integrity sha512-G+mMU+YePvmr2Knq5zD+TsbaUfCJJmzMbWz/guRdoxgXB8DJfKKtvWfLES5EcxIBW+pZdkHGpbMOX+eUdakYlQ==
+"@subql/node-cosmos@3.9.2":
+  version "3.9.2"
+  resolved "https://registry.yarnpkg.com/@subql/node-cosmos/-/node-cosmos-3.9.2.tgz#002bcc85ca6ee56c0cfd41320c9bbef669b79ac9"
+  integrity sha512-sFCiZYpp/pDZyv3tGnyBBhIqWGt0EKxvtNo7qqtORJjR2xruar9MmYqky4AYArj5u0N9GVMlyDxcb0AEqKxv8g==
   dependencies:
     "@apollo/client" "3.5.8"
     "@cosmjs/cosmwasm-stargate" "^0.30.1"
@@ -3440,7 +3440,7 @@
     "@nestjs/schedule" "^3.0.1"
     "@subql/common" "^3.4.1"
     "@subql/common-cosmos" "4.1.2-0"
-    "@subql/node-core" "^7.4.2"
+    "@subql/node-core" "^7.4.3"
     "@subql/types-cosmos" "3.2.3"
     cosmjs-types "^0.7.0"
     cron-converter "^1.0.2"
