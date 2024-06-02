@@ -67,6 +67,64 @@ type Coin @jsonField {
 }
 
 """
+A Cosmos SDK public key.
+"""
+type PublicKey @jsonField {
+    """
+    The type url of public key.
+    """
+    typeUrl: String!
+    """
+    The public key.
+    """
+    key: String!
+}
+
+"""
+A Cosmos SDK account. Can be any account found in the Cosmos module auth or OKP4 vesting module.
+"""
+type Account @entity {
+    """
+    The account address.
+    """
+    id: ID!
+    """
+    The account public key.
+    """
+    pubKey: PublicKey
+    """
+    Account Balances in different denominators.
+    """
+    balances: [Coin]!
+    """
+    Objectarium objects stored by the account.
+    """
+    storedObjectariumObjects: [ObjectariumObject] @derivedFrom(field: "sender")
+    """
+    Objectarium objects pinned by the account.
+    """
+    pinnedObjectariumObjects: [ObjectariumObjectPin]
+        @derivedFrom(field: "account")
+    """
+    Objectariums created by the account.
+    """
+    createdObjectariums: [Objectarium] @derivedFrom(field: "creator")
+    """
+    Objectariums owned by the account.
+    """
+    ownedObjectariums: [Objectarium] @derivedFrom(field: "owner")
+    """
+    Contracts created by the account.
+    """
+    createdContracts: [Contract] @derivedFrom(field: "creator")
+    """
+    Objectarium objects pinned by the account.
+    """
+    contractPermissions: [ContractPermissionAccount]
+        @derivedFrom(field: "account")
+}
+
+"""
 A Cosmos SDK transaction in the blockchain.
 """
 type Transaction @entity {
@@ -147,6 +205,24 @@ type Message @entity {
 }
 
 """
+The pin of an objectarium object.
+"""
+type ObjectariumObjectPin @entity {
+    """
+    Unique identifier made up by the account address and the objectarium object hash identifier.
+    """
+    id: ID!
+    """
+    The objectarium object being pinned.
+    """
+    objectariumObject: ObjectariumObject!
+    """
+    The account pinning the object.
+    """
+    account: Account!
+}
+
+"""
 Type of an object stored in the Objectarium smart contract instance.
 """
 type ObjectariumObject @entity {
@@ -156,17 +232,17 @@ type ObjectariumObject @entity {
     """
     id: ID!
     """
-    Address of the user who stored the object.
+    Account that stored the object.
     """
-    sender: String! @index
+    sender: Account!
     """
     The smart contract instance (aka bucket) where the object is stored.
     """
     objectarium: Objectarium!
     """
-    Addresses that have pinned the object.
+    A list of objectarium object pins containing the accounts that have pinned the object.
     """
-    pins: [String!]!
+    pins: [ObjectariumObjectPin!]! @derivedFrom(field: "objectariumObject")
     """
     List of messages that concern the object.
     """
@@ -220,9 +296,13 @@ type Objectarium @entity {
     """
     id: ID!
     """
-    The owner of the bucket.
+    The account that created the bucket.
     """
-    owner: String!
+    creator: Account!
+    """
+    The account that owns the bucket.
+    """
+    owner: Account!
     """
     Label of the bucket.
     """
@@ -254,24 +334,21 @@ type Objectarium @entity {
 }
 
 """
-An object describing the permissions of a smart contract.
+An account of a contract permission.
 """
-type AccessConfig @jsonField {
-    # TODO: Change permission type to Enum for better value representaion.
-    # Explanation: As of date (12/09/2023) SubQuery does not support Enum fields in jsonFields
-    # See function "processFields" in https://github.com/subquery/subql/blob/main/packages/cli/src/controller/codegen-controller.ts.
+type ContractPermissionAccount @entity {
     """
-    AccessType permission type.
+    Unique identifier made up by the account address and the contract code id.
     """
-    permission: String!
+    id: ID!
     """
-    Address concerned by permission.
+    The contract with the permission.
     """
-    address: String!
+    contract: Contract!
     """
-    List of addresses included in the permission.
+    The account concerned by the contract permission.
     """
-    addresses: [String]!
+    account: Account!
 }
 
 """
@@ -288,13 +365,18 @@ type Contract @entity {
     """
     dataHash: String!
     """
-    The creator of the smart contract.
+    The account that created the smart contract.
     """
-    creator: String!
+    creator: Account!
     """
-    Contract creation permissions.
+    Contract access permission.
     """
-    instantiatePermission: AccessConfig
+    permission: String
+    """
+    List of account permission associations included in the access permission.
+    """
+    permissionAccounts: [ContractPermissionAccount!]
+        @derivedFrom(field: "contract")
     """
     List of messages that concern the smart contract.
     """
