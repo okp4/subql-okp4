@@ -60,7 +60,7 @@
         "@subql/types-cosmos": "3.2.3",
         "@types/node": "^20.12.2",
         "pino": "^8.19.0",
-        "ts-proto": "^1.167.9",
+        "ts-proto": "^1.171.0",
         "tslib": "^2.6.2"
     }
 }
