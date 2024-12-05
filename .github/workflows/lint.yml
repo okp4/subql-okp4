@@ -114,6 +114,17 @@ jobs:
         with:
           token: ${{ secrets.OKP4_TOKEN }}
 
+  lint-graphql:
+    runs-on: ubuntu-22.04
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v3
+
+      - uses: kamilkisiela/graphql-inspector@v3.4.0
+        with:
+          name: Inspect SubQL schema
+          schema: "main:schema.graphql"
+
   lint-format:
     runs-on: ubuntu-22.04
     steps:
