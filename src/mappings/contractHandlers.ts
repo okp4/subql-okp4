@@ -1,22 +1,17 @@
 import type { CosmosMessage } from "@subql/types-cosmos";
 import type { MsgStoreCode } from "cosmjs-types/cosmwasm/wasm/v1/tx";
-import { Contract } from "../types";
-import { findEventAttribute } from "./helper";
-
-enum AccessType {
-    ACCESS_TYPE_UNSPECIFIED = 0,
-    ACCESS_TYPE_NOBODY = 1,
-    ACCESS_TYPE_ONLY_ADDRESS = 2,
-    ACCESS_TYPE_EVERYBODY = 3,
-    ACCESS_TYPE_ANY_OF_ADDRESSES = 4,
-    UNRECOGNIZED = -1,
-}
+import { AccessType } from "cosmjs-types/cosmwasm/wasm/v1/types";
+import { Account, Contract, ContractPermissionAccount } from "../types";
+import { contractPermissionAccountId, findEventAttribute } from "./helper";
 
 export const handleStoreContract = async (
     msg: CosmosMessage<MsgStoreCode>,
 ): Promise<void> => {
-    const id = findEventAttribute(msg.tx.tx.events, "store_code", "code_id")
-        ?.value;
+    const contractId = findEventAttribute(
+        msg.tx.tx.events,
+        "store_code",
+        "code_id",
+    )?.value;
 
     const dataHash = findEventAttribute(
         msg.tx.tx.events,
@@ -24,22 +19,50 @@ export const handleStoreContract = async (
         "code_checksum",
     )?.value;
 
-    if (!id || !dataHash) {
+    if (!contractId || !dataHash) {
         return;
     }
 
-    const { instantiatePermission: instantiatePermissionWithEnums, sender } =
-        msg.msg.decodedMsg;
+    const { instantiatePermission, sender } = msg.msg.decodedMsg;
+    const senderAccount = await Account.get(sender);
 
-    const instantiatePermission = instantiatePermissionWithEnums && {
-        ...instantiatePermissionWithEnums,
-        permission: AccessType[instantiatePermissionWithEnums.permission],
-    };
+    if (!senderAccount) {
+        const publicKey = msg.tx.decodedTx.authInfo.signerInfos.find(
+            (signerInfo) => signerInfo.publicKey,
+        )?.publicKey;
+
+        await Account.create({
+            id: sender,
+            pubKey: publicKey && {
+                typeUrl: publicKey.typeUrl,
+                key: Buffer.from(publicKey.value).toString("base64"),
+            },
+            balances: [],
+        }).save();
+    }
+
+    const permission =
+        instantiatePermission && AccessType[instantiatePermission.permission];
 
     await Contract.create({
-        id,
+        id: contractId,
         dataHash,
-        creator: sender,
-        instantiatePermission,
+        creatorId: sender,
+        permission,
     }).save();
+
+    for (const permissionAddress in instantiatePermission?.addresses) {
+        if (!(await Account.get(permissionAddress))) {
+            await Account.create({
+                id: permissionAddress,
+                balances: [],
+            }).save();
+        }
+
+        await ContractPermissionAccount.create({
+            id: contractPermissionAccountId(contractId, sender),
+            contractId: permissionAddress,
+            accountId: sender,
+        }).save();
+    }
 };
